@@ -1,0 +1,192 @@
+version: 2
+
+sources:
+  - name: awd
+    tables:
+      - name: inbound_shipments
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: ship_by
+            data_type: string
+          - name: order_id
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: tracking_id
+            data_type: string
+          - name: shipment_status
+            data_type: string
+          - name: received_quantity
+            data_type: string
+          - name: origin_address_city
+            data_type: string
+          - name: origin_address_name
+            data_type: string
+          - name: external_reference_id
+            data_type: string
+          - name: warehouse_reference_id
+            data_type: string
+          - name: origin_address_district
+            data_type: string
+          - name: shipment_sku_quantities
+            data_type: string
+          - name: destination_address_city
+            data_type: string
+          - name: destination_address_name
+            data_type: string
+          - name: shipment_create_date_utc
+            data_type: timestamp
+          - name: origin_address_postal_code
+            data_type: int64
+          - name: origin_address_country_code
+            data_type: string
+          - name: origin_address_phone_number
+            data_type: int64
+          - name: destination_address_district
+            data_type: string
+          - name: origin_address_address_line_1
+            data_type: string
+          - name: origin_address_address_line_2
+            data_type: string
+          - name: shipment_container_quantities
+            data_type: string
+          - name: shipment_last_update_date_utc
+            data_type: timestamp
+          - name: carrier_code_carrier_code_type
+            data_type: string
+          - name: origin_address_state_or_region
+            data_type: string
+          - name: carrier_code_carrier_code_value
+            data_type: string
+          - name: destination_address_postal_code
+            data_type: string
+          - name: destination_address_country_code
+            data_type: string
+          - name: destination_address_address_line_1
+            data_type: string
+          - name: destination_address_address_line_2
+            data_type: string
+          - name: destination_address_address_line_3
+            data_type: string
+          - name: destination_address_state_or_region
+            data_type: string
+
+      - name: inbound_shipments_detailed_view
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: asin
+            data_type: string
+          - name: date
+            data_type: date
+          - name: cases
+            data_type: int64
+          - name: country
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: facility_id
+            data_type: string
+          - name: shipment_id
+            data_type: string
+          - name: total_quantity
+            data_type: int64
+          - name: shipment_status
+            data_type: string
+          - name: inbound_quantity
+            data_type: int64
+          - name: package_quantity
+            data_type: int64
+          - name: expected_quantity
+            data_type: int64
+          - name: inbound_box_count
+            data_type: int64
+          - name: received_quantity
+            data_type: int64
+          - name: expected_box_count
+            data_type: int64
+          - name: received_box_count
+            data_type: int64
+
+      - name: inbound_shipments_summary
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: order_id
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: shipment_status
+            data_type: string
+          - name: external_reference_id
+            data_type: string
+          - name: shipment_create_date_utc
+            data_type: timestamp
+          - name: shipment_last_update_date_utc
+            data_type: timestamp
+
+      - name: inventory
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: total_onhand_quantity
+            data_type: int64
+          - name: total_inbound_quantity
+            data_type: int64
+          - name: inventory_details_reserved_distributable_quantity
+            data_type: int64
+          - name: inventory_details_available_distributable_quantity
+            data_type: int64

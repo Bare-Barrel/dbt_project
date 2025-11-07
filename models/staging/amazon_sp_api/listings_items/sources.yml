@@ -1,0 +1,407 @@
+version: 2
+
+sources:
+  - name: listings_items
+    tables:
+      - name: attributes
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: size_value
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: brand_value
+            data_type: string
+          - name: color_value
+            data_type: string
+          - name: marketplace
+            data_type: string
+          - name: material_value
+            data_type: string
+          - name: item_name_value
+            data_type: string
+          - name: list_price_value
+            data_type: numeric
+          - name: model_name_value
+            data_type: string
+          - name: part_number_value
+            data_type: string
+          - name: size_language_tag
+            data_type: string
+          - name: brand_language_tag
+            data_type: string
+          - name: bullet_point_value
+            data_type: string
+          - name: color_language_tag
+            data_type: string
+          - name: manufacturer_value
+            data_type: string
+          - name: model_number_value
+            data_type: string
+          - name: list_price_currency
+            data_type: string
+          - name: size_marketplace_id
+            data_type: string
+          - name: brand_marketplace_id
+            data_type: string
+          - name: color_marketplace_id
+            data_type: string
+          - name: condition_type_value
+            data_type: string
+          - name: item_type_name_value
+            data_type: string
+          - name: variation_theme_name
+            data_type: string
+          - name: generic_keyword_value
+            data_type: string
+          - name: material_language_tag
+            data_type: string
+          - name: number_of_boxes_value
+            data_type: numeric
+          - name: number_of_items_value
+            data_type: numeric
+          - name: parentage_level_value
+            data_type: string
+          - name: item_name_language_tag
+            data_type: string
+          - name: country_of_origin_value
+            data_type: string
+          - name: item_type_keyword_value
+            data_type: string
+          - name: material_marketplace_id
+            data_type: string
+          - name: model_name_language_tag
+            data_type: string
+          - name: batteries_included_value
+            data_type: string
+          - name: batteries_required_value
+            data_type: string
+          - name: item_name_marketplace_id
+            data_type: string
+          - name: item_package_weight_unit
+            data_type: string
+          - name: max_order_quantity_value
+            data_type: numeric
+          - name: bullet_point_language_tag
+            data_type: string
+          - name: included_components_value
+            data_type: string
+          - name: item_package_weight_value
+            data_type: numeric
+          - name: list_price_marketplace_id
+            data_type: string
+          - name: manufacturer_language_tag
+            data_type: string
+          - name: model_name_marketplace_id
+            data_type: string
+          - name: product_description_value
+            data_type: string
+          - name: part_number_marketplace_id
+            data_type: string
+          - name: purchasable_offer_currency
+            data_type: string
+          - name: warranty_description_value
+            data_type: string
+          - name: bullet_point_marketplace_id
+            data_type: string
+          - name: item_type_name_language_tag
+            data_type: string
+          - name: manufacturer_marketplace_id
+            data_type: string
+          - name: model_number_marketplace_id
+            data_type: string
+          - name: purchasable_offer_our_price
+            data_type: string
+          - name: generic_keyword_language_tag
+            data_type: string
+          - name: condition_type_marketplace_id
+            data_type: string
+          - name: item_type_name_marketplace_id
+            data_type: string
+          - name: merchant_shipping_group_value
+            data_type: string
+          - name: merchant_suggested_asin_value
+            data_type: string
+          - name: contains_liquid_contents_value
+            data_type: string
+          - name: generic_keyword_marketplace_id
+            data_type: string
+          - name: number_of_boxes_marketplace_id
+            data_type: string
+          - name: number_of_items_marketplace_id
+            data_type: string
+          - name: parentage_level_marketplace_id
+            data_type: string
+          - name: purchasable_offer_end_at_value
+            data_type: string
+          - name: recommended_browse_nodes_value
+            data_type: numeric
+          - name: variation_theme_marketplace_id
+            data_type: string
+          - name: country_of_origin_marketplace_id
+            data_type: string
+          - name: cpsia_cautionary_statement_value
+            data_type: string
+          - name: included_components_language_tag
+            data_type: string
+          - name: item_type_keyword_marketplace_id
+            data_type: string
+          - name: product_description_language_tag
+            data_type: string
+          - name: purchasable_offer_marketplace_id
+            data_type: string
+          - name: purchasable_offer_start_at_value
+            data_type: string
+          - name: batteries_included_marketplace_id
+            data_type: string
+          - name: batteries_required_marketplace_id
+            data_type: string
+          - name: fulfillment_availability_quantity
+            data_type: numeric
+          - name: max_order_quantity_marketplace_id
+            data_type: string
+          - name: warranty_description_language_tag
+            data_type: string
+          - name: included_components_marketplace_id
+            data_type: string
+          - name: item_package_dimensions_width_unit
+            data_type: string
+          - name: item_package_weight_marketplace_id
+            data_type: string
+          - name: product_description_marketplace_id
+            data_type: string
+          - name: item_package_dimensions_height_unit
+            data_type: string
+          - name: item_package_dimensions_length_unit
+            data_type: string
+          - name: item_package_dimensions_width_value
+            data_type: numeric
+          - name: warranty_description_marketplace_id
+            data_type: string
+          - name: item_package_dimensions_height_value
+            data_type: numeric
+          - name: item_package_dimensions_length_value
+            data_type: numeric
+          - name: item_package_dimensions_marketplace_id
+            data_type: string
+          - name: merchant_shipping_group_marketplace_id
+            data_type: string
+          - name: merchant_suggested_asin_marketplace_id
+            data_type: string
+          - name: contains_liquid_contents_marketplace_id
+            data_type: string
+          - name: fulfillment_availability_marketplace_id
+            data_type: string
+          - name: recommended_browse_nodes_marketplace_id
+            data_type: string
+          - name: child_parent_sku_relationship_parent_sku
+            data_type: string
+          - name: supplier_declared_dg_hz_regulation_value
+            data_type: string
+          - name: cpsia_cautionary_statement_marketplace_id
+            data_type: string
+          - name: main_product_image_locator_marketplace_id
+            data_type: string
+          - name: main_product_image_locator_media_location
+            data_type: string
+          - name: externally_assigned_product_identifier_type
+            data_type: string
+          - name: swatch_product_image_locator_marketplace_id
+            data_type: string
+          - name: swatch_product_image_locator_media_location
+            data_type: string
+          - name: child_parent_sku_relationship_marketplace_id
+            data_type: string
+          - name: externally_assigned_product_identifier_value
+            data_type: numeric
+          - name: other_product_image_locator_1_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_1_media_location
+            data_type: string
+          - name: other_product_image_locator_2_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_2_media_location
+            data_type: string
+          - name: other_product_image_locator_3_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_3_media_location
+            data_type: string
+          - name: other_product_image_locator_4_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_4_media_location
+            data_type: string
+          - name: other_product_image_locator_5_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_5_media_location
+            data_type: string
+          - name: other_product_image_locator_6_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_6_media_location
+            data_type: string
+          - name: other_product_image_locator_7_marketplace_id
+            data_type: string
+          - name: other_product_image_locator_7_media_location
+            data_type: string
+          - name: required_product_compliance_certificate_value
+            data_type: string
+          - name: fulfillment_availability_fulfillment_channel_code
+            data_type: string
+          - name: supplier_declared_dg_hz_regulation_marketplace_id
+            data_type: string
+          - name: child_parent_sku_relationship_child_relationship_type
+            data_type: string
+          - name: externally_assigned_product_identifier_marketplace_id
+            data_type: string
+          - name: required_product_compliance_certificate_marketplace_id
+            data_type: string
+
+      - name: fulfillment_availability
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: fulfillment_channel_code
+            data_type: string
+
+      - name: issues
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: code
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: message
+            data_type: string
+          - name: severity
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: attribute_names
+            data_type: json
+
+      - name: offers
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: offer_type
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: price_amount
+            data_type: numeric
+          - name: marketplace_id
+            data_type: string
+          - name: price_currency
+            data_type: string
+          - name: price_currency_code
+            data_type: string
+
+      - name: summaries
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: asin
+            data_type: string
+          - name: date
+            data_type: date
+          - name: fn_sku
+            data_type: string
+          - name: status
+            data_type: json
+          - name: item_name
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: created_date
+            data_type: timestamp
+          - name: product_type
+            data_type: string
+          - name: condition_type
+            data_type: string
+          - name: marketplace_id
+            data_type: string
+          - name: main_image_link
+            data_type: string
+          - name: main_image_width
+            data_type: numeric
+          - name: last_updated_date
+            data_type: timestamp
+          - name: main_image_height
+            data_type: numeric

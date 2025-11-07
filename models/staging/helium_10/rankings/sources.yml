@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: rankings
+    tables:
+      - name: h10_keyword_search_volume
+        columns:
+          - name: date_added
+            data_type: date
+          - name: marketplace_id
+            data_type: string
+          - name: keyword
+            data_type: string
+          - name: search_volume
+            data_type: numeric
+
+      - name: h10_keyword_tracker
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: asin
+            data_type: string
+          - name: title
+            data_type: string
+          - name: keyword
+            data_type: string
+          - name: created_at
+            data_type: datetime
+          - name: date_added
+            data_type: timestamp
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: organic_rank
+            data_type: int64
+          - name: search_volume
+            data_type: numeric
+          - name: marketplace_id
+            data_type: string
+          - name: sponsored_position
+            data_type: numeric

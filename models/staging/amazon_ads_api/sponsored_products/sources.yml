@@ -1,0 +1,1115 @@
+version: 2
+
+sources:
+  - name: sponsored_products
+    tables:
+      - name: adgroup
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: ad_status
+            data_type: string
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: cost_per_click
+            data_type: numeric
+          - name: click_through_rate
+            data_type: numeric
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: campaign_bidding_strategy
+            data_type: string
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: advertised_product
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: ad_id
+            data_type: int64
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: portfolio_id
+            data_type: numeric
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: acos_clicks_7d
+            data_type: numeric
+          - name: advertised_sku
+            data_type: string
+          - name: cost_per_click
+            data_type: numeric
+          - name: roas_clicks_7d
+            data_type: numeric
+          - name: acos_clicks_14d
+            data_type: numeric
+          - name: advertised_asin
+            data_type: string
+          - name: campaign_status
+            data_type: string
+          - name: roas_clicks_14d
+            data_type: numeric
+          - name: click_through_rate
+            data_type: numeric
+          - name: sales_other_sku_7d
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_other_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: campaign
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: cost_per_click
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: click_through_rate
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: campaign_bidding_strategy
+            data_type: string
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: top_of_search_impression_share
+            data_type: numeric
+          - name: campaign_rule_based_budget_amount
+            data_type: numeric
+          - name: campaign_applicable_budget_rule_id
+            data_type: string
+          - name: campaign_applicable_budget_rule_name
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: campaign_adgroup
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: ad_status
+            data_type: string
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: cost_per_click
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: click_through_rate
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: campaign_bidding_strategy
+            data_type: string
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: campaign_rule_based_budget_amount
+            data_type: numeric
+          - name: campaign_applicable_budget_rule_id
+            data_type: string
+          - name: campaign_applicable_budget_rule_name
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: campaign_console
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: budget
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: status
+            data_type: string
+          - name: country
+            data_type: string
+          - name: currency
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: campaign_type
+            data_type: string
+          - name: cost_per_click
+            data_type: numeric
+          - name: portfolio_name
+            data_type: string
+          - name: targeting_type
+            data_type: string
+          - name: click_thru_rate
+            data_type: numeric
+          - name: last_year_spend
+            data_type: numeric
+          - name: bidding_strategy
+            data_type: string
+          - name: last_year_clicks
+            data_type: numeric
+          - name: _7_day_total_sales
+            data_type: numeric
+          - name: _7_day_total_orders
+            data_type: int64
+          - name: last_year_impressions
+            data_type: numeric
+          - name: last_year_cost_per_click
+            data_type: numeric
+          - name: total_advertising_cost_of_sales
+            data_type: numeric
+          - name: total_return_on_advertising_spend
+            data_type: numeric
+
+      - name: campaign_placement
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: cost_per_click
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: click_through_rate
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: placement_classification
+            data_type: string
+          - name: campaign_bidding_strategy
+            data_type: string
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: campaign_rule_based_budget_amount
+            data_type: numeric
+          - name: campaign_applicable_budget_rule_id
+            data_type: string
+          - name: campaign_applicable_budget_rule_name
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: campaign_structures
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: state
+            data_type: string
+          - name: end_date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: portfolio_id
+            data_type: numeric
+          - name: budget_budget
+            data_type: numeric
+          - name: targeting_type
+            data_type: string
+          - name: budget_budget_type
+            data_type: string
+          - name: dynamic_bidding_strategy
+            data_type: string
+          - name: dynamic_bidding_placement_bidding
+            data_type: string
+
+      - name: campaigns
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: state
+            data_type: string
+          - name: end_date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: portfolio_id
+            data_type: numeric
+          - name: budget_budget
+            data_type: numeric
+          - name: targeting_type
+            data_type: string
+          - name: budget_budget_type
+            data_type: string
+          - name: dynamic_bidding_strategy
+            data_type: string
+          - name: dynamic_bidding_placement_bidding
+            data_type: string
+
+      - name: gross_and_invalid_traffic
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: clicks
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: campaign_status
+            data_type: string
+          - name: gross_impressions
+            data_type: int64
+          - name: invalid_impressions
+            data_type: int64
+          - name: gross_click_throughs
+            data_type: int64
+          - name: invalid_click_throughs
+            data_type: int64
+          - name: invalid_impression_rate
+            data_type: numeric
+          - name: invalid_click_through_rate
+            data_type: numeric
+
+      - name: portfolio_performance_summary_view
+        columns:
+          - name: date
+            data_type: date
+          - name: marketplace
+            data_type: string
+          - name: portfolio_name
+            data_type: string
+          - name: product_code
+            data_type: string
+          - name: currency
+            data_type: string
+          - name: total_cost
+            data_type: numeric
+          - name: total_units_sold_clicks_7d
+            data_type: int64
+          - name: total_clicks
+            data_type: int64
+          - name: total_impressions
+            data_type: int64
+          - name: sales_7d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+
+      - name: purchased_product
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: keyword
+            data_type: string
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: keyword_id
+            data_type: int64
+          - name: match_type
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: keyword_type
+            data_type: string
+          - name: portfolio_id
+            data_type: int64
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: advertised_sku
+            data_type: string
+          - name: purchased_asin
+            data_type: string
+          - name: advertised_asin
+            data_type: string
+          - name: sales_other_sku_1d
+            data_type: numeric
+          - name: sales_other_sku_7d
+            data_type: numeric
+          - name: sales_other_sku_14d
+            data_type: numeric
+          - name: sales_other_sku_30d
+            data_type: numeric
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: purchases_other_sku_1d
+            data_type: int64
+          - name: purchases_other_sku_7d
+            data_type: int64
+          - name: purchases_other_sku_14d
+            data_type: int64
+          - name: purchases_other_sku_30d
+            data_type: int64
+          - name: units_sold_other_sku_1d
+            data_type: int64
+          - name: units_sold_other_sku_7d
+            data_type: int64
+          - name: units_sold_other_sku_14d
+            data_type: int64
+          - name: units_sold_other_sku_30d
+            data_type: int64
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: search_term
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: clicks
+            data_type: int64
+          - name: keyword
+            data_type: string
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: targeting
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: keyword_id
+            data_type: int64
+          - name: match_type
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: keyword_bid
+            data_type: numeric
+          - name: marketplace
+            data_type: string
+          - name: search_term
+            data_type: string
+          - name: keyword_type
+            data_type: string
+          - name: portfolio_id
+            data_type: numeric
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: acos_clicks_7d
+            data_type: numeric
+          - name: cost_per_click
+            data_type: numeric
+          - name: roas_clicks_7d
+            data_type: numeric
+          - name: acos_clicks_14d
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: roas_clicks_14d
+            data_type: numeric
+          - name: ad_keyword_status
+            data_type: string
+          - name: click_through_rate
+            data_type: numeric
+          - name: sales_other_sku_7d
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_other_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64
+
+      - name: targeting
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: clicks
+            data_type: int64
+          - name: keyword
+            data_type: string
+          - name: sales_1d
+            data_type: numeric
+          - name: sales_7d
+            data_type: numeric
+          - name: sales_14d
+            data_type: numeric
+          - name: sales_30d
+            data_type: numeric
+          - name: targeting
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: keyword_id
+            data_type: int64
+          - name: match_type
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: keyword_bid
+            data_type: numeric
+          - name: marketplace
+            data_type: string
+          - name: keyword_type
+            data_type: string
+          - name: portfolio_id
+            data_type: numeric
+          - name: purchases_1d
+            data_type: int64
+          - name: purchases_7d
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchases_14d
+            data_type: int64
+          - name: purchases_30d
+            data_type: int64
+          - name: acos_clicks_7d
+            data_type: numeric
+          - name: cost_per_click
+            data_type: numeric
+          - name: roas_clicks_7d
+            data_type: numeric
+          - name: acos_clicks_14d
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: roas_clicks_14d
+            data_type: numeric
+          - name: ad_keyword_status
+            data_type: string
+          - name: click_through_rate
+            data_type: numeric
+          - name: sales_other_sku_7d
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: units_sold_clicks_1d
+            data_type: int64
+          - name: units_sold_clicks_7d
+            data_type: int64
+          - name: purchases_same_sku_1d
+            data_type: int64
+          - name: purchases_same_sku_7d
+            data_type: int64
+          - name: units_sold_clicks_14d
+            data_type: int64
+          - name: units_sold_clicks_30d
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: purchases_same_sku_14d
+            data_type: int64
+          - name: purchases_same_sku_30d
+            data_type: int64
+          - name: units_sold_same_sku_1d
+            data_type: int64
+          - name: units_sold_same_sku_7d
+            data_type: int64
+          - name: units_sold_other_sku_7d
+            data_type: int64
+          - name: units_sold_same_sku_14d
+            data_type: int64
+          - name: units_sold_same_sku_30d
+            data_type: int64
+          - name: search_term_impression_rank
+            data_type: int64
+          - name: attributed_sales_same_sku_1d
+            data_type: numeric
+          - name: attributed_sales_same_sku_7d
+            data_type: numeric
+          - name: attributed_sales_same_sku_14d
+            data_type: numeric
+          - name: attributed_sales_same_sku_30d
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: top_of_search_impression_share
+            data_type: numeric
+          - name: kindle_edition_normalized_pages_read_14d
+            data_type: int64
+          - name: kindle_edition_normalized_pages_royalties_14d
+            data_type: int64

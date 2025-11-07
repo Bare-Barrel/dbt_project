@@ -1,0 +1,11 @@
+[sqlfluff]
+dialect = bigquery
+templater = dbt
+
+[sqlfluff:templater:dbt]
+project_dir = .
+profiles_dir = ~/.dbt
+
+[sqlfluff:rules]
+ST06 = skip
+LT05 = skip

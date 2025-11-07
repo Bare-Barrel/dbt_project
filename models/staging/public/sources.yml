@@ -1,0 +1,132 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: amazon_advertising_portfolios
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: state
+            data_type: string
+          - name: in_budget
+            data_type: boolean
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: portfolio_id
+            data_type: int64
+          - name: creation_date
+            data_type: datetime
+          - name: serving_status
+            data_type: string
+          - name: last_updated_date
+            data_type: datetime
+
+      - name: amazon_marketplaces
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: active
+            data_type: boolean
+          - name: region
+            data_type: string
+          - name: endpoint
+            data_type: string
+          - name: marketplace_id
+            data_type: string
+          - name: marketplace_name
+            data_type: string
+
+      - name: category_benchmark
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: brand
+            data_type: string
+          - name: category
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: impressions
+            data_type: string
+          - name: click_thru_rate
+            data_type: string
+          - name: peer_ctr_median
+            data_type: string
+          - name: peer_ctr_top_25
+            data_type: string
+          - name: peer_acos_median
+            data_type: string
+          - name: peer_acos_top_25
+            data_type: string
+          - name: peer_roas_median
+            data_type: string
+          - name: peer_roas_top_25
+            data_type: string
+          - name: peer_ctr_bottom_25
+            data_type: string
+          - name: peer_acos_bottom_25
+            data_type: string
+          - name: peer_roas_bottom_25
+            data_type: string
+          - name: peer_impressions_median
+            data_type: string
+          - name: peer_impressions_top_25
+            data_type: string
+          - name: peer_impressions_bottom_25
+            data_type: string
+          - name: total_advertising_cost_of_sales
+            data_type: string
+          - name: total_return_on_advertising_spend
+            data_type: string
+
+      - name: tenants
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: company
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime

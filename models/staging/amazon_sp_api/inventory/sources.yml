@@ -1,0 +1,248 @@
+version: 2
+
+sources:
+  - name: inventory
+    tables:
+      - name: fba
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: asin
+            data_type: string
+          - name: date
+            data_type: date
+          - name: fn_sku
+            data_type: string
+          - name: condition
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: seller_sku
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: product_name
+            data_type: string
+          - name: total_quantity
+            data_type: int64
+          - name: last_updated_time
+            data_type: timestamp
+          - name: fulfillable_quantity
+            data_type: int64
+          - name: inbound_shipped_quantity
+            data_type: int64
+          - name: inbound_working_quantity
+            data_type: int64
+          - name: inbound_receiving_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_expired_quantity
+            data_type: int64
+          - name: reserved_quantity_fc_processing_quantity
+            data_type: int64
+          - name: reserved_quantity_total_reserved_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_defective_quantity
+            data_type: int64
+          - name: researching_quantity_total_researching_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_carrier_damaged_quantity
+            data_type: int64
+          - name: reserved_quantity_pending_transshipment_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_customer_damaged_quantity
+            data_type: int64
+          - name: reserved_quantity_pending_customer_order_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_warehouse_damaged_quantity
+            data_type: int64
+          - name: researching_quantity_researching_quantity_breakdown
+            data_type: string
+          - name: unfulfillable_quantity_distributor_damaged_quantity
+            data_type: int64
+          - name: unfulfillable_quantity_total_unfulfillable_quantity
+            data_type: int64
+          - name: future_supply_quantity_future_supply_buyable_quantity
+            data_type: int64
+          - name: future_supply_quantity_reserved_future_supply_quantity
+            data_type: int64
+
+      - name: fba_planning_inventory
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: asin
+            data_type: string
+          - name: alert
+            data_type: string
+          - name: fnsku
+            data_type: string
+          - name: currency
+            data_type: string
+          - name: available
+            data_type: int64
+          - name: condition
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: sales_rank
+            data_type: numeric
+          - name: updated_at
+            data_type: datetime
+          - name: your_price
+            data_type: numeric
+          - name: item_volume
+            data_type: numeric
+          - name: marketplace
+            data_type: string
+          - name: sales_price
+            data_type: numeric
+          - name: product_name
+            data_type: string
+          - name: sell_through
+            data_type: numeric
+          - name: storage_type
+            data_type: string
+          - name: product_group
+            data_type: string
+          - name: snapshot_date
+            data_type: date
+          - name: days_of_supply
+            data_type: int64
+          - name: storage_volume
+            data_type: numeric
+          - name: inbound_shipped
+            data_type: int64
+          - name: inbound_working
+            data_type: int64
+          - name: inbound_quantity
+            data_type: int64
+          - name: inbound_received
+            data_type: int64
+          - name: lowest_price_used
+            data_type: numeric
+          - name: reserved_quantity
+            data_type: int64
+          - name: units_shipped_t_7
+            data_type: numeric
+          - name: recommended_action
+            data_type: string
+          - name: units_shipped_t_30
+            data_type: numeric
+          - name: units_shipped_t_60
+            data_type: numeric
+          - name: units_shipped_t_90
+            data_type: numeric
+          - name: featuredoffer_price
+            data_type: numeric
+          - name: projected_ltsf_6_mo
+            data_type: numeric
+          - name: weeks_of_cover_t_30
+            data_type: numeric
+          - name: weeks_of_cover_t_90
+            data_type: numeric
+          - name: inv_age_0_to_30_days
+            data_type: int64
+          - name: inv_age_0_to_90_days
+            data_type: int64
+          - name: inv_age_31_to_60_days
+            data_type: int64
+          - name: inv_age_365_plus_days
+            data_type: int64
+          - name: inv_age_61_to_90_days
+            data_type: int64
+          - name: no_sale_last_6_months
+            data_type: numeric
+          - name: inv_age_91_to_180_days
+            data_type: int64
+          - name: unfulfillable_quantity
+            data_type: int64
+          - name: healthy_inventory_level
+            data_type: numeric
+          - name: inv_age_181_to_270_days
+            data_type: int64
+          - name: inv_age_181_to_330_days
+            data_type: int64
+          - name: inv_age_271_to_365_days
+            data_type: int64
+          - name: inv_age_331_to_365_days
+            data_type: int64
+          - name: recommended_sales_price
+            data_type: numeric
+          - name: volume_unit_measurement
+            data_type: string
+          - name: pending_removal_quantity
+            data_type: int64
+          - name: estimated_excess_quantity
+            data_type: int64
+          - name: sales_shipped_last_7_days
+            data_type: numeric
+          - name: estimated_ais_181_210_days
+            data_type: numeric
+          - name: estimated_ais_211_240_days
+            data_type: numeric
+          - name: estimated_ais_241_270_days
+            data_type: numeric
+          - name: estimated_ais_271_300_days
+            data_type: numeric
+          - name: estimated_ais_301_330_days
+            data_type: numeric
+          - name: estimated_ais_331_365_days
+            data_type: numeric
+          - name: estimated_ltsf_next_charge
+            data_type: numeric
+          - name: sales_shipped_last_30_days
+            data_type: numeric
+          - name: sales_shipped_last_60_days
+            data_type: numeric
+          - name: sales_shipped_last_90_days
+            data_type: numeric
+          - name: estimated_ais_365_plus_days
+            data_type: numeric
+          - name: qty_to_be_charged_ltsf_6_mo
+            data_type: numeric
+          - name: qty_to_be_charged_ltsf_12_mo
+            data_type: numeric
+          - name: recommended_removal_quantity
+            data_type: numeric
+          - name: lowest_price_new_plus_shipping
+            data_type: numeric
+          - name: recommended_sale_duration_days
+            data_type: numeric
+          - name: estimated_storage_cost_next_month
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_181_210_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_211_240_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_241_270_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_271_300_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_301_330_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_331_365_days
+            data_type: numeric
+          - name: quantity_to_be_charged_ais_365_plus_days
+            data_type: numeric
+          - name: estimated_cost_savings_of_recommended_actions
+            data_type: numeric

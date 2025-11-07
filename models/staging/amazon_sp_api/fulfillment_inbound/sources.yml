@@ -1,0 +1,330 @@
+version: 2
+
+sources:
+  - name: fulfillment_inbound
+    tables:
+      - name: fba_awd_shipments_view
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: skus
+            data_type: int64
+          - name: created
+            data_type: timestamp
+          - name: ship_from
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: last_updated
+            data_type: timestamp
+          - name: reference_id
+            data_type: string
+          - name: shipment_name
+            data_type: string
+          - name: origin_country
+            data_type: string
+          - name: inbound_plan_id
+            data_type: string
+          - name: shipment_status
+            data_type: string
+          - name: quantity_shipped
+            data_type: int64
+          - name: quantity_received
+            data_type: int64
+          - name: fulfillment_center
+            data_type: string
+          - name: destination_country
+            data_type: string
+
+      - name: inbound_plans
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: status
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: date_created_at
+            data_type: timestamp
+          - name: inbound_plan_id
+            data_type: string
+          - name: last_updated_at
+            data_type: timestamp
+          - name: marketplace_ids
+            data_type: json
+          - name: source_address_city
+            data_type: string
+          - name: source_address_name
+            data_type: string
+          - name: source_address_email
+            data_type: string
+          - name: source_address_postal_code
+            data_type: string
+          - name: source_address_company_name
+            data_type: string
+          - name: source_address_country_code
+            data_type: string
+          - name: source_address_phone_number
+            data_type: string
+          - name: source_address_address_line_1
+            data_type: string
+          - name: source_address_address_line_2
+            data_type: string
+          - name: source_address_state_or_province_code
+            data_type: string
+
+      - name: inbound_plans_info
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: status
+            data_type: string
+          - name: shipments
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: date_created_at
+            data_type: timestamp
+          - name: inbound_plan_id
+            data_type: string
+          - name: last_updated_at
+            data_type: timestamp
+          - name: marketplace_ids
+            data_type: json
+          - name: packing_options
+            data_type: string
+          - name: placement_options
+            data_type: string
+          - name: source_address_city
+            data_type: string
+          - name: source_address_name
+            data_type: string
+          - name: source_address_postal_code
+            data_type: string
+          - name: source_address_company_name
+            data_type: string
+          - name: source_address_country_code
+            data_type: string
+          - name: source_address_phone_number
+            data_type: string
+          - name: source_address_address_line_1
+            data_type: string
+          - name: source_address_address_line_2
+            data_type: string
+          - name: source_address_state_or_province_code
+            data_type: string
+
+      - name: inbound_plans_shipments
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: status
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: source_source_type
+            data_type: string
+          - name: amazon_reference_id
+            data_type: string
+          - name: placement_option_id
+            data_type: string
+          - name: source_address_city
+            data_type: string
+          - name: source_address_name
+            data_type: string
+          - name: contact_information_name
+            data_type: string
+          - name: destination_address_city
+            data_type: string
+          - name: destination_address_name
+            data_type: string
+          - name: destination_warehouse_id
+            data_type: string
+          - name: shipment_confirmation_id
+            data_type: string
+          - name: contact_information_email
+            data_type: string
+          - name: source_address_postal_code
+            data_type: string
+          - name: source_address_company_name
+            data_type: string
+          - name: source_address_country_code
+            data_type: string
+          - name: source_address_phone_number
+            data_type: string
+          - name: destination_destination_type
+            data_type: string
+          - name: source_address_address_line_1
+            data_type: string
+          - name: source_address_address_line_2
+            data_type: string
+          - name: dates_ready_to_ship_window_end
+            data_type: timestamp
+          - name: destination_address_postal_code
+            data_type: string
+          - name: contact_information_phone_number
+            data_type: string
+          - name: dates_ready_to_ship_window_start
+            data_type: timestamp
+          - name: destination_address_country_code
+            data_type: string
+          - name: selected_delivery_window_end_date
+            data_type: timestamp
+          - name: selected_transportation_option_id
+            data_type: string
+          - name: destination_address_address_line_1
+            data_type: string
+          - name: selected_delivery_window_start_date
+            data_type: timestamp
+          - name: source_address_state_or_province_code
+            data_type: string
+          - name: selected_delivery_window_editable_until
+            data_type: string
+          - name: destination_address_state_or_province_code
+            data_type: string
+          - name: selected_delivery_window_availability_type
+            data_type: string
+          - name: selected_delivery_window_delivery_window_option_id
+            data_type: string
+          - name: tracking_details_spd_tracking_detail_spd_tracking_items
+            data_type: string
+          - name: tracking_details_ltl_tracking_detail_freight_bill_number
+            data_type: json
+          - name: tracking_details_ltl_tracking_detail_bill_of_lading_number
+            data_type: string
+
+      - name: shipment_items
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: seller_sku
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: quantity_in_case
+            data_type: int64
+          - name: quantity_shipped
+            data_type: int64
+          - name: prep_details_list
+            data_type: string
+          - name: quantity_received
+            data_type: int64
+          - name: fulfillment_network_sku
+            data_type: string
+
+      - name: shipments
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: shipment_id
+            data_type: string
+          - name: shipment_name
+            data_type: string
+          - name: label_prep_type
+            data_type: string
+          - name: shipment_status
+            data_type: string
+          - name: are_cases_required
+            data_type: string
+          - name: box_contents_source
+            data_type: string
+          - name: ship_from_address_city
+            data_type: string
+          - name: ship_from_address_name
+            data_type: string
+          - name: ship_from_address_postal_code
+            data_type: string
+          - name: ship_from_address_country_code
+            data_type: string
+          - name: ship_from_address_address_line_1
+            data_type: string
+          - name: ship_from_address_address_line_2
+            data_type: string
+          - name: destination_fulfillment_center_id
+            data_type: string
+          - name: ship_from_address_district_or_county
+            data_type: string
+          - name: estimated_box_contents_fee_total_units
+            data_type: numeric
+          - name: ship_from_address_state_or_province_code
+            data_type: string
+          - name: estimated_box_contents_fee_total_fee_value
+            data_type: numeric
+          - name: estimated_box_contents_fee_fee_per_unit_value
+            data_type: numeric
+          - name: estimated_box_contents_fee_total_fee_currency_code
+            data_type: string
+          - name: estimated_box_contents_fee_fee_per_unit_currency_code
+            data_type: string

@@ -1,0 +1,1137 @@
+version: 2
+
+sources:
+  - name: sponsored_brands
+    tables:
+      - name: ad
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: ad_id
+            data_type: int64
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: units_sold
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: add_to_cart
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: sales_clicks
+            data_type: numeric
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: sales_promoted
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: add_to_cart_rate
+            data_type: numeric
+          - name: branded_searches
+            data_type: int64
+          - name: e_cpa_dd_to_cart
+            data_type: numeric
+          - name: purchases_clicks
+            data_type: int64
+          - name: viewability_rate
+            data_type: numeric
+          - name: detail_page_views
+            data_type: int64
+          - name: units_sold_clicks
+            data_type: int64
+          - name: add_to_cart_clicks
+            data_type: int64
+          - name: new_to_brand_sales
+            data_type: numeric
+          - name: purchases_promoted
+            data_type: int64
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: new_to_brand_purchases
+            data_type: int64
+          - name: branded_searches_clicks
+            data_type: int64
+          - name: new_to_brand_units_sold
+            data_type: int64
+          - name: detail_page_views_clicks
+            data_type: int64
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: new_to_brand_sales_clicks
+            data_type: numeric
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: new_to_brand_purchases_rate
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_purchases_clicks
+            data_type: int64
+          - name: new_to_brand_sales_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views
+            data_type: int64
+          - name: new_to_brand_units_sold_clicks
+            data_type: int64
+          - name: new_to_brand_ecpd_etail_page_view
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_view_rate
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views_clicks
+            data_type: int64
+
+      - name: adgroup
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: ad_status
+            data_type: string
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: units_sold
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: add_to_cart
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: sales_clicks
+            data_type: numeric
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: sales_promoted
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: add_to_cart_rate
+            data_type: numeric
+          - name: branded_searches
+            data_type: int64
+          - name: e_cpa_dd_to_cart
+            data_type: numeric
+          - name: purchases_clicks
+            data_type: int64
+          - name: viewability_rate
+            data_type: numeric
+          - name: detail_page_views
+            data_type: int64
+          - name: units_sold_clicks
+            data_type: int64
+          - name: add_to_cart_clicks
+            data_type: int64
+          - name: new_to_brand_sales
+            data_type: numeric
+          - name: purchases_promoted
+            data_type: int64
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: new_to_brand_purchases
+            data_type: int64
+          - name: branded_searches_clicks
+            data_type: int64
+          - name: new_to_brand_units_sold
+            data_type: int64
+          - name: detail_page_views_clicks
+            data_type: int64
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: new_to_brand_sales_clicks
+            data_type: numeric
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: new_to_brand_purchases_rate
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_purchases_clicks
+            data_type: int64
+          - name: new_to_brand_sales_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views
+            data_type: int64
+          - name: new_to_brand_units_sold_clicks
+            data_type: int64
+          - name: new_to_brand_ecpd_etail_page_view
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_view_rate
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views_clicks
+            data_type: int64
+
+      - name: campaign
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: units_sold
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: add_to_cart
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: sales_clicks
+            data_type: numeric
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: sales_promoted
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: add_to_cart_rate
+            data_type: numeric
+          - name: branded_searches
+            data_type: int64
+          - name: e_cpa_dd_to_cart
+            data_type: numeric
+          - name: purchases_clicks
+            data_type: int64
+          - name: viewability_rate
+            data_type: numeric
+          - name: detail_page_views
+            data_type: int64
+          - name: units_sold_clicks
+            data_type: int64
+          - name: add_to_cart_clicks
+            data_type: int64
+          - name: new_to_brand_sales
+            data_type: numeric
+          - name: purchases_promoted
+            data_type: int64
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: new_to_brand_purchases
+            data_type: int64
+          - name: branded_searches_clicks
+            data_type: int64
+          - name: new_to_brand_units_sold
+            data_type: int64
+          - name: view_click_through_rate
+            data_type: numeric
+          - name: detail_page_views_clicks
+            data_type: int64
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: new_to_brand_sales_clicks
+            data_type: numeric
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: new_to_brand_purchases_rate
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_purchases_clicks
+            data_type: int64
+          - name: new_to_brand_sales_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views
+            data_type: int64
+          - name: new_to_brand_units_sold_clicks
+            data_type: int64
+          - name: top_of_search_impression_share
+            data_type: numeric
+          - name: new_to_brand_ecpd_etail_page_view
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_view_rate
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views_clicks
+            data_type: int64
+
+      - name: campaign_console
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: spend
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: currency
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: _5_second_views
+            data_type: int64
+          - name: cost_per_click
+            data_type: numeric
+          - name: portfolio_name
+            data_type: string
+          - name: click_thru_rate
+            data_type: numeric
+          - name: view_through_rate
+            data_type: numeric
+          - name: _14_day_total_sales
+            data_type: numeric
+          - name: _14_day_total_units
+            data_type: int64
+          - name: _5_second_view_rate
+            data_type: numeric
+          - name: _14_day_total_orders
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: _14_day_conversion_rate
+            data_type: numeric
+          - name: _14_day_branded_searches
+            data_type: numeric
+          - name: _14_day_detail_page_views
+            data_type: numeric
+          - name: _14_day_new_to_brand_sales
+            data_type: numeric
+          - name: _14_day_new_to_brand_units
+            data_type: numeric
+          - name: _14_day_new_to_brand_orders
+            data_type: numeric
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: _14_day_of_sales_new_to_brand
+            data_type: numeric
+          - name: _14_day_of_units_new_to_brand
+            data_type: numeric
+          - name: click_through_rate_for_views
+            data_type: numeric
+          - name: _14_day_of_orders_new_to_brand
+            data_type: numeric
+          - name: _14_day_new_to_brand_order_rate
+            data_type: numeric
+          - name: total_advertising_cost_of_sales
+            data_type: numeric
+          - name: total_return_on_advertising_spend
+            data_type: numeric
+
+      - name: campaign_placement
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: units_sold
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: add_to_cart
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: sales_clicks
+            data_type: numeric
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: sales_promoted
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: add_to_cart_rate
+            data_type: numeric
+          - name: branded_searches
+            data_type: int64
+          - name: e_cpa_dd_to_cart
+            data_type: numeric
+          - name: purchases_clicks
+            data_type: int64
+          - name: viewability_rate
+            data_type: numeric
+          - name: detail_page_views
+            data_type: int64
+          - name: units_sold_clicks
+            data_type: int64
+          - name: add_to_cart_clicks
+            data_type: int64
+          - name: new_to_brand_sales
+            data_type: numeric
+          - name: purchases_promoted
+            data_type: int64
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: new_to_brand_purchases
+            data_type: int64
+          - name: branded_searches_clicks
+            data_type: int64
+          - name: new_to_brand_units_sold
+            data_type: int64
+          - name: view_click_through_rate
+            data_type: numeric
+          - name: detail_page_views_clicks
+            data_type: int64
+          - name: placement_classification
+            data_type: string
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: new_to_brand_sales_clicks
+            data_type: numeric
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: new_to_brand_purchases_rate
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_purchases_clicks
+            data_type: int64
+          - name: new_to_brand_sales_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views
+            data_type: int64
+          - name: new_to_brand_units_sold_clicks
+            data_type: int64
+          - name: new_to_brand_ecpd_etail_page_view
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_view_rate
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views_clicks
+            data_type: int64
+
+      - name: campaign_placement_v2
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: vtr
+            data_type: numeric
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: vctr
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: dpv_14d
+            data_type: int64
+          - name: currency
+            data_type: string
+          - name: placement
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: campaign_budget
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: attributed_sales_14d
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: attributed_conversions_14d
+            data_type: int64
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: attributed_sales_14d_same_sku
+            data_type: numeric
+          - name: attributed_branded_searches_14d
+            data_type: int64
+          - name: attributed_sales_new_to_brand_14d
+            data_type: numeric
+          - name: attributed_orders_new_to_brand_14d
+            data_type: int64
+          - name: attributed_conversions_14d_same_sku
+            data_type: int64
+          - name: attributed_order_rate_new_to_brand_14d
+            data_type: numeric
+          - name: attributed_detail_page_views_clicks_14d
+            data_type: int64
+          - name: attributed_units_ordered_new_to_brand_14d
+            data_type: int64
+          - name: attributed_sales_new_to_brand_percentage_14d
+            data_type: numeric
+          - name: attributed_orders_new_to_brand_percentage_14d
+            data_type: numeric
+          - name: attributed_units_ordered_new_to_brand_percentage_14d
+            data_type: numeric
+
+      - name: campaign_v2
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: vtr
+            data_type: numeric
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: vctr
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: dpv_14d
+            data_type: int64
+          - name: currency
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: campaign_budget
+            data_type: numeric
+          - name: campaign_status
+            data_type: string
+          - name: attributed_sales_14d
+            data_type: numeric
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: string
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: video_5_second_view_rate
+            data_type: numeric
+          - name: attributed_conversions_14d
+            data_type: int64
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: attributed_sales_14d_same_sku
+            data_type: numeric
+          - name: top_of_search_impression_share
+            data_type: numeric
+          - name: attributed_branded_searches_14d
+            data_type: int64
+          - name: attributed_sales_new_to_brand_14d
+            data_type: numeric
+          - name: attributed_orders_new_to_brand_14d
+            data_type: int64
+          - name: attributed_conversions_14d_same_sku
+            data_type: int64
+          - name: attributed_order_rate_new_to_brand_14d
+            data_type: numeric
+          - name: attributed_detail_page_views_clicks_14d
+            data_type: int64
+          - name: attributed_units_ordered_new_to_brand_14d
+            data_type: int64
+          - name: attributed_sales_new_to_brand_percentage_14d
+            data_type: numeric
+          - name: attributed_orders_new_to_brand_percentage_14d
+            data_type: numeric
+          - name: attributed_units_ordered_new_to_brand_percentage_14d
+            data_type: numeric
+
+      - name: campaigns
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: name
+            data_type: string
+          - name: state
+            data_type: string
+          - name: budget
+            data_type: numeric
+          - name: outcome
+            data_type: string
+          - name: cost_type
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: budget_type
+            data_type: string
+          - name: campaign_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: portfolio_id
+            data_type: int64
+          - name: brand_entity_id
+            data_type: string
+          - name: bidding_bid_optimization
+            data_type: boolean
+          - name: is_multi_ad_groups_enabled
+            data_type: boolean
+          - name: bidding_bid_optimization_strategy
+            data_type: string
+
+      - name: gross_and_invalid_traffic
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: clicks
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: impressions
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: campaign_status
+            data_type: string
+          - name: gross_impressions
+            data_type: int64
+          - name: invalid_impressions
+            data_type: int64
+          - name: gross_click_throughs
+            data_type: int64
+          - name: invalid_click_throughs
+            data_type: int64
+          - name: invalid_impression_rate
+            data_type: numeric
+          - name: invalid_click_through_rate
+            data_type: numeric
+
+      - name: portfolio_performance_summary_view
+        columns:
+          - name: date
+            data_type: date
+          - name: marketplace
+            data_type: string
+          - name: portfolio_name
+            data_type: string
+          - name: product_code
+            data_type: string
+          - name: currency
+            data_type: string
+          - name: cost
+            data_type: numeric
+          - name: units_sold
+            data_type: int64
+          - name: clicks
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: sales
+            data_type: numeric
+
+      - name: purchased_product
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: sales_14d
+            data_type: numeric
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: orders_14d
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: product_name
+            data_type: string
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: purchased_asin
+            data_type: string
+          - name: units_sold_14d
+            data_type: int64
+          - name: attribution_type
+            data_type: string
+          - name: product_category
+            data_type: string
+          - name: new_to_brand_sales_14d
+            data_type: numeric
+          - name: new_to_brand_purchases_14d
+            data_type: int64
+          - name: new_to_brand_units_sold_14d
+            data_type: int64
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_sales_percentage_14d
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage_14d
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage_14d
+            data_type: numeric
+
+      - name: search_term
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: keyword_id
+            data_type: int64
+          - name: match_type
+            data_type: string
+          - name: units_sold
+            data_type: int64
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: keyword_bid
+            data_type: numeric
+          - name: marketplace
+            data_type: string
+          - name: search_term
+            data_type: string
+          - name: keyword_text
+            data_type: string
+          - name: sales_clicks
+            data_type: numeric
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: video_unmutes
+            data_type: int64
+          - name: campaign_status
+            data_type: string
+          - name: purchases_clicks
+            data_type: int64
+          - name: viewability_rate
+            data_type: numeric
+          - name: ad_keyword_status
+            data_type: string
+          - name: campaign_budget_type
+            data_type: string
+          - name: video_5_second_views
+            data_type: int64
+          - name: video_complete_views
+            data_type: int64
+          - name: video_midpoint_views
+            data_type: int64
+          - name: viewable_impressions
+            data_type: int64
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: view_click_through_rate
+            data_type: numeric
+          - name: video_5_second_view_rate
+            data_type: int64
+          - name: video_first_quartile_views
+            data_type: int64
+          - name: video_third_quartile_views
+            data_type: int64
+          - name: campaign_budget_currency_code
+            data_type: string
+
+      - name: targeting
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: cost
+            data_type: numeric
+          - name: date
+            data_type: date
+          - name: sales
+            data_type: numeric
+          - name: clicks
+            data_type: int64
+          - name: cost_type
+            data_type: string
+          - name: purchases
+            data_type: int64
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: keyword_id
+            data_type: int64
+          - name: match_type
+            data_type: string
+          - name: updated_at
+            data_type: datetime
+          - name: ad_group_id
+            data_type: int64
+          - name: add_to_cart
+            data_type: int64
+          - name: campaign_id
+            data_type: int64
+          - name: impressions
+            data_type: int64
+          - name: keyword_bid
+            data_type: numeric
+          - name: marketplace
+            data_type: string
+          - name: keyword_text
+            data_type: string
+          - name: keyword_type
+            data_type: string
+          - name: sales_clicks
+            data_type: numeric
+          - name: targeting_id
+            data_type: int64
+          - name: ad_group_name
+            data_type: string
+          - name: campaign_name
+            data_type: string
+          - name: sales_promoted
+            data_type: numeric
+          - name: targeting_text
+            data_type: string
+          - name: targeting_type
+            data_type: string
+          - name: campaign_status
+            data_type: string
+          - name: add_to_cart_rate
+            data_type: numeric
+          - name: branded_searches
+            data_type: int64
+          - name: e_cpa_dd_to_cart
+            data_type: numeric
+          - name: purchases_clicks
+            data_type: int64
+          - name: ad_keyword_status
+            data_type: string
+          - name: detail_page_views
+            data_type: int64
+          - name: add_to_cart_clicks
+            data_type: int64
+          - name: new_to_brand_sales
+            data_type: numeric
+          - name: purchases_promoted
+            data_type: int64
+          - name: campaign_budget_type
+            data_type: string
+          - name: targeting_expression
+            data_type: string
+          - name: campaign_budget_amount
+            data_type: numeric
+          - name: new_to_brand_purchases
+            data_type: int64
+          - name: branded_searches_clicks
+            data_type: int64
+          - name: new_to_brand_units_sold
+            data_type: int64
+          - name: detail_page_views_clicks
+            data_type: int64
+          - name: new_to_brand_sales_clicks
+            data_type: numeric
+          - name: new_to_brand_purchases_rate
+            data_type: numeric
+          - name: campaign_budget_currency_code
+            data_type: string
+          - name: new_to_brand_purchases_clicks
+            data_type: int64
+          - name: new_to_brand_sales_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views
+            data_type: int64
+          - name: new_to_brand_units_sold_clicks
+            data_type: int64
+          - name: top_of_search_impression_share
+            data_type: numeric
+          - name: new_to_brand_ecpd_etail_page_view
+            data_type: numeric
+          - name: new_to_brand_purchases_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_view_rate
+            data_type: numeric
+          - name: new_to_brand_units_sold_percentage
+            data_type: numeric
+          - name: new_to_brand_detail_page_views_clicks
+            data_type: int64

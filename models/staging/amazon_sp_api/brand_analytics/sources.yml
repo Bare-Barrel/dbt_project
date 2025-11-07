@@ -1,0 +1,309 @@
+version: 2
+
+sources:
+  - name: brand_analytics
+    tables:
+      - name: search_query_performance_asin_view
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: asin
+            data_type: string
+          - name: week
+            data_type: string
+          - name: end_date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: clicks_price
+            data_type: numeric
+          - name: search_query
+            data_type: string
+          - name: reporting_date
+            data_type: date
+          - name: cart_adds_price
+            data_type: numeric
+          - name: purchases_price
+            data_type: numeric
+          - name: reporting_range
+            data_type: string
+          - name: clicks_asin_count
+            data_type: int64
+          - name: clicks_asin_price
+            data_type: numeric
+          - name: clicks_asin_share
+            data_type: numeric
+          - name: clicks_click_rate
+            data_type: numeric
+          - name: clicks_total_count
+            data_type: int64
+          - name: search_query_score
+            data_type: int64
+          - name: search_query_volume
+            data_type: int64
+          - name: cart_adds_asin_count
+            data_type: int64
+          - name: cart_adds_asin_price
+            data_type: numeric
+          - name: cart_adds_asin_share
+            data_type: numeric
+          - name: purchases_asin_count
+            data_type: int64
+          - name: purchases_asin_price
+            data_type: numeric
+          - name: purchases_asin_share
+            data_type: numeric
+          - name: cart_adds_total_count
+            data_type: int64
+          - name: purchases_total_count
+            data_type: int64
+          - name: impressions_asin_count
+            data_type: int64
+          - name: impressions_asin_share
+            data_type: numeric
+          - name: cart_adds_cart_add_rate
+            data_type: numeric
+          - name: impressions_total_count
+            data_type: int64
+          - name: purchases_purchase_rate
+            data_type: numeric
+          - name: clicks_1d_shipping_speed
+            data_type: int64
+          - name: clicks_2d_shipping_speed
+            data_type: int64
+          - name: cart_adds_1d_shipping_speed
+            data_type: int64
+          - name: cart_adds_2d_shipping_speed
+            data_type: int64
+          - name: purchases_1d_shipping_speed
+            data_type: int64
+          - name: purchases_2d_shipping_speed
+            data_type: int64
+          - name: clicks_same_day_shipping_speed
+            data_type: int64
+          - name: cart_adds_same_day_shipping_speed
+            data_type: int64
+          - name: purchases_same_day_shipping_speed
+            data_type: int64
+
+      - name: search_query_performance_brand_view
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: week
+            data_type: string
+          - name: end_date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: clicks_price
+            data_type: numeric
+          - name: search_query
+            data_type: string
+          - name: reporting_date
+            data_type: date
+          - name: cart_adds_price
+            data_type: numeric
+          - name: purchases_price
+            data_type: numeric
+          - name: reporting_range
+            data_type: string
+          - name: clicks_click_rate
+            data_type: numeric
+          - name: clicks_brand_count
+            data_type: int64
+          - name: clicks_brand_price
+            data_type: numeric
+          - name: clicks_brand_share
+            data_type: numeric
+          - name: clicks_total_count
+            data_type: int64
+          - name: search_query_score
+            data_type: int64
+          - name: search_query_volume
+            data_type: int64
+          - name: cart_adds_brand_count
+            data_type: int64
+          - name: cart_adds_brand_price
+            data_type: numeric
+          - name: cart_adds_brand_share
+            data_type: numeric
+          - name: cart_adds_total_count
+            data_type: int64
+          - name: purchases_brand_count
+            data_type: int64
+          - name: purchases_brand_price
+            data_type: numeric
+          - name: purchases_brand_share
+            data_type: numeric
+          - name: purchases_total_count
+            data_type: int64
+          - name: cart_adds_cart_add_rate
+            data_type: numeric
+          - name: impressions_brand_count
+            data_type: int64
+          - name: impressions_brand_share
+            data_type: numeric
+          - name: impressions_total_count
+            data_type: int64
+          - name: purchases_purchase_rate
+            data_type: numeric
+          - name: clicks_1d_shipping_speed
+            data_type: int64
+          - name: clicks_2d_shipping_speed
+            data_type: int64
+          - name: cart_adds_1d_shipping_speed
+            data_type: int64
+          - name: cart_adds_2d_shipping_speed
+            data_type: int64
+          - name: purchases_1d_shipping_speed
+            data_type: int64
+          - name: purchases_2d_shipping_speed
+            data_type: int64
+          - name: clicks_same_day_shipping_speed
+            data_type: int64
+          - name: cart_adds_same_day_shipping_speed
+            data_type: int64
+          - name: purchases_same_day_shipping_speed
+            data_type: int64
+
+      - name: search_query_performance_weekly_asin
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: asin
+            data_type: string
+          - name: end_date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: start_date
+            data_type: date
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: search_query
+            data_type: string
+          - name: asin_click_count
+            data_type: numeric
+          - name: asin_click_share
+            data_type: numeric
+          - name: total_click_rate
+            data_type: numeric
+          - name: total_click_count
+            data_type: numeric
+          - name: search_query_score
+            data_type: numeric
+          - name: asin_cart_add_count
+            data_type: numeric
+          - name: asin_cart_add_share
+            data_type: numeric
+          - name: asin_purchase_count
+            data_type: numeric
+          - name: asin_purchase_share
+            data_type: numeric
+          - name: search_query_volume
+            data_type: numeric
+          - name: total_cart_add_rate
+            data_type: numeric
+          - name: total_purchase_rate
+            data_type: numeric
+          - name: total_cart_add_count
+            data_type: numeric
+          - name: total_purchase_count
+            data_type: numeric
+          - name: asin_impression_count
+            data_type: numeric
+          - name: asin_impression_share
+            data_type: numeric
+          - name: asin_median_click_price
+            data_type: numeric
+          - name: asin_median_cart_add_price
+            data_type: numeric
+          - name: asin_median_purchase_price
+            data_type: numeric
+          - name: total_median_cart_add_price
+            data_type: numeric
+          - name: total_median_purchase_price
+            data_type: numeric
+          - name: total_query_impression_count
+            data_type: numeric
+          - name: asin_median_click_price_amount
+            data_type: numeric
+          - name: total_median_click_price_amount
+            data_type: numeric
+          - name: asin_median_cart_add_price_amount
+            data_type: numeric
+          - name: asin_median_purchase_price_amount
+            data_type: numeric
+          - name: total_median_cart_add_price_amount
+            data_type: numeric
+          - name: total_median_purchase_price_amount
+            data_type: numeric
+          - name: total_one_day_shipping_click_count
+            data_type: numeric
+          - name: total_two_day_shipping_click_count
+            data_type: numeric
+          - name: total_same_day_shipping_click_count
+            data_type: numeric
+          - name: asin_median_click_price_currency_code
+            data_type: string
+          - name: total_one_day_shipping_cart_add_count
+            data_type: numeric
+          - name: total_one_day_shipping_purchase_count
+            data_type: numeric
+          - name: total_two_day_shipping_cart_add_count
+            data_type: numeric
+          - name: total_two_day_shipping_purchase_count
+            data_type: numeric
+          - name: total_median_click_price_currency_code
+            data_type: string
+          - name: total_same_day_shipping_cart_add_count
+            data_type: numeric
+          - name: total_same_day_shipping_purchase_count
+            data_type: numeric
+          - name: asin_median_cart_add_price_currency_code
+            data_type: string
+          - name: asin_median_purchase_price_currency_code
+            data_type: string
+          - name: total_median_cart_add_price_currency_code
+            data_type: string
+          - name: total_median_purchase_price_currency_code
+            data_type: string

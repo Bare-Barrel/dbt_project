@@ -1,0 +1,267 @@
+version: 2
+
+sources:
+  - name: business_reports
+    tables:
+      - name: detail_page_sales_and_traffic_child
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: child_asin
+            data_type: string
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: parent_asin
+            data_type: string
+          - name: traffic_by_asin_sessions
+            data_type: numeric
+          - name: traffic_by_asin_page_views
+            data_type: numeric
+          - name: sales_by_asin_units_ordered
+            data_type: numeric
+          - name: traffic_by_asin_sessions_b2b
+            data_type: numeric
+          - name: traffic_by_asin_page_views_b2b
+            data_type: numeric
+          - name: sales_by_asin_total_order_items
+            data_type: numeric
+          - name: sales_by_asin_units_ordered_b2b
+            data_type: numeric
+          - name: traffic_by_asin_browser_sessions
+            data_type: numeric
+          - name: traffic_by_asin_browser_page_views
+            data_type: numeric
+          - name: traffic_by_asin_buy_box_percentage
+            data_type: numeric
+          - name: traffic_by_asin_session_percentage
+            data_type: numeric
+          - name: sales_by_asin_total_order_items_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_sessions
+            data_type: numeric
+          - name: traffic_by_asin_browser_sessions_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views
+            data_type: numeric
+          - name: traffic_by_asin_page_views_percentage
+            data_type: numeric
+          - name: traffic_by_asin_browser_page_views_b2b
+            data_type: numeric
+          - name: traffic_by_asin_buy_box_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_sessions_b2b
+            data_type: numeric
+          - name: traffic_by_asin_unit_session_percentage
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_b2b
+            data_type: numeric
+          - name: traffic_by_asin_page_views_percentage_b2b
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_amount
+            data_type: numeric
+          - name: traffic_by_asin_browser_session_percentage
+            data_type: numeric
+          - name: traffic_by_asin_unit_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_browser_page_views_percentage
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_session_percentage
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_b2b_amount
+            data_type: numeric
+          - name: traffic_by_asin_browser_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_percentage
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_currency_code
+            data_type: string
+          - name: traffic_by_asin_browser_page_views_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_percentage_b2b
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_b2b_currency_code
+            data_type: string
+
+      - name: detail_page_sales_and_traffic_parent
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: date
+            data_type: date
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: marketplace
+            data_type: string
+          - name: parent_asin
+            data_type: string
+          - name: traffic_by_asin_sessions
+            data_type: int64
+          - name: traffic_by_asin_page_views
+            data_type: int64
+          - name: sales_by_asin_units_ordered
+            data_type: int64
+          - name: traffic_by_asin_sessions_b2b
+            data_type: int64
+          - name: traffic_by_asin_page_views_b2b
+            data_type: int64
+          - name: sales_by_asin_total_order_items
+            data_type: int64
+          - name: sales_by_asin_units_ordered_b2b
+            data_type: int64
+          - name: traffic_by_asin_browser_sessions
+            data_type: int64
+          - name: traffic_by_asin_browser_page_views
+            data_type: int64
+          - name: traffic_by_asin_buy_box_percentage
+            data_type: numeric
+          - name: traffic_by_asin_session_percentage
+            data_type: numeric
+          - name: sales_by_asin_total_order_items_b2b
+            data_type: int64
+          - name: traffic_by_asin_mobile_app_sessions
+            data_type: int64
+          - name: traffic_by_asin_browser_sessions_b2b
+            data_type: int64
+          - name: traffic_by_asin_mobile_app_page_views
+            data_type: int64
+          - name: traffic_by_asin_page_views_percentage
+            data_type: numeric
+          - name: traffic_by_asin_browser_page_views_b2b
+            data_type: int64
+          - name: traffic_by_asin_buy_box_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_sessions_b2b
+            data_type: int64
+          - name: traffic_by_asin_unit_session_percentage
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_b2b
+            data_type: int64
+          - name: traffic_by_asin_page_views_percentage_b2b
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_amount
+            data_type: numeric
+          - name: traffic_by_asin_browser_session_percentage
+            data_type: numeric
+          - name: traffic_by_asin_unit_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_browser_page_views_percentage
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_session_percentage
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_b2b_amount
+            data_type: numeric
+          - name: traffic_by_asin_browser_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_percentage
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_currency_code
+            data_type: string
+          - name: traffic_by_asin_browser_page_views_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_session_percentage_b2b
+            data_type: numeric
+          - name: traffic_by_asin_mobile_app_page_views_percentage_b2b
+            data_type: numeric
+          - name: sales_by_asin_ordered_product_sales_b2b_currency_code
+            data_type: string
+
+      - name: fba_fee_preview
+        columns:
+          - name: _airbyte_raw_id
+            data_type: string
+          - name: _airbyte_extracted_at
+            data_type: timestamp
+          - name: _airbyte_meta
+            data_type: json
+          - name: _airbyte_generation_id
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: asin
+            data_type: string
+          - name: date
+            data_type: date
+          - name: brand
+            data_type: string
+          - name: fnsku
+            data_type: string
+          - name: currency
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: datetime
+          - name: updated_at
+            data_type: datetime
+          - name: your_price
+            data_type: numeric
+          - name: median_side
+            data_type: numeric
+          - name: sales_price
+            data_type: numeric
+          - name: amazon_store
+            data_type: string
+          - name: fulfilled_by
+            data_type: string
+          - name: longest_side
+            data_type: numeric
+          - name: product_name
+            data_type: string
+          - name: product_group
+            data_type: string
+          - name: shortest_side
+            data_type: numeric
+          - name: unit_of_weight
+            data_type: string
+          - name: length_and_girth
+            data_type: numeric
+          - name: product_size_tier
+            data_type: string
+          - name: unit_of_dimension
+            data_type: string
+          - name: estimated_fee_total
+            data_type: numeric
+          - name: item_package_weight
+            data_type: numeric
+          - name: estimated_variable_closing_fee
+            data_type: numeric
+          - name: estimated_referral_fee_per_unit
+            data_type: numeric
+          - name: estimated_pick_pack_fee_per_unit
+            data_type: numeric
+          - name: expected_fulfillment_fee_per_unit
+            data_type: numeric
+          - name: estimated_order_handling_fee_per_order
+            data_type: numeric
+          - name: estimated_weight_handling_fee_per_unit
+            data_type: numeric
