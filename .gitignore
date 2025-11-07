@@ -1,0 +1,13 @@
+# dbt build artifacts
+target/
+dbt_packages/
+logs/
+
+# Local configuration
+.idea/
+.vscode/
+.env
+.DS_Store
+
+# User-specific dbt config
+profiles.yml
