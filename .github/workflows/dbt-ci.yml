@@ -7,29 +7,43 @@ on:
     branches: [ main ]
 
 jobs:
-  run-dbt:
+  dbt:
+    name: dbt CI/CD for BigQuery
     runs-on: ubuntu-latest
 
+    env:
+      DBT_PROFILES_DIR: ${{ github.workspace }}/ci
+      DBT_TARGET: prod
+      BIGQUERY_SERVICE_ACCOUNT: ${{ secrets.BIGQUERY_SERVICE_ACCOUNT }}
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-
-      - name: Install dbt
+          python-version: '3.10'
+      
+      - name: Install Python dependencies
         run: |
-          pip install dbt-bigquery
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Authenticate with BigQuery service account
+        run: |
+          echo "$BIGQUERY_SERVICE_ACCOUNT" > $HOME/gcp-key.json
+          gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
+          gcloud config set project $GCP_PROJECT_ID
 
       - name: Run dbt deps
-        run: dbt deps
+        run: dbt deps --profiles-dir $DBT_PROFILES_DIR
 
-      - name: Run dbt tests
-        env:
-          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          BIGQUERY_SERVICE_ACCOUNT: ${{ secrets.BIGQUERY_SERVICE_ACCOUNT }}
+      - name: Run dbt run (full)
+        run: dbt run --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET
+
+      - name: Run dbt debug and build (full prod)
         run: |
-          dbt debug --profiles-dir ci
-          dbt build --profiles-dir ci --target prod
+          dbt debug --profiles-dir $DBT_PROFILES_DIR
+          dbt build --profiles-dir $DBT_PROFILES_DIR --target prod
