@@ -132,7 +132,7 @@ add_referral_fees as (
         net_item_price_per_unit,
         net_item_price_amount,
         referral_fee_pct,
-        referral_fee_pct * (net_item_price_amount + shipping_price_amount - shipping_discount_amount + buyer_info_gift_wrap_price_amount)
+        referral_fee_pct * (COALESCE(net_item_price_amount, 0) + COALESCE(shipping_price_amount, 0) - COALESCE(shipping_discount_amount, 0) + COALESCE(buyer_info_gift_wrap_price_amount, 0))
             as referral_fees
     from aggregate_joined_orders_with_added_fields
 )
