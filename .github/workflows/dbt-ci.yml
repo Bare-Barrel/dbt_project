@@ -41,6 +41,17 @@ jobs:
       - name: Run dbt deps
         run: dbt deps --profiles-dir $DBT_PROFILES_DIR
 
+      - name: Debug service account env var
+        run: |
+          echo "Checking if BIGQUERY_SERVICE_ACCOUNT is set"
+          if [ -z "$BIGQUERY_SERVICE_ACCOUNT" ]; then
+            echo "BIGQUERY_SERVICE_ACCOUNT is empty"
+            exit 1
+          else
+            echo "BIGQUERY_SERVICE_ACCOUNT is set"
+            echo "$BIGQUERY_SERVICE_ACCOUNT" | jq . >/dev/null 2>&1 && echo "JSON looks valid" || echo "Invalid JSON"
+          fi
+
       - name: Run dbt run (full)
         run: dbt run --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET
 
