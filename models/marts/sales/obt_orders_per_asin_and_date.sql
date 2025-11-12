@@ -3,9 +3,9 @@
 
 with
 
-aggregated_joined_orders as (
+agg_orders_with_calc_fields as (
 
-    select * from {{ ref('int_aggregate_joined_orders_with_added_fields') }}
+    select * from {{ ref('int_calculate_fields_for_aggregated_joined_orders') }}
 
 ),
 
@@ -32,7 +32,7 @@ reorder_fields as (
         is_replacement_order,
         tenant_id
 
-    from aggregated_joined_orders
+    from agg_orders_with_calc_fields
 
     order by purchase_date desc, marketplace desc, quantity_ordered desc
 )
