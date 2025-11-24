@@ -18,6 +18,8 @@ select_and_reorder_fields as (
         campaign_id,
         campaign_name,
         campaign_status,
+        portfolio_id,
+        portfolio_name,
         marketplace,
         impressions,
         clicks,

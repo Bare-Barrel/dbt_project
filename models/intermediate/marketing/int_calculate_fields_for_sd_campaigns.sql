@@ -4,9 +4,9 @@
 
 with
 
-sd_campaign_usd as (
+sd_campaigns_with_portfolio as (
 
-    select * from {{ ref('int_convert_sd_campaign_amounts_to_usd') }}
+    select * from {{ ref('int_get_sd_portfolio') }}
 
 ),
 
@@ -19,6 +19,8 @@ calculate_fields as (
         campaign_id,
         campaign_name,
         campaign_status,
+        portfolio_id,
+        portfolio_name,
         marketplace,
         impressions,
         clicks,
@@ -89,7 +91,7 @@ calculate_fields as (
                     end
         end as product_group
 
-    from sd_campaign_usd
+    from sd_campaigns_with_portfolio
 
 )
 
