@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_exchangerate_host_api__exchange_rates
+    description: "Converts recorded_at column from datetime to date only"
+    columns:
+      - name: recorded_at
+        data_type: date
+        description: "When the foreign exchange rate amount was recorded"
+      - name: base
+        data_type: string
+        description: "base currency code"
+      - name: target
+        data_type: string
+        description: "target currency code"
+      - name: rate
+        data_type: string
+        description: "exchange rate amount based on base and target currency"
