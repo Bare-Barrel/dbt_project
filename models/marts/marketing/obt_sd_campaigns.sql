@@ -28,7 +28,7 @@ select_and_reorder_fields as (
         cost_usd,
         sales_clicks_usd,
         new_to_brand_sales_clicks_usd,
-        cost_per_click,
+        cost_per_click_usd,
         click_through_rate,
         conversion_rate,
         product_group
