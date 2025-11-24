@@ -522,6 +522,14 @@ models:
       - name: campaign_status
         data_type: string
         description: ""
+      
+      - name: portfolio_id
+        data_type: int64
+        description: ""
+
+      - name: portfolio_name
+        data_type: string
+        description: ""
 
       - name: marketplace
         data_type: string
