@@ -35,7 +35,7 @@ calculate_fields as (
         new_to_brand_sales_clicks_usd,
 
         -- Cost per Click
-        SAFE_DIVIDE(cost_usd, clicks) as cost_per_click,
+        SAFE_DIVIDE(cost_usd, clicks) as cost_per_click_usd,
 
         -- Click-through Rate
         SAFE_DIVIDE(clicks, impressions) as click_through_rate,
