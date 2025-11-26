@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 4 * * *'   # 04:00 UTC
     - cron: '0 9 * * *'  # 10:00 UTC
+    - cron: '0 13 * * *'  # 14:00 UTC
   workflow_dispatch:   # allows manual "Run workflow"
   push:
     branches: [ main ]
