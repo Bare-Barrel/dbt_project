@@ -1,4 +1,4 @@
--- int_calculate_fields_for_joined_orders.sql
+-- int_calculate_fields_for_joined_orders.sql 03
 
 {{ config(materialized='ephemeral') }}
 

@@ -1,4 +1,4 @@
--- int_get_prime_exclusive_price_for_new_orders.sql
+-- int_get_prime_exclusive_price_for_new_orders.sql 02
 
 {{ config(materialized='ephemeral') }}
 
@@ -23,20 +23,28 @@ competitive_pricing as (
 ),
 
 prime_prices as (
+
     select
         asin,
         marketplace,
+
         (ARRAY_AGG(
             JSON_EXTRACT_SCALAR(
                 product_competitive_pricing_competitive_prices,
                 '$[0].Price.ListingPrice.Amount'
-            ) order by date desc limit 1
+            )
+            order by date desc
+            limit 1
         ))[OFFSET(0)] as prime_price
+
     from competitive_pricing
+
     where
         customer_type = 'Business'
         and product_competitive_pricing_competitive_prices != '[]'
+
     group by asin, marketplace
+
 ),
 
 get_prime_exclusive_price as (
@@ -48,7 +56,7 @@ get_prime_exclusive_price as (
         case
             when
                 o.order_status in ('Pending')
-                and oi.item_price_amount is null
+                and oi.item_price_amount = 0
                 and o.is_replacement_order = false
                 then
                     CAST(pp.prime_price as numeric) * oi.quantity_ordered

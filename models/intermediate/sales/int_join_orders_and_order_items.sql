@@ -1,4 +1,4 @@
--- int_join_orders_and_order_items.sql
+-- int_join_orders_and_order_items.sql 01
 
 {{ config(materialized='ephemeral') }}
 

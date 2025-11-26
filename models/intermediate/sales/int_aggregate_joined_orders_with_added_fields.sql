@@ -1,4 +1,4 @@
--- int_aggregate_joined_orders_with_added_fields.sql
+-- int_aggregate_joined_orders_with_added_fields.sql 05
 
 {{ config(materialized='view') }}
 
@@ -22,6 +22,7 @@ aggregate_joined_orders_with_added_fields as (
         is_vine,
         is_replacement_order,
         tenant_id,
+
         REGEXP_EXTRACT(seller_sku, r'[^_]+$') as product_code,
         SUM(quantity_ordered) as quantity_ordered,
         SUM(item_price_amount) as item_price_amount,

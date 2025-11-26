@@ -1,4 +1,4 @@
--- int_add_fields_to_joined_orders.sql
+-- int_add_fields_to_joined_orders.sql 04
 -- same as amazon_order_items_detailed_view
 
 {{ config(materialized='view') }}
