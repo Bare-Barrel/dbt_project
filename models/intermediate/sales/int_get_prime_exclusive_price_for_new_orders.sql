@@ -59,6 +59,23 @@ get_prime_exclusive_price as (
                 and oi.item_price_amount = 0
                 and o.is_replacement_order = false
                 then
+                    case
+                        when oi.marketplace = 'US'
+                            then 'USD'
+                        when oi.marketplace = 'CA'
+                            then 'CAD'
+                        when oi.marketplace = 'UK'
+                            then 'GBP'
+                    end
+            else oi.item_price_currency_code
+        end as item_price_currency_code,
+
+        case
+            when
+                o.order_status in ('Pending')
+                and oi.item_price_amount = 0
+                and o.is_replacement_order = false
+                then
                     CAST(pp.prime_price as numeric) * oi.quantity_ordered
             else oi.item_price_amount
         end as item_price_amount

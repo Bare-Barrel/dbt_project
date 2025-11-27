@@ -38,7 +38,7 @@ add_fields_to_joined_orders as (
         jo.quantity_ordered,
         jo.promotion_ids,
         jo.product_info_number_of_items,
-        jo.item_price_currency_code,
+        prime.item_price_currency_code,
         prime.item_price_amount,
         jo.item_tax_amount,
         jo.promotion_discount_tax_currency_code,
