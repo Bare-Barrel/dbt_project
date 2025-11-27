@@ -30,7 +30,7 @@ match_old_sku_to_current as (
         agg_jo.asin,
         agg_jo.seller_sku,
         case
-            when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO*')
+            when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
                 then ry_p_md.current_sku
         end as new_sku,
         agg_jo.item_price_currency_code,
@@ -111,10 +111,10 @@ calculate_fields as (
                 then
                     case
                         when
-                            REGEXP_CONTAINS(seller_sku, r'^R_CALF-SLEEV*') -- Calf Sleeves
-                            or REGEXP_CONTAINS(seller_sku, r'^R_GRIP-SOCKS*') -- Grip Socks
-                            or REGEXP_CONTAINS(seller_sku, r'^R_COMP-SOCKS*') -- Compression Socks
-                            or REGEXP_CONTAINS(seller_sku, r'^R_PF-SOCKS*') -- Plantar Socks
+                            REGEXP_CONTAINS(seller_sku, r'^R_CALF-SLEEV.*') -- Calf Sleeves
+                            or REGEXP_CONTAINS(seller_sku, r'^R_GRIP-SOCKS.*') -- Grip Socks
+                            or REGEXP_CONTAINS(seller_sku, r'^R_COMP-SOCKS.*') -- Compression Socks
+                            or REGEXP_CONTAINS(seller_sku, r'^R_PF-SOCKS.*') -- Plantar Socks
                             then
                                 case
                                     when marketplace = 'US'
@@ -123,8 +123,8 @@ calculate_fields as (
                                         then 0.08
                                 end
                         when (
-                            REGEXP_CONTAINS(seller_sku, r'^R_KNEE-SLE*') -- Knee Sleeves
-                            or REGEXP_CONTAINS(seller_sku, r'^R_ELBO-SLE*') -- Elbow Sleeves
+                            REGEXP_CONTAINS(seller_sku, r'^R_KNEE-SLE.*') -- Knee Sleeves
+                            or REGEXP_CONTAINS(seller_sku, r'^R_ELBO-SLE.*') -- Elbow Sleeves
                         )
                         and (
                             marketplace = 'US'
@@ -132,16 +132,16 @@ calculate_fields as (
                         )
                             then
                                 case
-                                    when REGEXP_CONTAINS(seller_sku, r'^*_2PC_*')
+                                    when REGEXP_CONTAINS(seller_sku, r'^.*_2PC_.*')
                                         then 0.15
                                     else 0.08
                                 end
                         when
-                            REGEXP_CONTAINS(seller_sku, r'^R_HIKE-SOC*') -- Merino Wool Hiking Socks
+                            REGEXP_CONTAINS(seller_sku, r'^R_HIKE-SOC.*') -- Merino Wool Hiking Socks
                             and marketplace = 'UK'
                             then
                                 case
-                                    when REGEXP_CONTAINS(seller_sku, r'^*_3PR_*')
+                                    when REGEXP_CONTAINS(seller_sku, r'^.*_3PR_.*')
                                         then 0.15
                                     else 0.08
                                 end
@@ -149,10 +149,10 @@ calculate_fields as (
                             then
                                 case
                                     when
-                                        REGEXP_CONTAINS(new_sku, r'^R_CALF-SLEEV*') -- Calf Sleeves
-                                        or REGEXP_CONTAINS(new_sku, r'^R_GRIP-SOCKS*') -- Grip Socks
-                                        or REGEXP_CONTAINS(new_sku, r'^R_COMP-SOCKS*') -- Compression Socks
-                                        or REGEXP_CONTAINS(new_sku, r'^R_PF-SOCKS*') -- Plantar Socks
+                                        REGEXP_CONTAINS(new_sku, r'^R_CALF-SLEEV.*') -- Calf Sleeves
+                                        or REGEXP_CONTAINS(new_sku, r'^R_GRIP-SOCKS.*') -- Grip Socks
+                                        or REGEXP_CONTAINS(new_sku, r'^R_COMP-SOCKS.*') -- Compression Socks
+                                        or REGEXP_CONTAINS(new_sku, r'^R_PF-SOCKS.*') -- Plantar Socks
                                         then
                                             case
                                                 when marketplace = 'US'
@@ -161,8 +161,8 @@ calculate_fields as (
                                                     then 0.08
                                             end
                                     when (
-                                        REGEXP_CONTAINS(new_sku, r'^R_KNEE-SLE*') -- Knee Sleeves
-                                        or REGEXP_CONTAINS(new_sku, r'^R_ELBO-SLE*') -- Elbow Sleeves
+                                        REGEXP_CONTAINS(new_sku, r'^R_KNEE-SLE.*') -- Knee Sleeves
+                                        or REGEXP_CONTAINS(new_sku, r'^R_ELBO-SLE.*') -- Elbow Sleeves
                                     )
                                     and (
                                         marketplace = 'US'
@@ -170,16 +170,16 @@ calculate_fields as (
                                     )
                                         then
                                             case
-                                                when REGEXP_CONTAINS(new_sku, r'^*_2PC_*')
+                                                when REGEXP_CONTAINS(new_sku, r'^.*_2PC_.*')
                                                     then 0.15
                                                 else 0.08
                                             end
                                     when
-                                        REGEXP_CONTAINS(new_sku, r'^R_HIKE-SOC*') -- Merino Wool Hiking Socks
+                                        REGEXP_CONTAINS(new_sku, r'^R_HIKE-SOC.*') -- Merino Wool Hiking Socks
                                         and marketplace = 'UK'
                                         then
                                             case
-                                                when REGEXP_CONTAINS(new_sku, r'^*_3PR_*')
+                                                when REGEXP_CONTAINS(new_sku, r'^.*_3PR_.*')
                                                     then 0.15
                                                 else 0.08
                                             end

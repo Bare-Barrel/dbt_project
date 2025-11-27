@@ -4,7 +4,7 @@
 
 with
 
-filtered_listings as (
+filtered_bb_listings as (
 
     select * from {{ ref('int_filter_bb_listings_items') }}
 
@@ -21,7 +21,7 @@ extract_fields as (
             r"[^A-Za-z]", ""
         ) as product_code
 
-    from filtered_listings
+    from filtered_bb_listings
 
 ),
 
@@ -34,7 +34,7 @@ add_concat_field as (
         tenant_id,
         parent_code,
         shaker_code,
-        CONCAT(parent_code, "-", shaker_code) as parent_shaker_code,
+        CONCAT(parent_code, "-", shaker_code) as portfolio_code,
         product_code
 
     from extract_fields
