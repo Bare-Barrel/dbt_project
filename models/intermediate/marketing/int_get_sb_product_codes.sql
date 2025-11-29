@@ -80,7 +80,7 @@ get_sb_product_codes as (
         -- Portfolio Code
         case
             when sb_c_af.tenant_id = 1
-                then u_bb_pc.portfolio_code
+                then COALESCE(u_bb_pc.portfolio_code, sb_c_af.portfolio_name)
         end as portfolio_code,
 
         -- Product Code
@@ -111,6 +111,51 @@ get_sb_product_codes as (
     left join rymora_product_codes as ry_pc
         on sb_c_af.asin = ry_pc.asin
 
+),
+
+get_sb_parent_codes as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_id,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks,
+        new_to_brand_units_sold_clicks,
+        purchases_clicks,
+        top_of_search_impression_share,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_clicks_usd,
+        new_to_brand_sales_clicks_usd,
+        cost_per_click_usd,
+        click_through_rate,
+        conversion_rate,
+        product_group,
+        asin,
+        portfolio_code,
+        product_code,
+        product_color,
+        product_pack_size,
+
+        -- Parent Code
+        case
+            when tenant_id = 1
+                then COALESCE(parent_code, TRIM(SPLIT(portfolio_code, "-")[SAFE_OFFSET(0)]))
+            when tenant_id = 2
+                then parent_code
+        end as parent_code
+
+    from get_sb_product_codes
+
 )
 
-select * from get_sb_product_codes
+select * from get_sb_parent_codes
