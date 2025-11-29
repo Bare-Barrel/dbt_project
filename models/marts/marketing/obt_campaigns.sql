@@ -4,19 +4,19 @@ with
 
 int_sp_campaigns as (
 
-    select * from {{ ref('int_calculate_fields_for_sp_campaigns') }}
+    select * from {{ ref('int_get_sp_product_codes') }}
 
 ),
 
 int_sb_campaigns as (
 
-    select * from {{ ref('int_calculate_fields_for_sb_campaigns') }}
+    select * from {{ ref('int_get_sb_product_codes') }}
 
 ),
 
 int_sd_campaigns as (
 
-    select * from {{ ref('int_calculate_fields_for_sd_campaigns') }}
+    select * from {{ ref('int_get_sd_product_codes') }}
 
 ),
 
@@ -45,8 +45,11 @@ select_sp_fields as (
         tenant_id,
         "SPONSORED PRODUCTS" as ad_type,
         product_group,
-        product_color
-    {# placement_classification, #}
+        parent_code,
+        portfolio_code,
+        product_code,
+        product_color,
+        CAST(null as string) as product_pack_size
 
     from int_sp_campaigns
 
@@ -77,8 +80,11 @@ select_sb_fields as (
         tenant_id,
         "SPONSORED BRANDS" as ad_type,
         product_group,
-        CAST(null as string) as product_color
-    {# placement_classification, #}
+        parent_code,
+        portfolio_code,
+        product_code,
+        product_color,
+        product_pack_size
 
     from int_sb_campaigns
 
@@ -109,7 +115,11 @@ select_sd_fields as (
         tenant_id,
         "SPONSORED DISPLAY" as ad_type,
         product_group,
-        CAST(null as string) as product_color
+        parent_code,
+        CAST(null as string) as portfolio_code,
+        product_code,
+        product_color,
+        product_pack_size
 
     from int_sd_campaigns
 

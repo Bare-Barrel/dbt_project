@@ -1,264 +1,7 @@
 version: 2
 
 models:
-  - name: int_convert_sp_campaign_amounts_to_usd
-    description: ""
-    columns:
-      - name: date
-        data_type: date
-        description: ""
-
-      - name: created_at
-        data_type: datetime
-        description: ""
-
-      - name: updated_at
-        data_type: datetime
-        description: ""
-
-      - name: campaign_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_name
-        data_type: string
-        description: ""
-
-      - name: campaign_status
-        data_type: string
-        description: ""
-
-      - name: marketplace
-        data_type: string
-        description: ""
-
-      - name: impressions
-        data_type: int64
-        description: ""
-
-      - name: clicks
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks_1d
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks_7d
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks_14d
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks_30d
-        data_type: int64
-        description: ""
-
-      - name: purchases_1d
-        data_type: int64
-        description: ""
-
-      - name: purchases_7d
-        data_type: int64
-        description: ""
-
-      - name: purchases_14d
-        data_type: int64
-        description: ""
-
-      - name: purchases_30d
-        data_type: int64
-        description: ""
-
-      - name: click_through_rate
-        data_type: numeric
-        description: ""
-
-      - name: top_of_search_impression_share
-        data_type: numeric
-        description: ""
-
-      - name: tenant_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_budget_amount_usd
-        data_type: numeric
-        description: ""
-
-      - name: cost_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_1d_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_7d_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_14d_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_30d_usd
-        data_type: numeric
-        description: ""
-
-      - name: cost_per_click_usd
-        data_type: numeric
-        description: ""
-
-  - name: int_convert_sb_campaign_amounts_to_usd
-    description: ""
-    columns:
-      - name: date
-        data_type: date
-        description: ""
-
-      - name: created_at
-        data_type: datetime
-        description: ""
-
-      - name: updated_at
-        data_type: datetime
-        description: ""
-
-      - name: campaign_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_name
-        data_type: string
-        description: ""
-
-      - name: campaign_status
-        data_type: string
-        description: ""
-
-      - name: marketplace
-        data_type: string
-        description: ""
-
-      - name: impressions
-        data_type: int64
-        description: ""
-
-      - name: clicks
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks
-        data_type: int64
-        description: ""
-
-      - name: new_to_brand_units_sold_clicks
-        data_type: int64
-        description: ""
-
-      - name: purchases_clicks
-        data_type: int64
-        description: ""
-
-      - name: top_of_search_impression_share
-        data_type: numeric
-        description: ""
-
-      - name: tenant_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_budget_amount_usd
-        data_type: numeric
-        description: ""
-
-      - name: cost_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_clicks_usd
-        data_type: numeric
-        description: ""
-
-      - name: new_to_brand_sales_clicks_usd
-        data_type: numeric
-        description: ""
-
-  - name: int_convert_sd_campaign_amounts_to_usd
-    description: ""
-    columns:
-      - name: date
-        data_type: date
-        description: ""
-
-      - name: created_at
-        data_type: datetime
-        description: ""
-
-      - name: updated_at
-        data_type: datetime
-        description: ""
-
-      - name: campaign_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_name
-        data_type: string
-        description: ""
-
-      - name: campaign_status
-        data_type: string
-        description: ""
-
-      - name: marketplace
-        data_type: string
-        description: ""
-
-      - name: impressions
-        data_type: int64
-        description: ""
-
-      - name: clicks
-        data_type: int64
-        description: ""
-
-      - name: units_sold_clicks
-        data_type: int64
-        description: ""
-
-      - name: new_to_brand_units_sold_clicks
-        data_type: int64
-        description: ""
-
-      - name: purchases_clicks
-        data_type: int64
-        description: ""
-
-      - name: tenant_id
-        data_type: int64
-        description: ""
-
-      - name: campaign_budget_amount_usd
-        data_type: numeric
-        description: ""
-
-      - name: cost_usd
-        data_type: numeric
-        description: ""
-
-      - name: sales_clicks_usd
-        data_type: numeric
-        description: ""
-
-      - name: new_to_brand_sales_clicks_usd
-        data_type: numeric
-        description: ""
-
-  - name: int_calculate_fields_for_sp_campaigns
+  - name: int_get_sp_product_codes
     description: ""
     columns:
       - name: date
@@ -389,6 +132,10 @@ models:
         data_type: string
         description: ""
 
+      - name: product_code
+        data_type: string
+        description: ""
+
       - name: product_group
         data_type: string
         description: ""
@@ -397,7 +144,15 @@ models:
         data_type: string
         description: ""
 
-  - name: int_calculate_fields_for_sb_campaigns
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: parent_code
+        data_type: string
+        description: ""
+
+  - name: int_get_sb_product_codes
     description: ""
     columns:
       - name: date
@@ -480,7 +235,7 @@ models:
         data_type: numeric
         description: ""
 
-      - name: cost_per_click
+      - name: cost_per_click_usd
         data_type: numeric
         description: ""
 
@@ -496,7 +251,31 @@ models:
         data_type: string
         description: ""
 
-  - name: int_calculate_fields_for_sd_campaigns
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: parent_code
+        data_type: string
+        description: ""
+
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: product_code
+        data_type: string
+        description: ""
+
+      - name: product_color
+        data_type: string
+        description: ""
+
+      - name: product_pack_size
+        data_type: string
+        description: ""
+
+  - name: int_get_sd_product_codes
     description: ""
     columns:
       - name: date
@@ -522,7 +301,7 @@ models:
       - name: campaign_status
         data_type: string
         description: ""
-      
+
       - name: portfolio_id
         data_type: int64
         description: ""
@@ -575,7 +354,7 @@ models:
         data_type: numeric
         description: ""
 
-      - name: cost_per_click
+      - name: cost_per_click_usd
         data_type: numeric
         description: ""
 
@@ -588,5 +367,25 @@ models:
         description: ""
 
       - name: product_group
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: parent_code
+        data_type: string
+        description: ""
+
+      - name: product_code
+        data_type: string
+        description: ""
+
+      - name: product_color
+        data_type: string
+        description: ""
+
+      - name: product_pack_size
         data_type: string
         description: ""

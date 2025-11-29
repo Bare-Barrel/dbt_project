@@ -1,6 +1,6 @@
--- int_convert_sb_campaign_amounts_to_usd.sql
+-- int_convert_sb_campaign_amounts_to_usd.sql sb_01
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

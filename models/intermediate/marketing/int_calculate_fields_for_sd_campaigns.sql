@@ -1,6 +1,6 @@
--- int_calculate_fields_for_sd_campaigns.sql
+-- int_calculate_fields_for_sd_campaigns.sql sd_03
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 
@@ -42,10 +42,7 @@ calculate_fields as (
         -- Conversion Rate
         SAFE_DIVIDE(purchases_clicks, clicks) as conversion_rate,
 
-        {# TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)]) as asin_string1,
-        TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(4)]) as asin_string2, #}
-
-        -- Product Group TODO: join with master data to get color and pack size
+        -- Product Group
         case
             when tenant_id = 2
                 then
@@ -89,10 +86,64 @@ calculate_fields as (
                             or REGEXP_CONTAINS(campaign_name, r".*_B07ZKNS35L_.*")
                             then "KNEE SLEEVES"
                     end
-        end as product_group
+        end as product_group,
+
+        -- ASIN
+        case
+            when REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(2)]), r"^[A-Z0-9]{10}$")
+                then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(2)])
+        end as asin_string1,
+
+        case
+            when REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)]), r"^[A-Z0-9]{10}$")
+                then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)])
+        end as asin_string2,
+
+        case
+            when REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(4)]), r"^[A-Z0-9]{10}$")
+                then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(4)])
+        end as asin_string3,
+
+        case
+            when REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(5)]), r"^[A-Z0-9]{10}$")
+                then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(5)])
+        end as asin_string4
 
     from sd_campaigns_with_portfolio
 
+),
+
+get_primary_asin as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_id,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks,
+        new_to_brand_units_sold_clicks,
+        purchases_clicks,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_clicks_usd,
+        new_to_brand_sales_clicks_usd,
+        cost_per_click_usd,
+        click_through_rate,
+        conversion_rate,
+        product_group,
+
+        COALESCE(asin_string1, asin_string2, asin_string3, asin_string4) as asin
+
+    from calculate_fields
+
 )
 
-select * from calculate_fields
+select * from get_primary_asin
