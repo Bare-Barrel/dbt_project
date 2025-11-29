@@ -29,10 +29,6 @@ match_old_sku_to_current as (
         agg_jo.order_status,
         agg_jo.asin,
         agg_jo.seller_sku,
-        case
-            when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
-                then ry_p_md.current_sku
-        end as new_sku,
         agg_jo.item_price_currency_code,
         agg_jo.is_vine,
         agg_jo.is_replacement_order,
@@ -46,7 +42,13 @@ match_old_sku_to_current as (
         agg_jo.shipping_discount_amount,
         agg_jo.buyer_info_gift_wrap_price_amount,
         agg_jo.output_vat,
-        agg_jo.coupon_fee
+        agg_jo.coupon_fee,
+
+        -- new_sku to handle old Rymora skus
+        case
+            when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
+                then ry_p_md.current_sku
+        end as new_sku
 
     from agg_joined_orders as agg_jo
 

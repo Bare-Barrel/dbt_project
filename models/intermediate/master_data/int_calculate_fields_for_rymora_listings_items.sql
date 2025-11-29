@@ -36,10 +36,37 @@ add_concat_field as (
 
 ),
 
-remove_duplicates as (
+-- remove duplicate ASINs
+remove_product_code_u as (
 
-    select distinct *
+    select *
     from add_concat_field
+    where product_code is distinct from "U"
+
+),
+
+remove_product_code_s as (
+
+    select *
+    from remove_product_code_u
+    where product_code is distinct from "S"
+
+),
+
+remove_sku_last_dash as (
+
+    select *
+    from remove_product_code_s
+    where sku is distinct from "R_COMP-SOCKS-PL_BLK_V4_SL_SXm4-"
+
+),
+
+remove_product_code_ltm2f as (
+
+    select *
+    from remove_sku_last_dash
+    where product_code is distinct from "LTm2F"
+
 )
 
-select * from remove_duplicates
+select * from remove_product_code_ltm2f

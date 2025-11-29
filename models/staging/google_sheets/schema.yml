@@ -1,0 +1,113 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__rymora_product_md
+    description: ""
+    columns:
+      - name: product_code
+        data_type: string
+        description: ""
+
+      - name: product_group
+        data_type: string
+        description: ""
+
+      - name: ean
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: color
+        data_type: string
+        description: ""
+
+      - name: product_size
+        data_type: string
+        description: ""
+
+      - name: current_sku
+        data_type: string
+        description: ""
+
+      - name: previous_sku
+        data_type: string
+        description: ""
+
+      - name: old_sku
+        data_type: string
+        description: ""
+
+      - name: moq
+        data_type: int64
+        description: ""
+
+      - name: lead_time_days
+        data_type: int64
+        description: ""
+
+      - name: pcs_per_carton
+        data_type: int64
+        description: ""
+
+      - name: _2020_rates_usd
+        data_type: numeric
+        description: ""
+
+      - name: length_cm
+        data_type: int64
+        description: ""
+
+      - name: width_cm
+        data_type: int64
+        description: ""
+
+      - name: height_cm
+        data_type: int64
+        description: ""
+
+      - name: cbm
+        data_type: numeric
+        description: ""
+
+      - name: n_weight_kg
+        data_type: numeric
+        description: ""
+
+      - name: g_weight_kg
+        data_type: numeric
+        description: ""
+
+      - name: length_inch
+        data_type: numeric
+        description: ""
+
+      - name: width_inch
+        data_type: numeric
+        description: ""
+
+      - name: height_inch
+        data_type: numeric
+        description: ""
+
+      - name: cft
+        data_type: numeric
+        description: ""
+
+      - name: n_weight_lb
+        data_type: numeric
+        description: ""
+
+      - name: g_weight_lb
+        data_type: numeric
+        description: ""
+
+      - name: per_unit_g
+        data_type: numeric
+        description: ""
+
+      - name: per_unit_oz
+        data_type: numeric
+        description: ""

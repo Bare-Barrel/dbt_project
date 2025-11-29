@@ -1,6 +1,6 @@
--- int_calculate_fields_for_sp_campaigns.sql
+-- int_calculate_fields_for_sp_campaigns.sql sp_03
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 
@@ -75,7 +75,67 @@ calculate_fields as (
         case
             when tenant_id = 2
                 then SPLIT(TRIM(SPLIT(campaign_name, "|")[OFFSET(0)]), "-")[OFFSET(0)]
-        end as product_group
+        end as product_group,
+
+        -- Parent Code
+        case
+            when tenant_id = 1
+                then
+                    case
+                        when REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "|")[SAFE_OFFSET(1)]), r"^[A-Z]{4}$")
+                            then TRIM(SPLIT(campaign_name, "|")[SAFE_OFFSET(1)])
+                    end
+            when tenant_id = 2
+                then
+                    case
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^ElbSlv")
+                            or REGEXP_CONTAINS(campaign_name, r"^ElbowSleeve")
+                            then "R_ELBO-SLE"
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^Comp Sleeve-C")
+                            or REGEXP_CONTAINS(campaign_name, r"^CompSock-C")
+                            or REGEXP_CONTAINS(campaign_name, r"^CmpSk-C")
+                            then "R_COMP-SOCKS-CU"
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^Comp Sleeve-P")
+                            or REGEXP_CONTAINS(campaign_name, r"^CompSock-P")
+                            or REGEXP_CONTAINS(campaign_name, r"^CmpSk-P")
+                            then "R_COMP-SOCKS-PL"
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^KneeSleeve")
+                            or REGEXP_CONTAINS(campaign_name, r"^KnSlv")
+                            then "R_KNEE-SLE"
+                        when REGEXP_CONTAINS(campaign_name, r"^HikSk")
+                            then "R_HIKE-SOC"
+                        when REGEXP_CONTAINS(campaign_name, r"^elbow/knee sleeves")
+                            then "R_ELBO-SLE/R_KNEE-SLE"
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^Calf C Socks")
+                            or REGEXP_CONTAINS(campaign_name, r"^Calf C Sleeves")
+                            or REGEXP_CONTAINS(campaign_name, r"^ClfSlv")
+                            or REGEXP_CONTAINS(campaign_name, r"^calf compression sleeves")
+                            then "R_CALF-SLEEV"
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^PfSk")
+                            or REGEXP_CONTAINS(campaign_name, r"^Plantar Socks")
+                            then "R_PF-SOCKS"
+                        when REGEXP_CONTAINS(campaign_name, r"^GrpSk")
+                            then "R_GRIP-SOCKS"
+                    end
+        end as parent_code,
+
+        -- Product Code for Bare Barrel only
+        case
+            when tenant_id = 1
+                then
+                    case
+                        when
+                            REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "|")[SAFE_OFFSET(0)]), r"^[A-Z]{3}$")
+                            or REGEXP_CONTAINS(TRIM(SPLIT(campaign_name, "|")[SAFE_OFFSET(0)]), r"^BTS|ATS")
+                            then TRIM(SPLIT(campaign_name, "|")[SAFE_OFFSET(0)])
+                    end
+        end as product_code
 
     from campaigns_with_placement_and_portfolio
 
@@ -117,6 +177,8 @@ standardize_product_group as (
         {# placement_classification, #}
         target_product,
         product_description,
+        parent_code,
+        product_code,
 
         -- Standardize product_group
         case
