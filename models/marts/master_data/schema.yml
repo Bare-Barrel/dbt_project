@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_product_codes
+  - name: dim_products
     description: ""
     columns:
       - name: sku
@@ -33,5 +33,13 @@ models:
         description: ""
 
       - name: product_code
+        data_type: string
+        description: ""
+
+      - name: product_color
+        data_type: string
+        description: ""
+
+      - name: product_pack_size
         data_type: string
         description: ""
