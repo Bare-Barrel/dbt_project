@@ -64,9 +64,7 @@ get_sp_product_codes as (
         sp_c_af.cost_per_click_usd,
         sp_c_af.conversion_rate,
         sp_c_af.target_product,
-        sp_c_af.product_description,
         sp_c_af.product_code,
-        sp_c_af.product_group,
         sp_c_af.product_color,
         u_bb_pc.parent_code,
 
@@ -85,7 +83,7 @@ get_sp_product_codes as (
 
 ),
 
-get_sp_parent_codes as (
+get_sp_parent_pack as (
 
     select
         date,
@@ -119,9 +117,7 @@ get_sp_parent_codes as (
         cost_per_click_usd,
         conversion_rate,
         target_product,
-        product_description,
         product_code,
-        product_group,
         product_color,
         portfolio_code,
 
@@ -129,7 +125,7 @@ get_sp_parent_codes as (
         case
             when tenant_id = 1
                 then COALESCE(parent_code, TRIM(SPLIT(portfolio_code, "-")[SAFE_OFFSET(0)]))
-            when tenant_id = 2 and parent_code is null
+            when tenant_id = 2
                 then
                     case
                         when
@@ -172,13 +168,62 @@ get_sp_parent_codes as (
                             or REGEXP_CONTAINS(campaign_name, r"(?i)^nonslip")
                             or REGEXP_CONTAINS(campaign_name, r"(?i)^non-slip socks")
                             then "R_GRIP-SOCKS"
-                        when REGEXP_CONTAINS(campaign_name, r"All ASIN")
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"(?i)^All.*")
+                            or REGEXP_CONTAINS(campaign_name, r"(?i)^Ivy-All.*")
                             then "OTHER"
                     end
-        end as parent_code
+        end as parent_code,
+
+        -- Product Pack Size
+        case
+            when tenant_id = 2
+                then
+                    case
+                        when
+                            (
+                                REGEXP_CONTAINS(target_product, r"^ClfSlv")
+                                or REGEXP_CONTAINS(target_product, r"^PfSk")
+                                or REGEXP_CONTAINS(target_product, r"^HikSk")
+                                or REGEXP_CONTAINS(target_product, r"^GrpSk")
+                            )
+                            then
+                                case
+                                    when REGEXP_CONTAINS(target_product, r"A1")
+                                        then "1PR"
+                                    when REGEXP_CONTAINS(target_product, r"A2")
+                                        then "2PR"
+                                    when REGEXP_CONTAINS(target_product, r"A3")
+                                        then "3PR"
+                                end
+                        when REGEXP_CONTAINS(target_product, r"^ElbSlv")
+                            then
+                                case
+                                    when REGEXP_CONTAINS(target_product, r"A1")
+                                        then "1PC"
+                                    when REGEXP_CONTAINS(target_product, r"A2")
+                                        then "2PC"
+                                end
+                        when REGEXP_CONTAINS(target_product, r"^KnSlv")
+                            then
+                                case
+                                    when REGEXP_CONTAINS(target_product, r"B1")
+                                        then "1PC"
+                                    when REGEXP_CONTAINS(target_product, r"B2")
+                                        then "2PC"
+                                end
+                        when
+                            REGEXP_CONTAINS(target_product, r"^CmpSk")
+                            and (
+                                REGEXP_CONTAINS(target_product, r"C1")
+                                or REGEXP_CONTAINS(target_product, r"P1")
+                            )
+                            then "1PR"
+                    end
+        end as product_pack_size
 
     from get_sp_product_codes
 
 )
 
-select * from get_sp_parent_codes
+select * from get_sp_parent_pack
