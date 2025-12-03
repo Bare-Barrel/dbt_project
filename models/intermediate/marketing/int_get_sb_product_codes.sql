@@ -66,7 +66,6 @@ get_sb_product_codes as (
         sb_c_af.cost_per_click_usd,
         sb_c_af.click_through_rate,
         sb_c_af.conversion_rate,
-        sb_c_af.product_group,
         sb_c_af.asin,
 
         -- Parent Code
@@ -113,6 +112,57 @@ get_sb_product_codes as (
 
 ),
 
+standardize_product_color as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_id,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks,
+        new_to_brand_units_sold_clicks,
+        purchases_clicks,
+        top_of_search_impression_share,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_clicks_usd,
+        new_to_brand_sales_clicks_usd,
+        cost_per_click_usd,
+        click_through_rate,
+        conversion_rate,
+        asin,
+        portfolio_code,
+        product_code,
+        product_pack_size,
+        parent_code,
+
+        -- Product Color
+        case
+            when tenant_id = 2
+                then
+                    case
+                        when product_color = "BLK"
+                            then "BLACK"
+                        when product_color = "GRY"
+                            then "GREY"
+                        when product_color = "NA-GR"
+                            then "NAVY/GREY"
+                        else product_color
+                    end
+        end as product_color
+
+    from get_sb_product_codes
+
+),
+
 get_sb_parent_codes as (
 
     select
@@ -139,7 +189,6 @@ get_sb_parent_codes as (
         cost_per_click_usd,
         click_through_rate,
         conversion_rate,
-        product_group,
         asin,
         portfolio_code,
         product_code,
@@ -154,7 +203,7 @@ get_sb_parent_codes as (
                 then parent_code
         end as parent_code
 
-    from get_sb_product_codes
+    from standardize_product_color
 
 )
 

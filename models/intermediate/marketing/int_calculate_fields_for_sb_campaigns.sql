@@ -4,9 +4,9 @@
 
 with
 
-joined_campaign_and_campaign_placement as (
+sb_with_portfolio as (
 
-    select * from {{ ref('int_get_sb_placement_and_portfolio') }}
+    select * from {{ ref('int_get_sb_portfolio') }}
 
 ),
 
@@ -89,7 +89,7 @@ calculate_fields as (
                 then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)])
         end as asin
 
-    from joined_campaign_and_campaign_placement
+    from sb_with_portfolio
 
 ),
 

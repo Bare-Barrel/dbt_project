@@ -20,7 +20,7 @@ int_sd_campaigns as (
 
 ),
 
-select_sp_fields as (
+select_sp_fields as ( -- API data source. (04-02-2023 to present)
 
     select
         date,
@@ -44,18 +44,17 @@ select_sp_fields as (
         top_of_search_impression_share,
         tenant_id,
         "SPONSORED PRODUCTS" as ad_type,
-        product_group,
         parent_code,
         portfolio_code,
         product_code,
         product_color,
-        CAST(null as string) as product_pack_size
+        product_pack_size
 
     from int_sp_campaigns
 
 ),
 
-select_sb_fields as (
+select_sb_fields as ( -- API Data source v3 (2023-09-21 - present)
 
     select
         date,
@@ -79,7 +78,6 @@ select_sb_fields as (
         top_of_search_impression_share,
         tenant_id,
         "SPONSORED BRANDS" as ad_type,
-        product_group,
         parent_code,
         portfolio_code,
         product_code,
@@ -90,7 +88,7 @@ select_sb_fields as (
 
 ),
 
-select_sd_fields as (
+select_sd_fields as ( -- API v3 (2025-01-11 - present)
 
     select
         date,
@@ -114,7 +112,6 @@ select_sd_fields as (
         null as top_of_search_impression_share,
         tenant_id,
         "SPONSORED DISPLAY" as ad_type,
-        product_group,
         parent_code,
         CAST(null as string) as portfolio_code,
         product_code,
