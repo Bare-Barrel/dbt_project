@@ -16,7 +16,11 @@ rymora_product_codes as (
 
 union_all as (
 
-    select * from bb_product_codes
+    select
+        *,
+        CAST(null as string) as product_color,
+        CAST(null as string) as product_pack_size
+    from bb_product_codes
 
     union all
 

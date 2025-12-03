@@ -14,14 +14,18 @@ add_fields as (
 
     select
         *,
+
         CONCAT(TRIM(SPLIT(sku, "_")[SAFE_OFFSET(0)]), "_", TRIM(SPLIT(sku, "_")[SAFE_OFFSET(1)])) as parent_code,
         CONCAT(TRIM(SPLIT(sku, "_")[SAFE_OFFSET(2)]), "_", TRIM(SPLIT(sku, "_")[SAFE_OFFSET(3)])) as shaker_code,
-        SPLIT(ARRAY_REVERSE(SPLIT(sku, "_"))[OFFSET(0)], "-")[SAFE_OFFSET(0)] as product_code
+        SPLIT(ARRAY_REVERSE(SPLIT(sku, "_"))[OFFSET(0)], "-")[SAFE_OFFSET(0)] as product_code,
+        TRIM(SPLIT(sku, "_")[SAFE_OFFSET(2)]) as product_color,
+        TRIM(SPLIT(sku, "_")[SAFE_OFFSET(3)]) as product_pack_size
+
     from filtered_ry_listings
 
 ),
 
-add_concat_field as (
+add_portfolio_code as (
 
     select
         sku,
@@ -31,7 +35,10 @@ add_concat_field as (
         parent_code,
         shaker_code,
         parent_code as portfolio_code,
-        product_code
+        product_code,
+        product_color,
+        product_pack_size
+
     from add_fields
 
 ),
@@ -40,7 +47,7 @@ add_concat_field as (
 remove_product_code_u as (
 
     select *
-    from add_concat_field
+    from add_portfolio_code
     where product_code is distinct from "U"
 
 ),
