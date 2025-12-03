@@ -17,7 +17,7 @@ bb_product_codes as (
         portfolio_code,
         product_code
 
-    from {{ ref('dim_product_codes') }}
+    from {{ ref('dim_products') }}
 
     where tenant_id = 1
 
@@ -150,7 +150,10 @@ get_sp_parent_codes as (
                             REGEXP_CONTAINS(campaign_name, r"^KneeSleeve")
                             or REGEXP_CONTAINS(campaign_name, r"^KnSlv")
                             then "R_KNEE-SLE"
-                        when REGEXP_CONTAINS(campaign_name, r"^HikSk")
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^HikSk")
+                            or REGEXP_CONTAINS(campaign_name, r"(?i)^wool socks")
+                            or REGEXP_CONTAINS(campaign_name, r"^Ankle Sleeve")
                             then "R_HIKE-SOC"
                         when REGEXP_CONTAINS(campaign_name, r"^elbow/knee sleeves")
                             then "R_ELBO-SLE/R_KNEE-SLE"
@@ -164,8 +167,13 @@ get_sp_parent_codes as (
                             REGEXP_CONTAINS(campaign_name, r"^PfSk")
                             or REGEXP_CONTAINS(campaign_name, r"^Plantar Socks")
                             then "R_PF-SOCKS"
-                        when REGEXP_CONTAINS(campaign_name, r"^GrpSk")
+                        when
+                            REGEXP_CONTAINS(campaign_name, r"^GrpSk")
+                            or REGEXP_CONTAINS(campaign_name, r"(?i)^nonslip")
+                            or REGEXP_CONTAINS(campaign_name, r"(?i)^non-slip socks")
                             then "R_GRIP-SOCKS"
+                        when REGEXP_CONTAINS(campaign_name, r"All ASIN")
+                            then "OTHER"
                     end
         end as parent_code
 

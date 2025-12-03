@@ -17,7 +17,7 @@ rymora_product_codes as (
         parent_code,
         shaker_code,
         product_code
-    from {{ ref('dim_product_codes') }}
+    from {{ ref('dim_products') }}
     where tenant_id = 2
 
 ),
@@ -28,7 +28,7 @@ bb_product_codes as (
         parent_code,
         portfolio_code,
         product_code
-    from {{ ref('dim_product_codes') }}
+    from {{ ref('dim_products') }}
     where tenant_id = 1
 
 ),
