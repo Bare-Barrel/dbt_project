@@ -10,4 +10,3 @@ logs/
 .DS_Store
 
 # User-specific dbt config
-profiles.yml
