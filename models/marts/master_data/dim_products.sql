@@ -18,6 +18,7 @@ union_all as (
 
     select
         *,
+        CAST(null as string) as product_color_code,
         CAST(null as string) as product_color,
         CAST(null as string) as product_pack_size
     from bb_product_codes
@@ -26,6 +27,16 @@ union_all as (
 
     select * from rymora_product_codes
 
+),
+
+add_surrogate_key as (
+
+    select
+        {{ dbt_utils.generate_surrogate_key(['asin']) }} as product_sk,
+        *
+
+    from union_all
+
 )
 
-select * from union_all
+select * from add_surrogate_key
