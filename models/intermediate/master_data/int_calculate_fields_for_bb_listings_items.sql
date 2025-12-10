@@ -1,4 +1,4 @@
--- int_calculate_fields_for_bb_listings_items.sql
+-- int_calculate_fields_for_bb_listings_items.sql   TODO: get product colors from google sheets MD
 
 {{ config(materialized='view') }}
 

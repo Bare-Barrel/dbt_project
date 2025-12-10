@@ -1,12 +1,12 @@
--- int_get_sb_product_codes.sql sb_c_04
+-- int_get_sb_placement_product_codes.sql sb_cp_04
 
 {{ config(materialized='view') }}
 
 with
 
-sb_campaigns_with_added_fields as (
+sb_placements_with_added_fields as (
 
-    select * from {{ ref('int_calculate_fields_for_sb_campaigns') }}
+    select * from {{ ref('int_calculate_fields_for_sb_placement') }}
 
 ),
 
@@ -43,72 +43,71 @@ unique_bb_product_codes as (
 get_sb_product_codes as (
 
     select
-        sb_c_af.date,
-        sb_c_af.created_at,
-        sb_c_af.updated_at,
-        sb_c_af.campaign_id,
-        sb_c_af.campaign_name,
-        sb_c_af.campaign_status,
-        sb_c_af.portfolio_id,
-        sb_c_af.portfolio_name,
-        sb_c_af.marketplace,
-        sb_c_af.impressions,
-        sb_c_af.clicks,
-        sb_c_af.units_sold_clicks,
-        sb_c_af.new_to_brand_units_sold_clicks,
-        sb_c_af.purchases_clicks,
-        sb_c_af.top_of_search_impression_share,
-        sb_c_af.tenant_id,
-        sb_c_af.campaign_budget_amount_usd,
-        sb_c_af.cost_usd,
-        sb_c_af.sales_clicks_usd,
-        sb_c_af.new_to_brand_sales_clicks_usd,
-        sb_c_af.cost_per_click_usd,
-        sb_c_af.click_through_rate,
-        sb_c_af.conversion_rate,
-        sb_c_af.asin,
+        sb_cp_af.date,
+        sb_cp_af.created_at,
+        sb_cp_af.updated_at,
+        sb_cp_af.campaign_id,
+        sb_cp_af.campaign_name,
+        sb_cp_af.campaign_status,
+        sb_cp_af.portfolio_id,
+        sb_cp_af.portfolio_name,
+        sb_cp_af.marketplace,
+        sb_cp_af.placement_classification,
+        sb_cp_af.impressions,
+        sb_cp_af.clicks,
+        sb_cp_af.units_sold_clicks,
+        sb_cp_af.new_to_brand_units_sold_clicks,
+        sb_cp_af.purchases_clicks,
+        sb_cp_af.tenant_id,
+        sb_cp_af.campaign_budget_amount_usd,
+        sb_cp_af.cost_usd,
+        sb_cp_af.sales_clicks_usd,
+        sb_cp_af.new_to_brand_sales_clicks_usd,
+        sb_cp_af.cost_per_click_usd,
+        sb_cp_af.click_through_rate,
+        sb_cp_af.conversion_rate,
 
         -- Parent Code
         case
-            when sb_c_af.tenant_id = 1
+            when sb_cp_af.tenant_id = 1
                 then u_bb_pc.parent_code
-            when sb_c_af.tenant_id = 2
+            when sb_cp_af.tenant_id = 2
                 then ry_pc.parent_code
         end as parent_code,
 
         -- Portfolio Code
         case
-            when sb_c_af.tenant_id = 1
-                then COALESCE(u_bb_pc.portfolio_code, sb_c_af.portfolio_name)
+            when sb_cp_af.tenant_id = 1
+                then COALESCE(u_bb_pc.portfolio_code, sb_cp_af.portfolio_name)
         end as portfolio_code,
 
         -- Product Code
         case
-            when sb_c_af.tenant_id = 1
-                then sb_c_af.product_code
-            when sb_c_af.tenant_id = 2
+            when sb_cp_af.tenant_id = 1
+                then sb_cp_af.product_code
+            when sb_cp_af.tenant_id = 2
                 then ry_pc.product_code
         end as product_code,
 
         -- Product Color
         case
-            when sb_c_af.tenant_id = 2
+            when sb_cp_af.tenant_id = 2
                 then TRIM(SPLIT(ry_pc.shaker_code, "_")[SAFE_OFFSET(0)])
         end as product_color,
 
         -- Product Pack Size
         case
-            when sb_c_af.tenant_id = 2
+            when sb_cp_af.tenant_id = 2
                 then TRIM(SPLIT(ry_pc.shaker_code, "_")[SAFE_OFFSET(1)])
         end as product_pack_size
 
-    from sb_campaigns_with_added_fields as sb_c_af
+    from sb_placements_with_added_fields as sb_cp_af
 
     left join unique_bb_product_codes as u_bb_pc
-        on sb_c_af.product_code = u_bb_pc.product_code
+        on sb_cp_af.product_code = u_bb_pc.product_code
 
     left join rymora_product_codes as ry_pc
-        on sb_c_af.asin = ry_pc.asin
+        on sb_cp_af.asin = ry_pc.asin
 
 ),
 
@@ -124,12 +123,12 @@ standardize_product_color as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        placement_classification,
         impressions,
         clicks,
         units_sold_clicks,
         new_to_brand_units_sold_clicks,
         purchases_clicks,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
@@ -138,11 +137,10 @@ standardize_product_color as (
         cost_per_click_usd,
         click_through_rate,
         conversion_rate,
-        asin,
+        parent_code,
         portfolio_code,
         product_code,
         product_pack_size,
-        parent_code,
 
         -- Product Color
         case
@@ -175,12 +173,12 @@ get_sb_parent_codes as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        placement_classification,
         impressions,
         clicks,
         units_sold_clicks,
         new_to_brand_units_sold_clicks,
         purchases_clicks,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
@@ -189,11 +187,10 @@ get_sb_parent_codes as (
         cost_per_click_usd,
         click_through_rate,
         conversion_rate,
-        asin,
         portfolio_code,
         product_code,
-        product_color,
         product_pack_size,
+        product_color,
 
         -- Parent Code
         case

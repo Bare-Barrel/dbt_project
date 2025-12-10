@@ -1,4 +1,4 @@
--- int_get_sd_product_codes.sql sd_04
+-- int_get_sd_product_codes.sql sd_c_04
 
 {{ config(materialized='view') }}
 

@@ -1,4 +1,4 @@
--- int_convert_sp_campaign_amounts_to_usd.sql sp_01
+-- int_convert_sp_campaign_amounts_to_usd.sql sp_c_01
 
 {{ config(materialized='ephemeral') }}
 

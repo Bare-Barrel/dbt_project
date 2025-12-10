@@ -1,4 +1,4 @@
--- int_get_sb_portfolio.sql sb_02
+-- int_get_sb_portfolio.sql sb_c_02
 
 {{ config(materialized='ephemeral') }}
 

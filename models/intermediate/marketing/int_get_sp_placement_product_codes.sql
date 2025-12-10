@@ -1,12 +1,12 @@
--- int_get_sp_product_codes.sql sp_c_04
+-- int_get_sp_placement_product_codes.sql sp_cp_04
 
 {{ config(materialized='view') }}
 
 with
 
-sp_campaigns_with_added_fields as (
+sp_placements_with_added_fields as (
 
-    select * from {{ ref('int_calculate_fields_for_sp_campaigns') }}
+    select * from {{ ref('int_calculate_fields_for_sp_placement') }}
 
 ),
 
@@ -30,60 +30,60 @@ unique_bb_product_codes as (
 
 ),
 
-get_sp_product_codes as (
+add_sp_portfolio_code as (
 
     select
-        sp_c_af.date,
-        sp_c_af.created_at,
-        sp_c_af.updated_at,
-        sp_c_af.campaign_id,
-        sp_c_af.campaign_name,
-        sp_c_af.campaign_status,
-        sp_c_af.portfolio_id,
-        sp_c_af.portfolio_name,
-        sp_c_af.marketplace,
-        sp_c_af.impressions,
-        sp_c_af.clicks,
-        sp_c_af.units_sold_clicks_1d,
-        sp_c_af.units_sold_clicks_7d,
-        sp_c_af.units_sold_clicks_14d,
-        sp_c_af.units_sold_clicks_30d,
-        sp_c_af.purchases_1d,
-        sp_c_af.purchases_7d,
-        sp_c_af.purchases_14d,
-        sp_c_af.purchases_30d,
-        sp_c_af.click_through_rate,
-        sp_c_af.top_of_search_impression_share,
-        sp_c_af.tenant_id,
-        sp_c_af.campaign_budget_amount_usd,
-        sp_c_af.cost_usd,
-        sp_c_af.sales_1d_usd,
-        sp_c_af.sales_7d_usd,
-        sp_c_af.sales_14d_usd,
-        sp_c_af.sales_30d_usd,
-        sp_c_af.cost_per_click_usd,
-        sp_c_af.conversion_rate,
-        sp_c_af.target_product,
-        sp_c_af.product_code,
-        sp_c_af.product_color,
+        sp_p_af.date,
+        sp_p_af.created_at,
+        sp_p_af.updated_at,
+        sp_p_af.campaign_id,
+        sp_p_af.campaign_name,
+        sp_p_af.campaign_status,
+        sp_p_af.portfolio_id,
+        sp_p_af.portfolio_name,
+        sp_p_af.marketplace,
+        sp_p_af.placement_classification,
+        sp_p_af.tenant_id,
+        sp_p_af.impressions,
+        sp_p_af.clicks,
+        sp_p_af.units_sold_clicks_1d,
+        sp_p_af.units_sold_clicks_7d,
+        sp_p_af.units_sold_clicks_14d,
+        sp_p_af.units_sold_clicks_30d,
+        sp_p_af.purchases_1d,
+        sp_p_af.purchases_7d,
+        sp_p_af.purchases_14d,
+        sp_p_af.purchases_30d,
+        sp_p_af.click_through_rate,
+        sp_p_af.campaign_budget_amount_usd,
+        sp_p_af.cost_usd,
+        sp_p_af.sales_1d_usd,
+        sp_p_af.sales_7d_usd,
+        sp_p_af.sales_14d_usd,
+        sp_p_af.sales_30d_usd,
+        sp_p_af.cost_per_click_usd,
+        sp_p_af.conversion_rate,
+        sp_p_af.target_product,
+        sp_p_af.product_code,
+        sp_p_af.product_color,
         u_bb_pc.parent_code,
 
         -- Portfolio Code
         case
-            when sp_c_af.tenant_id = 1
-                then COALESCE(u_bb_pc.portfolio_code, sp_c_af.portfolio_name)
-            when sp_c_af.tenant_id = 2
+            when sp_p_af.tenant_id = 1
+                then COALESCE(u_bb_pc.portfolio_code, sp_p_af.portfolio_name)
+            when sp_p_af.tenant_id = 2
                 then u_bb_pc.portfolio_code
         end as portfolio_code
 
-    from sp_campaigns_with_added_fields as sp_c_af
+    from sp_placements_with_added_fields as sp_p_af
 
     left join unique_bb_product_codes as u_bb_pc
-        on sp_c_af.product_code = u_bb_pc.product_code
+        on sp_p_af.product_code = u_bb_pc.product_code
 
 ),
 
-get_sp_parent_pack as (
+add_sp_parent_pack_codes as (
 
     select
         date,
@@ -95,6 +95,8 @@ get_sp_parent_pack as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        placement_classification,
+        tenant_id,
         impressions,
         clicks,
         units_sold_clicks_1d,
@@ -106,8 +108,6 @@ get_sp_parent_pack as (
         purchases_14d,
         purchases_30d,
         click_through_rate,
-        top_of_search_impression_share,
-        tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
         sales_1d_usd,
@@ -222,8 +222,8 @@ get_sp_parent_pack as (
                     end
         end as product_pack_size
 
-    from get_sp_product_codes
+    from add_sp_portfolio_code
 
 )
 
-select * from get_sp_parent_pack
+select * from add_sp_parent_pack_codes

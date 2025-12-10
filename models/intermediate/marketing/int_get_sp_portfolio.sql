@@ -1,4 +1,4 @@
--- int_get_sp_portfolio.sql sp_02
+-- int_get_sp_portfolio.sql sp_c_02
 
 {{ config(materialized='ephemeral') }}
 

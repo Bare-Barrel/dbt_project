@@ -1,4 +1,4 @@
--- int_calculate_fields_for_sd_campaigns.sql sd_03
+-- int_calculate_fields_for_sd_campaigns.sql sd_c_03
 
 {{ config(materialized='ephemeral') }}
 
