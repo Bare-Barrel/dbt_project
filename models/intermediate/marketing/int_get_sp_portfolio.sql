@@ -10,12 +10,6 @@ sp_campaign_usd as (
 
 ),
 
-{# sp_campaign_placement as (   TODO: figure out how to get placement (campaign_id:placement is one:many)
-
-    select * from {{ source('sponsored_products', 'campaign_placement') }}
-
-), #}
-
 sp_campaigns as (
 
     select * from {{ source('sponsored_products', 'campaigns') }}
@@ -27,21 +21,6 @@ ad_portfolios as (
     select * from {{ source('public', 'amazon_advertising_portfolios') }}
 
 ),
-
-{# unique_sp_campaign_placement as (
-
-    select
-        campaign_id,
-        placement_classification,
-        COUNT(*) as count
-
-    from sp_campaign_placement
-
-    where cost != 0
-
-    group by campaign_id, placement_classification
-
-), #}
 
 get_sp_placement_and_portfolio as (
 
@@ -75,7 +54,6 @@ get_sp_placement_and_portfolio as (
         sp_c_usd.sales_14d_usd,
         sp_c_usd.sales_30d_usd,
         sp_c_usd.cost_per_click_usd
-    {# u_sp_c_p.placement_classification #}
 
     from sp_campaign_usd as sp_c_usd
 
@@ -84,9 +62,6 @@ get_sp_placement_and_portfolio as (
 
     left join ad_portfolios as a_p
         on sp_cs.portfolio_id = a_p.portfolio_id
-
-    {# left join unique_sp_campaign_placement as u_sp_c_p
-        on sp_c_usd.campaign_id = u_sp_c_p.campaign_id #}
 
 )
 
