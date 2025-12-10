@@ -1,12 +1,12 @@
--- int_calculate_fields_for_sp_campaigns.sql sp_c_03
+-- int_calculate_fields_for_sp_placement.sql sp_cp_03
 
 {{ config(materialized='ephemeral') }}
 
 with
 
-sp_campaigns_with_portfolio as (
+sp_placements_with_portfolio as (
 
-    select * from {{ ref('int_get_sp_portfolio') }}
+    select * from {{ ref('int_get_sp_placement_portfolio') }}
 
 ),
 
@@ -22,6 +22,7 @@ calculate_fields as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        tenant_id,
         impressions,
         clicks,
         units_sold_clicks_1d,
@@ -32,8 +33,6 @@ calculate_fields as (
         purchases_7d,
         purchases_14d,
         purchases_30d,
-        top_of_search_impression_share,
-        tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
         sales_1d_usd,
@@ -47,6 +46,17 @@ calculate_fields as (
 
         -- Conversion Rate
         SAFE_DIVIDE(purchases_14d, clicks) as conversion_rate,
+
+        -- Campaign Placement Classification
+        case
+            when placement_classification = "Top of Search on-Amazon"
+                then "TOP OF SEARCH ON-AMAZON (TOS)"
+            when placement_classification = "Other on-Amazon"
+                then "OTHER ON-AMAZON (ROS)"
+            when placement_classification = "Detail Page on-Amazon"
+                then "DETAIL PAGE ON-AMAZON (PP)"
+            else UPPER(placement_classification)
+        end as placement_classification,
 
         -- target product
         case
@@ -76,7 +86,7 @@ calculate_fields as (
                     end
         end as product_code
 
-    from sp_campaigns_with_portfolio
+    from sp_placements_with_portfolio
 
 ),
 
@@ -92,6 +102,7 @@ get_product_color as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        placement_classification,
         impressions,
         clicks,
         units_sold_clicks_1d,
@@ -103,7 +114,6 @@ get_product_color as (
         purchases_14d,
         purchases_30d,
         click_through_rate,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
@@ -113,7 +123,6 @@ get_product_color as (
         sales_30d_usd,
         cost_per_click_usd,
         conversion_rate,
-        {# placement_classification, #}
         target_product,
         parent_code,
         product_code,

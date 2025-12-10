@@ -1,12 +1,12 @@
--- int_calculate_fields_for_sb_campaigns.sql sb_c_03
+-- int_calculate_fields_for_sb_placement.sql sb_cp_03
 
 {{ config(materialized='ephemeral') }}
 
 with
 
-sb_with_portfolio as (
+sb_placements_with_portfolio as (
 
-    select * from {{ ref('int_get_sb_portfolio') }}
+    select * from {{ ref('int_get_sb_placement_portfolio') }}
 
 ),
 
@@ -22,13 +22,12 @@ calculate_fields as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        tenant_id,
         impressions,
         clicks,
         units_sold_clicks,
         new_to_brand_units_sold_clicks,
         purchases_clicks,
-        top_of_search_impression_share,
-        tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
         sales_clicks_usd,
@@ -44,33 +43,17 @@ calculate_fields as (
         SAFE_DIVIDE(purchases_clicks, clicks) as conversion_rate,
 
         -- Campaign Placement Classification
-        {# case
+        case
             when placement_classification = "Top of Search on-Amazon"
                 then "TOP OF SEARCH ON-AMAZON (TOS)"
             when placement_classification = "Other on-Amazon"
                 then "OTHER ON-AMAZON (ROS)"
             when placement_classification = "Detail Page on-Amazon"
                 then "DETAIL PAGE ON-AMAZON (PP)"
-            else placement_classification
-        end as placement_classification, #}
+            else UPPER(placement_classification)
+        end as placement_classification,
 
-        -- Product Group
-        case
-            when tenant_id = 2
-                then
-                    case
-                        when REGEXP_CONTAINS(campaign_name, r".*_B07YJ7QPXP_.*")
-                            then "GRIP SOCKS"
-                        when
-                            REGEXP_CONTAINS(campaign_name, r".*_B07ZHJB1TK_.*")
-                            or REGEXP_CONTAINS(campaign_name, r".*_B081HFPJG8_.*")
-                            or REGEXP_CONTAINS(campaign_name, r".*_B081HG38CH_.*")
-                            or REGEXP_CONTAINS(campaign_name, r".*_B07ZHJHQCF_.*")
-                            then "CALF SLEEVES"
-                    end
-        end as product_group,
-
-        -- Product Code for Bare Barrel only    TODO: use this to match with Bare Barrel master data
+        -- Product Code for Bare Barrel only -- use this to match with Bare Barrel master data
         case
             when tenant_id = 1
                 then
@@ -82,14 +65,13 @@ calculate_fields as (
                     end
         end as product_code,
 
-        -- ASIN TODO: use this to match with Rymora master data B07YJ7QPXP, B081HFPJG8, B07ZHJB1TK
-        -- TODO: match ASIN with Rymora master data??
+        -- ASIN for Rymora only -- use this to match with Rymora master data B07YJ7QPXP, B081HFPJG8, B07ZHJB1TK
         case
             when tenant_id = 2
                 then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)])
         end as asin
 
-    from sb_with_portfolio
+    from sb_placements_with_portfolio
 
 ),
 
@@ -105,12 +87,12 @@ transform_product_code as (
         portfolio_id,
         portfolio_name,
         marketplace,
+        placement_classification,
         impressions,
         clicks,
         units_sold_clicks,
         new_to_brand_units_sold_clicks,
         purchases_clicks,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
@@ -119,7 +101,6 @@ transform_product_code as (
         cost_per_click_usd,
         click_through_rate,
         conversion_rate,
-        product_group,
         asin,
 
         -- Simple transformation for product_code
