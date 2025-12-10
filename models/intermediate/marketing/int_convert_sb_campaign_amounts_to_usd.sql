@@ -50,7 +50,7 @@ join_campaign_and_fx_rates as (
     left join exchange_rates as fx
         on
             sb_c.campaign_budget_currency_code = fx.target
-            and DATE(sb_c.updated_at) = fx.recorded_at
+            and DATE(sb_c.date) = fx.recorded_at
 
 ),
 

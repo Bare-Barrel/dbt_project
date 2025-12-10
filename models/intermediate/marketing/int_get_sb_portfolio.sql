@@ -10,12 +10,6 @@ sb_campaign_usd as (
 
 ),
 
-{# sb_campaign_placement as (   TODO: figure out how to get placement (campaign_id:placement is one:many)
-
-    select * from {{ source('sponsored_brands', 'campaign_placement') }}
-
-), #}
-
 sb_campaigns as (
 
     select * from {{ source('sponsored_brands', 'campaigns') }}
@@ -51,7 +45,6 @@ get_sb_placement_and_portfolio as (
         sb_c_usd.cost_usd,
         sb_c_usd.sales_clicks_usd,
         sb_c_usd.new_to_brand_sales_clicks_usd
-    {# sb_c_p.placement_classification #}
 
     from sb_campaign_usd as sb_c_usd
 
@@ -60,9 +53,6 @@ get_sb_placement_and_portfolio as (
 
     left join ad_portfolios as a_p
         on sb_cs.portfolio_id = a_p.portfolio_id
-
-    {# left join sb_campaign_placement as sb_c_p
-        on sb_c_usd.campaign_id = sb_c_p.campaign_id #}
 
 )
 
