@@ -12,7 +12,8 @@ select_fields as (
 
     select
         portfolio_id,
-        name as portfolio_name
+        name as portfolio_name,
+        tenant_id
 
     from portfolios
 
@@ -28,9 +29,10 @@ get_unique_portfolio_values as (
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['portfolio_id']) }} as portfolio_sk,
+        {{ dbt_utils.generate_surrogate_key(['portfolio_id', 'tenant_id']) }} as portfolio_sk,
         portfolio_id,
-        portfolio_name
+        portfolio_name,
+        tenant_id
 
     from get_unique_portfolio_values
 
