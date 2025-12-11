@@ -115,7 +115,7 @@ select_sd_fields as ( -- API v3 (2025-01-11 - present)
         tenant_id,
         "SPONSORED DISPLAY" as ad_type,
         parent_code,
-        CAST(null as string) as portfolio_code,
+        "UNKNOWN" as portfolio_code,
         product_code,
         product_color,
         product_pack_size

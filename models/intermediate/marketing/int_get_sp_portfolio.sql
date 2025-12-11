@@ -22,7 +22,7 @@ ad_portfolios as (
 
 ),
 
-get_sp_placement_and_portfolio as (
+get_sp_portfolio as (
 
     select
         sp_c_usd.date,
@@ -31,9 +31,8 @@ get_sp_placement_and_portfolio as (
         sp_c_usd.campaign_id,
         sp_c_usd.campaign_name,
         sp_c_usd.campaign_status,
-        sp_cs.portfolio_id,
-        a_p.name as portfolio_name,
         sp_c_usd.marketplace,
+        sp_c_usd.tenant_id,
         sp_c_usd.impressions,
         sp_c_usd.clicks,
         sp_c_usd.units_sold_clicks_1d,
@@ -46,14 +45,16 @@ get_sp_placement_and_portfolio as (
         sp_c_usd.purchases_30d,
         sp_c_usd.click_through_rate,
         sp_c_usd.top_of_search_impression_share,
-        sp_c_usd.tenant_id,
         sp_c_usd.campaign_budget_amount_usd,
         sp_c_usd.cost_usd,
         sp_c_usd.sales_1d_usd,
         sp_c_usd.sales_7d_usd,
         sp_c_usd.sales_14d_usd,
         sp_c_usd.sales_30d_usd,
-        sp_c_usd.cost_per_click_usd
+        sp_c_usd.cost_per_click_usd,
+
+        sp_cs.portfolio_id,
+        a_p.name as portfolio_name
 
     from sp_campaign_usd as sp_c_usd
 
@@ -63,6 +64,44 @@ get_sp_placement_and_portfolio as (
     left join ad_portfolios as a_p
         on sp_cs.portfolio_id = a_p.portfolio_id
 
+),
+
+fill_in_nulls as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_name,
+        marketplace,
+        tenant_id,
+        impressions,
+        clicks,
+        units_sold_clicks_1d,
+        units_sold_clicks_7d,
+        units_sold_clicks_14d,
+        units_sold_clicks_30d,
+        purchases_1d,
+        purchases_7d,
+        purchases_14d,
+        purchases_30d,
+        click_through_rate,
+        top_of_search_impression_share,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_1d_usd,
+        sales_7d_usd,
+        sales_14d_usd,
+        sales_30d_usd,
+        cost_per_click_usd,
+
+        COALESCE(portfolio_id, 0) as portfolio_id
+
+    from get_sp_portfolio
+
 )
 
-select * from get_sp_placement_and_portfolio
+select * from fill_in_nulls
