@@ -31,8 +31,6 @@ get_sd_portfolio as (
         sd_c_usd.campaign_id,
         sd_c_usd.campaign_name,
         sd_c_usd.campaign_status,
-        sd_cs.portfolio_id,
-        a_p.name as portfolio_name,
         sd_c_usd.marketplace,
         sd_c_usd.impressions,
         sd_c_usd.clicks,
@@ -43,7 +41,10 @@ get_sd_portfolio as (
         sd_c_usd.campaign_budget_amount_usd,
         sd_c_usd.cost_usd,
         sd_c_usd.sales_clicks_usd,
-        sd_c_usd.new_to_brand_sales_clicks_usd
+        sd_c_usd.new_to_brand_sales_clicks_usd,
+
+        sd_cs.portfolio_id,
+        a_p.name as portfolio_name
 
     from sd_campaign_usd as sd_c_usd
 
@@ -53,6 +54,34 @@ get_sd_portfolio as (
     left join ad_portfolios as a_p
         on sd_cs.portfolio_id = a_p.portfolio_id
 
+),
+
+fill_in_nulls as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks,
+        new_to_brand_units_sold_clicks,
+        purchases_clicks,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_clicks_usd,
+        new_to_brand_sales_clicks_usd,
+
+        COALESCE(portfolio_id, 0) as portfolio_id
+
+    from get_sd_portfolio
+
 )
 
-select * from get_sd_portfolio
+select * from fill_in_nulls

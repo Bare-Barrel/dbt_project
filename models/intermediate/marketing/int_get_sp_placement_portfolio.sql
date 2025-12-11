@@ -31,8 +31,6 @@ get_sp_placement_portfolio as (
         sp_cp_usd.campaign_id,
         sp_cp_usd.campaign_name,
         sp_cp_usd.campaign_status,
-        sp_cs.portfolio_id,
-        a_p.name as portfolio_name,
         sp_cp_usd.marketplace,
         sp_cp_usd.placement_classification,
         sp_cp_usd.tenant_id,
@@ -53,7 +51,10 @@ get_sp_placement_portfolio as (
         sp_cp_usd.sales_14d_usd,
         sp_cp_usd.sales_30d_usd,
         sp_cp_usd.cost_per_click_usd,
-        sp_cp_usd.click_through_rate
+        sp_cp_usd.click_through_rate,
+
+        sp_cs.portfolio_id,
+        a_p.name as portfolio_name
 
     from sp_campaign_placement_usd as sp_cp_usd
 
@@ -63,6 +64,44 @@ get_sp_placement_portfolio as (
     left join ad_portfolios as a_p
         on sp_cs.portfolio_id = a_p.portfolio_id
 
+),
+
+fill_in_nulls as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_name,
+        marketplace,
+        placement_classification,
+        tenant_id,
+        impressions,
+        clicks,
+        units_sold_clicks_1d,
+        units_sold_clicks_7d,
+        units_sold_clicks_14d,
+        units_sold_clicks_30d,
+        purchases_1d,
+        purchases_7d,
+        purchases_14d,
+        purchases_30d,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_1d_usd,
+        sales_7d_usd,
+        sales_14d_usd,
+        sales_30d_usd,
+        cost_per_click_usd,
+        click_through_rate,
+
+        COALESCE(portfolio_id, 0) as portfolio_id
+
+    from get_sp_placement_portfolio
+
 )
 
-select * from get_sp_placement_portfolio
+select * from fill_in_nulls

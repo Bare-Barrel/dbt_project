@@ -224,6 +224,51 @@ get_sp_parent_pack as (
 
     from get_sp_product_codes
 
+),
+
+fill_in_product_code_nulls as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_id,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks_1d,
+        units_sold_clicks_7d,
+        units_sold_clicks_14d,
+        units_sold_clicks_30d,
+        purchases_1d,
+        purchases_7d,
+        purchases_14d,
+        purchases_30d,
+        click_through_rate,
+        top_of_search_impression_share,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_1d_usd,
+        sales_7d_usd,
+        sales_14d_usd,
+        sales_30d_usd,
+        cost_per_click_usd,
+        conversion_rate,
+        target_product,
+
+        COALESCE(parent_code, "UNKNOWN") as parent_code,
+        COALESCE(portfolio_code, "UNKNOWN") as portfolio_code,
+        COALESCE(product_code, "UNKNOWN") as product_code,
+        COALESCE(product_color, "UNKNOWN") as product_color,
+        COALESCE(product_pack_size, "UNKNOWN") as product_pack_size
+
+    from get_sp_parent_pack
+
 )
 
-select * from get_sp_parent_pack
+select * from fill_in_product_code_nulls

@@ -205,6 +205,44 @@ get_sb_parent_codes as (
 
     from standardize_product_color
 
+),
+
+fill_in_product_code_nulls as (
+
+    select
+        date,
+        created_at,
+        updated_at,
+        campaign_id,
+        campaign_name,
+        campaign_status,
+        portfolio_id,
+        portfolio_name,
+        marketplace,
+        impressions,
+        clicks,
+        units_sold_clicks,
+        new_to_brand_units_sold_clicks,
+        purchases_clicks,
+        top_of_search_impression_share,
+        tenant_id,
+        campaign_budget_amount_usd,
+        cost_usd,
+        sales_clicks_usd,
+        new_to_brand_sales_clicks_usd,
+        cost_per_click_usd,
+        click_through_rate,
+        conversion_rate,
+        asin,
+
+        COALESCE(parent_code, "UNKNOWN") as parent_code,
+        COALESCE(portfolio_code, "UNKNOWN") as portfolio_code,
+        COALESCE(product_code, "UNKNOWN") as product_code,
+        COALESCE(product_color, "UNKNOWN") as product_color,
+        COALESCE(product_pack_size, "UNKNOWN") as product_pack_size
+
+    from get_sb_parent_codes
+
 )
 
-select * from get_sb_parent_codes
+select * from fill_in_product_code_nulls
