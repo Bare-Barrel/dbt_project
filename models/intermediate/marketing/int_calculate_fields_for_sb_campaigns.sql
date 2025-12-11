@@ -27,12 +27,14 @@ calculate_fields as (
         units_sold_clicks,
         new_to_brand_units_sold_clicks,
         purchases_clicks,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
         sales_clicks_usd,
         new_to_brand_sales_clicks_usd,
+
+        -- TOS IS
+        SAFE_DIVIDE(top_of_search_impression_share, 100) as top_of_search_impression_share,
 
         -- Cost per Click
         SAFE_DIVIDE(cost_usd, clicks) as cost_per_click_usd,
@@ -42,17 +44,6 @@ calculate_fields as (
 
         -- Conversion Rate
         SAFE_DIVIDE(purchases_clicks, clicks) as conversion_rate,
-
-        -- Campaign Placement Classification
-        {# case
-            when placement_classification = "Top of Search on-Amazon"
-                then "TOP OF SEARCH ON-AMAZON (TOS)"
-            when placement_classification = "Other on-Amazon"
-                then "OTHER ON-AMAZON (ROS)"
-            when placement_classification = "Detail Page on-Amazon"
-                then "DETAIL PAGE ON-AMAZON (PP)"
-            else placement_classification
-        end as placement_classification, #}
 
         -- Product Group
         case
@@ -70,7 +61,7 @@ calculate_fields as (
                     end
         end as product_group,
 
-        -- Product Code for Bare Barrel only    TODO: use this to match with Bare Barrel master data
+        -- Product Code for Bare Barrel only -- use this to match with Bare Barrel master data
         case
             when tenant_id = 1
                 then
@@ -82,8 +73,7 @@ calculate_fields as (
                     end
         end as product_code,
 
-        -- ASIN TODO: use this to match with Rymora master data B07YJ7QPXP, B081HFPJG8, B07ZHJB1TK
-        -- TODO: match ASIN with Rymora master data??
+        -- ASIN -- use this to match with Rymora master data B07YJ7QPXP, B081HFPJG8, B07ZHJB1TK
         case
             when tenant_id = 2
                 then TRIM(SPLIT(campaign_name, "_")[SAFE_OFFSET(3)])
