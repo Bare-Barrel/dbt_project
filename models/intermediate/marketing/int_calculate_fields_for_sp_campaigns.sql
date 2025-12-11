@@ -32,7 +32,6 @@ calculate_fields as (
         purchases_7d,
         purchases_14d,
         purchases_30d,
-        top_of_search_impression_share,
         tenant_id,
         campaign_budget_amount_usd,
         cost_usd,
@@ -41,6 +40,9 @@ calculate_fields as (
         sales_14d_usd,
         sales_30d_usd,
         cost_per_click_usd,
+
+        -- TOS IS
+        SAFE_DIVIDE(top_of_search_impression_share, 100) as top_of_search_impression_share,
 
         -- Click-through Rate
         SAFE_DIVIDE(click_through_rate, 100) as click_through_rate,

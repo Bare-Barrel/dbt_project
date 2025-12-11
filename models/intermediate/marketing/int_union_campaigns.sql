@@ -111,7 +111,7 @@ select_sd_fields as ( -- API v3 (2025-01-11 - present)
         cost_per_click_usd,
         click_through_rate,
         conversion_rate,
-        null as top_of_search_impression_share,
+        CAST(null as numeric) as top_of_search_impression_share,
         tenant_id,
         "SPONSORED DISPLAY" as ad_type,
         parent_code,
