@@ -66,11 +66,14 @@ build_cp_fact_table as (
         cp.impressions,
         cp.clicks,
         cp.units_sold_clicks,
+        cp.sales_clicks_usd,
         cp.purchases_clicks,
         cp.tenant_id,
         cp.campaign_budget_amount_usd,
         cp.cost_usd,
-        cp.sales_clicks_usd
+        cp.cost_per_click_usd,
+        cp.click_through_rate,
+        cp.conversion_rate
 
     from campaign_placements as cp
 
