@@ -68,6 +68,7 @@ build_cp_fact_table as (
         cp.units_sold_clicks,
         cp.sales_clicks_usd,
         cp.purchases_clicks,
+        cp.tenant_id,
         cp.campaign_budget_amount_usd,
         cp.cost_usd,
         cp.cost_per_click_usd,
