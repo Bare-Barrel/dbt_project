@@ -41,12 +41,6 @@ sd_campaigns as (
 
 ),
 
-dim_tenants as (
-
-    select * from {{ ref('dim_tenants') }}
-
-),
-
 union_all_campaigns as (
 
     select * from sp_campaigns
@@ -124,29 +118,11 @@ scd2 as (
 
 ),
 
-get_tenant_sk as (
-
-    select
-        scd2.tenant_id,
-        scd2.campaign_id,
-        scd2.campaign_name,
-        scd2.campaign_status,
-        scd2.start_date,
-        scd2.end_date,
-        dt.tenant_sk
-
-    from scd2
-
-    left join dim_tenants as dt
-        on scd2.tenant_id = dt.tenant_id
-
-),
-
 -- 5. Add is_current and surrogate_key
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['tenant_sk', 'campaign_id', 'start_date']) }} as campaign_sk,
+        {{ dbt_utils.generate_surrogate_key(['tenant_id', 'campaign_id', 'start_date']) }} as campaign_sk,
         campaign_id,
         campaign_name,
         campaign_status,
@@ -156,12 +132,12 @@ add_surrogate_key as (
             select MAX(uac.record_date)
             from union_all_campaigns as uac
             where
-                uac.campaign_id = get_tenant_sk.campaign_id
-                and uac.tenant_id = get_tenant_sk.tenant_id
+                uac.campaign_id = scd2.campaign_id
+                and uac.tenant_id = scd2.tenant_id
         ) as is_current,
-        tenant_sk
+        tenant_id
 
-    from get_tenant_sk
+    from scd2
 
 )
 
