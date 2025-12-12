@@ -14,6 +14,12 @@ campaign_placements as (
 
 ),
 
+dim_tenants as (
+
+    select * from {{ ref('dim_tenants') }}
+
+),
+
 select_campaign_fields as (
 
     select
@@ -73,18 +79,35 @@ get_distinct_rows as (
 
 ),
 
+get_tenant_sk as (
+
+    select
+        gdr.parent_code,
+        gdr.portfolio_code,
+        gdr.product_code,
+        gdr.product_color,
+        gdr.product_pack_size,
+        dt.tenant_sk
+
+    from get_distinct_rows as gdr
+
+    left join dim_tenants as dt
+        on gdr.tenant_id = dt.tenant_id
+
+),
+
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['parent_code', 'portfolio_code', 'product_code', 'product_color', 'product_pack_size', 'tenant_id']) }} as ppc_product_sk,
+        {{ dbt_utils.generate_surrogate_key(['parent_code', 'portfolio_code', 'product_code', 'product_color', 'product_pack_size', 'tenant_sk']) }} as ppc_product_sk,
         parent_code,
         portfolio_code,
         product_code,
         product_color,
         product_pack_size,
-        tenant_id
+        tenant_sk
 
-    from get_distinct_rows
+    from get_tenant_sk
 
 )
 
