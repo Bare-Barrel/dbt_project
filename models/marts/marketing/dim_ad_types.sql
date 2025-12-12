@@ -8,29 +8,18 @@ campaigns as (
 
 ),
 
-select_fields as (
-
-    select
-        ad_type,
-        tenant_id
-
-    from campaigns
-
-),
-
 get_unique_placement_values as (
 
-    select distinct *
-    from select_fields
+    select distinct ad_type
+    from campaigns
 
 ),
 
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['ad_type', 'tenant_id']) }} as ad_type_sk,
-        ad_type,
-        tenant_id
+        {{ dbt_utils.generate_surrogate_key(['ad_type']) }} as ad_type_sk,
+        ad_type
 
     from get_unique_placement_values
 

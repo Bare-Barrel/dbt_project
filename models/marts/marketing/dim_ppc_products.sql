@@ -21,8 +21,7 @@ select_campaign_fields as (
         portfolio_code,
         product_code,
         product_color,
-        product_pack_size,
-        tenant_id
+        product_pack_size
 
     from campaigns
 
@@ -42,8 +41,7 @@ select_placement_fields as (
         portfolio_code,
         product_code,
         product_color,
-        product_pack_size,
-        tenant_id
+        product_pack_size
 
     from campaign_placements
 
@@ -76,13 +74,12 @@ get_distinct_rows as (
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['parent_code', 'portfolio_code', 'product_code', 'product_color', 'product_pack_size', 'tenant_id']) }} as ppc_product_sk,
+        {{ dbt_utils.generate_surrogate_key(['parent_code', 'portfolio_code', 'product_code', 'product_color', 'product_pack_size']) }} as ppc_product_sk,
         parent_code,
         portfolio_code,
         product_code,
         product_color,
-        product_pack_size,
-        tenant_id
+        product_pack_size
 
     from get_distinct_rows
 

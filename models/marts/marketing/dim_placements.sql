@@ -8,29 +8,18 @@ unioned_campaign_placements as (
 
 ),
 
-select_fields as (
-
-    select
-        placement_classification,
-        tenant_id
-
-    from unioned_campaign_placements
-
-),
-
 get_unique_placement_values as (
 
-    select distinct *
-    from select_fields
+    select distinct placement_classification
+    from unioned_campaign_placements
 
 ),
 
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['placement_classification', 'tenant_id']) }} as placement_sk,
-        placement_classification,
-        tenant_id
+        {{ dbt_utils.generate_surrogate_key(['placement_classification']) }} as placement_sk,
+        placement_classification
 
     from get_unique_placement_values
 

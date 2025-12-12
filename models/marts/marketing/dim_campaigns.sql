@@ -8,8 +8,7 @@ sp_campaigns as (
         campaign_id,
         date as record_date,
         campaign_name,
-        campaign_status,
-        tenant_id
+        campaign_status
 
     from {{ source('sponsored_products', 'campaign') }}
 
@@ -21,8 +20,7 @@ sb_campaigns as (
         campaign_id,
         date as record_date,
         campaign_name,
-        campaign_status,
-        tenant_id
+        campaign_status
 
     from {{ source('sponsored_brands', 'campaign') }}
 
@@ -34,8 +32,7 @@ sd_campaigns as (
         campaign_id,
         date as record_date,
         campaign_name,
-        campaign_status,
-        tenant_id
+        campaign_status
 
     from {{ source('sponsored_display', 'campaign') }}
 
@@ -58,8 +55,8 @@ campaign_changes as (
 
     select
         *,
-        LAG(campaign_name) over (partition by tenant_id, campaign_id order by record_date) as prev_name,
-        LAG(campaign_status) over (partition by tenant_id, campaign_id order by record_date) as prev_status
+        LAG(campaign_name) over (partition by campaign_id order by record_date) as prev_name,
+        LAG(campaign_status) over (partition by campaign_id order by record_date) as prev_status
 
     from union_all_campaigns
 
@@ -90,7 +87,7 @@ version_groups as (
     select
         *,
         SUM(is_new_version_flag)
-            over (partition by tenant_id, campaign_id order by record_date) as version_group
+            over (partition by campaign_id order by record_date) as version_group
 
     from version_flags
 
@@ -100,7 +97,6 @@ version_groups as (
 scd2 as (
 
     select
-        tenant_id,
         campaign_id,
         campaign_name,
         campaign_status,
@@ -110,7 +106,6 @@ scd2 as (
     from version_groups
 
     group by
-        tenant_id,
         campaign_id,
         campaign_name,
         campaign_status,
@@ -122,7 +117,7 @@ scd2 as (
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['tenant_id', 'campaign_id', 'start_date']) }} as campaign_sk,
+        {{ dbt_utils.generate_surrogate_key(['campaign_id', 'start_date']) }} as campaign_sk,
         campaign_id,
         campaign_name,
         campaign_status,
@@ -131,11 +126,8 @@ add_surrogate_key as (
         end_date = (
             select MAX(uac.record_date)
             from union_all_campaigns as uac
-            where
-                uac.campaign_id = scd2.campaign_id
-                and uac.tenant_id = scd2.tenant_id
-        ) as is_current,
-        tenant_id
+            where uac.campaign_id = scd2.campaign_id
+        ) as is_current
 
     from scd2
 
