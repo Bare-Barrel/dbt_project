@@ -8,12 +8,6 @@ portfolios as (
 
 ),
 
-dim_tenants as (
-
-    select * from {{ ref('dim_tenants') }}
-
-),
-
 select_fields as (
 
     select
@@ -25,36 +19,22 @@ select_fields as (
 
 ),
 
-get_unique_values as (
+get_unique_portfolio_values as (
 
     select distinct *
     from select_fields
 
 ),
 
-get_tenant_sk as (
-
-    select
-        guv.portfolio_id,
-        guv.portfolio_name,
-        dt.tenant_sk
-
-    from get_unique_values as guv
-
-    left join dim_tenants as dt
-        on guv.tenant_id = dt.tenant_id
-
-),
-
 add_surrogate_key as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['portfolio_id', 'tenant_sk']) }} as portfolio_sk,
+        {{ dbt_utils.generate_surrogate_key(['portfolio_id', 'tenant_id']) }} as portfolio_sk,
         portfolio_id,
         portfolio_name,
-        tenant_sk
+        tenant_id
 
-    from get_tenant_sk
+    from get_unique_portfolio_values
 
 )
 
