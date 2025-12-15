@@ -1,9 +1,36 @@
 version: 2
 
 models:
+  - name: dim_marketplaces
+    description: ""
+    columns:
+      - name: marketplace_sk
+        data_type: string
+        description: ""
+
+      - name: marketplace_id
+        data_type: string
+        description: ""
+
+      - name: marketplace_name
+        data_type: string
+        description: ""
+
+      - name: region
+        data_type: string
+        description: ""
+
+      - name: endpoint
+        data_type: string
+        description: ""
+
   - name: dim_products
     description: ""
     columns:
+      - name: product_sk
+        data_type: string
+        description: ""
+
       - name: sku
         data_type: string
         description: ""
@@ -36,10 +63,29 @@ models:
         data_type: string
         description: ""
 
+      - name: product_color_code
+        data_type: string
+        description: ""
+
       - name: product_color
         data_type: string
         description: ""
 
       - name: product_pack_size
+        data_type: string
+        description: ""
+
+  - name: dim_tenants
+    description: ""
+    columns:
+      - name: tenant_sk
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: company
         data_type: string
         description: ""
