@@ -141,6 +141,7 @@ get_sp_parent_pack as (
                             REGEXP_CONTAINS(campaign_name, r"^Comp Sleeve-P")
                             or REGEXP_CONTAINS(campaign_name, r"^CompSock-P")
                             or REGEXP_CONTAINS(campaign_name, r"^CmpSk-P")
+                            or REGEXP_CONTAINS(campaign_name, r"^CompSock-SP")
                             then "R_COMP-SOCKS-PL"
                         when
                             REGEXP_CONTAINS(campaign_name, r"^KneeSleeve")
@@ -149,7 +150,6 @@ get_sp_parent_pack as (
                         when
                             REGEXP_CONTAINS(campaign_name, r"^HikSk")
                             or REGEXP_CONTAINS(campaign_name, r"(?i)^wool socks")
-                            or REGEXP_CONTAINS(campaign_name, r"^Ankle Sleeve")
                             then "R_HIKE-SOC"
                         when REGEXP_CONTAINS(campaign_name, r"^elbow/knee sleeves")
                             then "R_ELBO-SLE/R_KNEE-SLE"
@@ -158,10 +158,13 @@ get_sp_parent_pack as (
                             or REGEXP_CONTAINS(campaign_name, r"^Calf C Sleeves")
                             or REGEXP_CONTAINS(campaign_name, r"^ClfSlv")
                             or REGEXP_CONTAINS(campaign_name, r"^calf compression sleeves")
+                            or REGEXP_CONTAINS(campaign_name, r"^Comp Sleeve-SP")
                             then "R_CALF-SLEEV"
                         when
                             REGEXP_CONTAINS(campaign_name, r"^PfSk")
                             or REGEXP_CONTAINS(campaign_name, r"^Plantar Socks")
+                            or REGEXP_CONTAINS(campaign_name, r"^Ankle Sleeve")
+                            or REGEXP_CONTAINS(campaign_name, r"^Ankle C Sock")
                             then "R_PF-SOCKS"
                         when
                             REGEXP_CONTAINS(campaign_name, r"^GrpSk")
