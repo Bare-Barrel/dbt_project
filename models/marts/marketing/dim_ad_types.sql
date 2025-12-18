@@ -4,7 +4,7 @@ with
 
 campaigns as (
 
-    select * from {{ ref('int_union_campaigns') }}
+    select * from {{ ref('int_union_all_campaigns') }}
 
 ),
 
