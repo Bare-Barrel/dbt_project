@@ -63,7 +63,7 @@ get_rows_from_campaigns as (
         c.portfolio_id,
         c.portfolio_name,
         c.marketplace,
-        CAST(null as string) as placement_classification,
+        "NOT APPLICABLE" as placement_classification,
         c.tenant_id,
         c.ad_type,
         c.parent_code,
