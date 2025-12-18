@@ -4,7 +4,7 @@ with
 
 unioned_campaign_placements as (
 
-    select * from {{ ref('int_union_all_campaigns') }}
+    select * from {{ ref('int_union_campaign_placements') }}
 
 ),
 

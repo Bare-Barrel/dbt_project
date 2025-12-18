@@ -2,18 +2,6 @@
 
 with
 
-{# union_all_campaigns as (
-
-    select
-        campaign_id,
-        record_date,
-        campaign_name,
-        campaign_status
-
-    from {{ ref('int_union_all_campaigns') }}
-
-), #}
-
 sp_campaigns as (
 
     select
