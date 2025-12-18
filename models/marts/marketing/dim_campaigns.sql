@@ -2,7 +2,7 @@
 
 with
 
-union_all_campaigns as (
+{# union_all_campaigns as (
 
     select
         campaign_id,
@@ -12,9 +12,9 @@ union_all_campaigns as (
 
     from {{ ref('int_union_all_campaigns') }}
 
-),
+), #}
 
-{# sp_campaigns as (
+sp_campaigns as (
 
     select
         campaign_id,
@@ -58,7 +58,7 @@ union_all_campaigns as (
     union all
     select * from sd_campaigns
 
-), #}
+),
 
 -- 1. Identify "change groups"
 --    If any attribute changes vs the previous day for the same campaign,
