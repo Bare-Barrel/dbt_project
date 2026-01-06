@@ -46,8 +46,8 @@ calculate_fields as (
         case
             when placement_classification = "Top of Search on-Amazon"
                 then "TOP OF SEARCH ON-AMAZON (TOS)"
-            when placement_classification = "Other on-Amazon"
-                then "OTHER ON-AMAZON (ROS)"
+            {# when placement_classification = "Other on-Amazon"
+                then "OTHER ON-AMAZON (ROS)" #}
             when placement_classification = "Detail Page on-Amazon"
                 then "DETAIL PAGE ON-AMAZON (PP)"
             else UPPER(placement_classification)
