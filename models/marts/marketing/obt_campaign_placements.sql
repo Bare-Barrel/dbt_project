@@ -1,17 +1,16 @@
 -- obt_campaign_placements.sql
--- same as int_union_campaign_placements.sql
 
 with
 
-sp_placement_product_codes as (
+sp_placement_asin as (
 
-    select * from {{ ref('int_get_sp_placement_product_codes') }}
+    select * from {{ ref('int_get_sp_placement_asin') }}
 
 ),
 
-sb_placement_product_codes as (
+sb_placement_asin as (
 
-    select * from {{ ref('int_get_sb_placement_product_codes') }}
+    select * from {{ ref('int_get_sb_placement_asin') }}
 
 ),
 
@@ -35,6 +34,7 @@ select_sp_placement as (
         product_code,
         product_color,
         product_pack_size,
+        asin,
         impressions,
         clicks,
         units_sold_clicks_14d as units_sold_clicks,
@@ -46,7 +46,7 @@ select_sp_placement as (
         sales_14d_usd as sales_clicks_usd,
         cost_per_click_usd
 
-    from sp_placement_product_codes
+    from sp_placement_asin
 
 ),
 
@@ -70,6 +70,7 @@ select_sb_placement as (
         product_code,
         product_color,
         product_pack_size,
+        asin,
         impressions,
         clicks,
         units_sold_clicks,
@@ -81,7 +82,7 @@ select_sb_placement as (
         sales_clicks_usd,
         cost_per_click_usd
 
-    from sb_placement_product_codes
+    from sb_placement_asin
 
 ),
 
