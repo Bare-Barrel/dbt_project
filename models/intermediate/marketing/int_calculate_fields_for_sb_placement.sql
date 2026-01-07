@@ -50,6 +50,8 @@ calculate_fields as (
                 then "OTHER ON-AMAZON (ROS)" #}
             when placement_classification = "Detail Page on-Amazon"
                 then "DETAIL PAGE ON-AMAZON (PP)"
+            when placement_classification = "Rest of Search"
+                then "REST OF SEARCH (ROS)"
             else UPPER(placement_classification)
         end as placement_classification,
 
