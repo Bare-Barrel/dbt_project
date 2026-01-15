@@ -1,12 +1,12 @@
--- int_aggregate_joined_orders_with_added_fields.sql 05
+-- int_aggregate_joined_orders_with_added_fields.sql 06
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 
-joined_orders_with_added_fields as (
+agg_joined_orders_with_actual_amazon_fees as (
 
-    select * from {{ ref('int_add_fields_to_joined_orders') }}
+    select * from {{ ref('int_get_actual_amazon_fees_of_agg_joined_orders') }}
 
 ),
 
@@ -32,9 +32,10 @@ aggregate_joined_orders_with_added_fields as (
         SUM(shipping_discount_amount) as shipping_discount_amount,
         SUM(buyer_info_gift_wrap_price_amount) as buyer_info_gift_wrap_price_amount,
         SUM(output_vat) as output_vat,
-        SUM(coupon_fee) as coupon_fee
+        SUM(coupon_fee) as coupon_fee,
+        SUM(actual_amazon_fee_amount_usd) as actual_amazon_fee_amount_usd
 
-    from joined_orders_with_added_fields
+    from agg_joined_orders_with_actual_amazon_fees
 
     group by purchase_date, marketplace, asin, seller_sku, item_price_currency_code, is_vine, is_replacement_order, tenant_id, order_status
 

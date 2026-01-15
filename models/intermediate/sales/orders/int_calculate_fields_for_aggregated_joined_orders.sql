@@ -1,4 +1,4 @@
--- int_calculate_fields_for_aggregated_joined_orders.sql 06
+-- int_calculate_fields_for_aggregated_joined_orders.sql 07
 
 {{ config(materialized='view') }}
 
@@ -43,6 +43,7 @@ match_old_sku_to_current as (
         agg_jo.buyer_info_gift_wrap_price_amount,
         agg_jo.output_vat,
         agg_jo.coupon_fee,
+        agg_jo.actual_amazon_fee_amount_usd,
 
         -- new_sku to handle old Rymora skus
         case
@@ -80,6 +81,7 @@ calculate_fields as (
         buyer_info_gift_wrap_price_amount,
         output_vat,
         coupon_fee,
+        actual_amazon_fee_amount_usd,
 
         -- Sales Price per unit, UK Sales have 20% VAT included
         case
@@ -214,10 +216,13 @@ add_referral_fees as (
         coupon_fee,
         net_item_price_per_unit,
         net_item_price_amount,
+        actual_amazon_fee_amount_usd,
         CAST(referral_fee_pct as numeric) as referral_fee_pct,
         CAST(CAST(referral_fee_pct as numeric) * (COALESCE(net_item_price_amount, 0) + COALESCE(shipping_price_amount, 0) - COALESCE(shipping_discount_amount, 0) + COALESCE(buyer_info_gift_wrap_price_amount, 0)) as numeric)
             as referral_fees
+
     from calculate_fields
+
 )
 
 select * from add_referral_fees

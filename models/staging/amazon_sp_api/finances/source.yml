@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: finances
+    tables:
+      - name: financial_events
+        columns:
+          - name: amazonorderid
+            data_type: string
+          - name: sellerorderid
+            data_type: string
+          - name: marketplacename
+            data_type: string
+          - name: posteddate
+            data_type: string
+          - name: shipmentfeelist
+            data_type: record
+          - name: sellersku
+            data_type: string
+          - name: orderitemid
+            data_type: string
+          - name: quantityshipped
+            data_type: int64
+          - name: itemchargelist
+            data_type: record
+          - name: itemfeelist
+            data_type: record
+          - name: itemtaxwithheldlist
+            data_type: record
+          - name: promotionlist
+            data_type: record
+          - name: marketplace
+            data_type: string
+          - name: tenant_id
+            data_type: int64
+          - name: created_at
+            data_type: string
