@@ -14,7 +14,7 @@ handle_nulls as (
         -- ids
         asin,
         tenant_id,
-        order_item_id,
+        CAST(order_item_id as string) as order_item_id,
         promotion_ids,
         amazon_order_id,
 
