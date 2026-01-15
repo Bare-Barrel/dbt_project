@@ -22,6 +22,7 @@ aggregate_joined_orders_with_added_fields as (
         is_vine,
         is_replacement_order,
         tenant_id,
+        actual_amazon_fee_currency_code,
 
         REGEXP_EXTRACT(seller_sku, r'[^_]+$') as product_code,
         SUM(quantity_ordered) as quantity_ordered,
@@ -33,11 +34,21 @@ aggregate_joined_orders_with_added_fields as (
         SUM(buyer_info_gift_wrap_price_amount) as buyer_info_gift_wrap_price_amount,
         SUM(output_vat) as output_vat,
         SUM(coupon_fee) as coupon_fee,
-        SUM(actual_amazon_fee_amount_usd) as actual_amazon_fee_amount_usd
+        SUM(actual_amazon_fee_amount) as actual_amazon_fee_amount
 
     from agg_joined_orders_with_actual_amazon_fees
 
-    group by purchase_date, marketplace, asin, seller_sku, item_price_currency_code, is_vine, is_replacement_order, tenant_id, order_status
+    group by
+        purchase_date,
+        marketplace,
+        asin,
+        seller_sku,
+        item_price_currency_code,
+        is_vine,
+        is_replacement_order,
+        tenant_id,
+        order_status,
+        actual_amazon_fee_currency_code
 
     order by purchase_date desc, marketplace desc, quantity_ordered desc
 )
