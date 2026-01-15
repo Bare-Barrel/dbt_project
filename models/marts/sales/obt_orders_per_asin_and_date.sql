@@ -31,7 +31,8 @@ reorder_fields as (
         is_vine,
         is_replacement_order,
         tenant_id,
-        actual_amazon_fee_amount_usd
+        actual_amazon_fee_amount,
+        actual_amazon_fee_currency_code
 
     from agg_orders_with_calc_fields
 

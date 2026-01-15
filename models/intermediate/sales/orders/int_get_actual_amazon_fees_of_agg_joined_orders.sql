@@ -55,7 +55,8 @@ get_actual_amazon_fees as (
         jo_w_af.shipping_discount_currency_code,
         jo_w_af.buyer_info_gift_wrap_price_amount,
         jo_w_af.buyer_info_gift_wrap_price_currency_code,
-        agg_feif.item_fee__fee_amount_usd as actual_amazon_fee_amount_usd
+        agg_feif.item_fee__fee_amount as actual_amazon_fee_amount,
+        agg_feif.item_fee__currency_code as actual_amazon_fee_currency_code
 
     from joined_orders_with_added_fields as jo_w_af
 
