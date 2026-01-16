@@ -1,0 +1,185 @@
+version: 2
+
+models:
+  - name: int_convert_sqp_weekly_asin_amounts_to_usd
+    description: ""
+    columns:
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: search_query
+        data_type: string
+        description: ""
+
+      - name: search_query_score
+        data_type: numeric
+        description: ""
+
+      - name: search_query_volume
+        data_type: numeric
+        description: ""
+
+      - name: asin_click_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_click_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_cart_add_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_purchase_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_impression_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_impression_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_click_price
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_cart_add_price
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_purchase_price
+        data_type: numeric
+        description: ""
+
+      - name: total_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_click_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_cart_add_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_purchase_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_median_cart_add_price
+        data_type: numeric
+        description: ""
+
+      - name: total_median_purchase_price
+        data_type: numeric
+        description: ""
+
+      - name: total_query_impression_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_click_price_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_cart_add_price_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_purchase_price_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_median_cart_add_price_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_median_purchase_price_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_median_click_price_amount_usd
+        data_type: numeric
+        description: ""
