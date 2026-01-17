@@ -1,4 +1,4 @@
--- obt_campaign_placements.sql
+-- obt_aggregated_campaign_placements.sql
 
 with
 
