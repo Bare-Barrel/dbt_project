@@ -218,8 +218,9 @@ add_referral_fees as (
         coupon_fee,
         net_item_price_per_unit,
         net_item_price_amount,
-        actual_amazon_fee_amount,
         actual_amazon_fee_currency_code,
+
+        ABS(actual_amazon_fee_amount) as actual_amazon_fee_amount,
         CAST(referral_fee_pct as numeric) as referral_fee_pct,
         CAST(CAST(referral_fee_pct as numeric) * (COALESCE(net_item_price_amount, 0) + COALESCE(shipping_price_amount, 0) - COALESCE(shipping_discount_amount, 0) + COALESCE(buyer_info_gift_wrap_price_amount, 0)) as numeric)
             as referral_fees

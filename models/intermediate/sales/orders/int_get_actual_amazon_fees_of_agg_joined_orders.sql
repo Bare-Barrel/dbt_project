@@ -1,6 +1,9 @@
 -- int_get_actual_amazon_fees_of_agg_joined_orders.sql 05
 
-{{ config(materialized='view') }}
+{{ config(
+    materialized='incremental',
+    unique_key='order_item_id'
+) }}
 
 with
 

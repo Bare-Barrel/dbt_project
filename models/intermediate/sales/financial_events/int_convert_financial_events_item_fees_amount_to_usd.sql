@@ -1,4 +1,4 @@
--- int_convert_financial_events_item_fees_amount_to_usd.sql 02
+-- int_convert_financial_events_item_fees_amount_to_usd.sql 02 -- skipped
 
 {{ config(materialized='ephemeral') }}
 
