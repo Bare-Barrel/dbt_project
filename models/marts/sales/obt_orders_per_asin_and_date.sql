@@ -36,7 +36,8 @@ reorder_fields as (
 
     from agg_orders_with_calc_fields
 
-    order by purchase_date desc, marketplace desc, quantity_ordered desc
+    {# order by purchase_date desc, marketplace desc, quantity_ordered desc #}
+
 )
 
 select * from reorder_fields
