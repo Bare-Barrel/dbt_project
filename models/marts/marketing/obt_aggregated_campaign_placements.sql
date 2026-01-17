@@ -45,7 +45,7 @@ select_sp_placement as (
         cost_usd,
         sales_14d_usd as sales_clicks_usd,
         cost_per_click_usd,
-        CAST(null as string) as sb_ad_type
+        "NOT APPLICABLE" as sb_ad_type
 
     from sp_placement_asin
 
