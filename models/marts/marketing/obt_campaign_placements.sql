@@ -44,7 +44,8 @@ select_sp_placement as (
         campaign_budget_amount_usd,
         cost_usd,
         sales_14d_usd as sales_clicks_usd,
-        cost_per_click_usd
+        cost_per_click_usd,
+        CAST(null as string) as sb_ad_type
 
     from sp_placement_asin
 
@@ -80,7 +81,8 @@ select_sb_placement as (
         campaign_budget_amount_usd,
         cost_usd,
         sales_clicks_usd,
-        cost_per_click_usd
+        cost_per_click_usd,
+        sb_ad_type
 
     from sb_placement_asin
 
