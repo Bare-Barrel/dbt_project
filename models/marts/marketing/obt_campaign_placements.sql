@@ -96,6 +96,40 @@ combine_sp_and_sb_placement as (
 
     select * from select_sb_placement
 
+),
+
+aggregate_campaign_placements as (
+
+    select
+        record_date,
+        marketplace,
+        asin,
+        tenant_id,
+        campaign_status,
+        placement_classification,
+        ad_type,
+        sb_ad_type,
+
+        SUM(impressions) as impressions,
+        SUM(clicks) as clicks,
+        SUM(units_sold_clicks) as units_sold_clicks,
+        SUM(purchases_clicks) as purchases_clicks,
+        SUM(campaign_budget_amount_usd) as campaign_budget_amount_usd,
+        SUM(cost_usd) as cost_usd,
+        SUM(sales_clicks_usd) as sales_clicks_usd
+
+    from combine_sp_and_sb_placement
+
+    group by
+        record_date,
+        marketplace,
+        asin,
+        tenant_id,
+        campaign_status,
+        placement_classification,
+        ad_type,
+        sb_ad_type
+
 )
 
-select * from combine_sp_and_sb_placement
+select * from aggregate_campaign_placements
