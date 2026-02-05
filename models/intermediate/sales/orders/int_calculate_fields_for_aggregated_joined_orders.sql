@@ -46,7 +46,7 @@ match_old_sku_to_current as (
         agg_jo.actual_amazon_fee_amount,
         agg_jo.actual_amazon_fee_currency_code,
 
-        -- new_sku to handle old Rymora skus
+        -- new_sku to handle old Rymora skus    TODO: Check why new_sku is not being reflected
         case
             when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
                 then ry_p_md.current_sku
@@ -151,7 +151,7 @@ calculate_fields as (
                                         then 0.15
                                     else 0.08
                                 end
-                        when REGEXP_CONTAINS(seller_sku, r'^RMA-SPO*')
+                        when REGEXP_CONTAINS(seller_sku, r'^RMA-SPO.*')
                             then
                                 case
                                     when
@@ -205,6 +205,7 @@ add_referral_fees as (
         order_status,
         asin,
         seller_sku,
+        new_sku,
         item_price_currency_code,
         is_vine,
         is_replacement_order,

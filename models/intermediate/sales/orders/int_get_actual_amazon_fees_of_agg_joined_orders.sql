@@ -11,6 +11,13 @@ joined_orders_with_added_fields as (
 
     select * from {{ ref('int_add_fields_to_joined_orders') }}
 
+    {% if is_incremental() %}
+        where purchase_date >= date_sub(
+            (select max(t.purchase_date) from {{ this }} as t),
+            interval 2 day
+        )
+    {% endif %}
+
 ),
 
 aggregated_financial_events_item_fees as (
