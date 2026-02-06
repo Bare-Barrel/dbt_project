@@ -1,4 +1,4 @@
--- obt_rymora_warehouse_stock_levels.sql
+-- obt_mintsoft_warehouse_stock_levels.sql
 
 with
 
