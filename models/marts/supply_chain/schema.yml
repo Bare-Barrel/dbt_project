@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: obt_rymora_warehouse_stock_levels
+    description: ""
+    columns:
+      - name: client_id
+        data_type: string
+        description: ""
+
+      - name: account_name
+        data_type: string
+        description: ""
+
+      - name: warehouse_id
+        data_type: string
+        description: ""
+
+      - name: warehouse_name
+        data_type: string
+        description: ""
+
+      - name: product_id
+        data_type: string
+        description: ""
+
+      - name: sku
+        data_type: string
+        description: ""
+
+      - name: stock_level
+        data_type: int64
+        description: ""
+
+      - name: total_stock_level
+        data_type: int64
+        description: ""
+
+      - name: preorderable
+        data_type: string
+        description: ""
+
+      - name: bundle
+        data_type: string
+        description: ""
+
+      - name: low_stock_level
+        data_type: int64
+        description: ""
+
+      - name: last_updated
+        data_type: timestamp
+        description: ""
+
+      - name: breakdown
+        data_type: string
+        description: ""
+
+      - name: recorded_at
+        data_type: timestamp
+        description: ""
+
+      - name: recorded_date
+        data_type: date
+        description: ""
