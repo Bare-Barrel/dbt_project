@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: mintsoft_api
+    tables:
+      - name: warehouse_stock_levels
+        columns:
+          - name: productid
+            data_type: int64
+          - name: warehouseid
+            data_type: int64
+          - name: clientid
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: level
+            data_type: int64
+          - name: totalstocklevel
+            data_type: int64
+          - name: preorderable
+            data_type: boolean
+          - name: bundle
+            data_type: boolean
+          - name: lowstocklevel
+            data_type: int64
+          - name: lastupdated
+            data_type: string
+          - name: breakdown
+            data_type: string
+          - name: warehouse_name
+            data_type: string
+          - name: account_name
+            data_type: string
+          - name: recorded_at
+            data_type: timestamp
