@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: obt_rymora_warehouse_stock_levels
+  - name: obt_mintsoft_warehouse_stock_levels
     description: ""
     columns:
       - name: client_id
