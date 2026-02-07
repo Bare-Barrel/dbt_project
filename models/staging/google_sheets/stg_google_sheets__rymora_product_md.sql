@@ -110,24 +110,24 @@ cast_data_types as (
         old_sku_2,
 
         -- numerics
-        CAST(moq as integer) as moq,
-        CAST(lead_time_days as integer) as lead_time_days,
-        CAST(pcs_per_carton as integer) as pcs_per_carton,
-        CAST(_2020_rates_usd as numeric) as _2020_rates_usd,
-        CAST(length_cm as integer) as length_cm,
-        CAST(width_cm as integer) as width_cm,
-        CAST(height_cm as integer) as height_cm,
-        CAST(cbm as numeric) as cbm,
-        CAST(n_weight_kg as numeric) as n_weight_kg,
-        CAST(g_weight_kg as numeric) as g_weight_kg,
-        CAST(length_inch as numeric) as length_inch,
-        CAST(width_inch as numeric) as width_inch,
-        CAST(height_inch as numeric) as height_inch,
-        CAST(cft as numeric) as cft,
-        CAST(n_weight_lb as numeric) as n_weight_lb,
-        CAST(g_weight_lb as numeric) as g_weight_lb,
-        CAST(per_unit_g as numeric) as per_unit_g,
-        CAST(per_unit_oz as numeric) as per_unit_oz
+        SAFE_CAST(moq as integer) as moq,
+        SAFE_CAST(lead_time_days as integer) as lead_time_days,
+        SAFE_CAST(pcs_per_carton as integer) as pcs_per_carton,
+        SAFE_CAST(_2020_rates_usd as numeric) as _2020_rates_usd,
+        SAFE_CAST(length_cm as integer) as length_cm,
+        SAFE_CAST(width_cm as integer) as width_cm,
+        SAFE_CAST(height_cm as integer) as height_cm,
+        SAFE_CAST(cbm as numeric) as cbm,
+        SAFE_CAST(n_weight_kg as numeric) as n_weight_kg,
+        SAFE_CAST(g_weight_kg as numeric) as g_weight_kg,
+        SAFE_CAST(length_inch as numeric) as length_inch,
+        SAFE_CAST(width_inch as numeric) as width_inch,
+        SAFE_CAST(height_inch as numeric) as height_inch,
+        SAFE_CAST(cft as numeric) as cft,
+        SAFE_CAST(n_weight_lb as numeric) as n_weight_lb,
+        SAFE_CAST(g_weight_lb as numeric) as g_weight_lb,
+        SAFE_CAST(per_unit_g as numeric) as per_unit_g,
+        SAFE_CAST(per_unit_oz as numeric) as per_unit_oz
 
     from remove_dollar_sign
 
