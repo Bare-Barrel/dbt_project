@@ -6,6 +6,11 @@ on:
     - cron: '0 9 * * *'  # 10:00 UTC
     - cron: '0 13 * * *'  # 14:00 UTC
   workflow_dispatch:   # allows manual "Run workflow"
+    inputs:
+      full_refresh:
+        description: "Run dbt with --full-refresh"
+        required: false
+        default: "false"
   push:
     branches: [ main ]
   pull_request:
@@ -56,10 +61,13 @@ jobs:
             echo "$BIGQUERY_SERVICE_ACCOUNT" | jq . >/dev/null 2>&1 && echo "JSON looks valid" || echo "Invalid JSON"
           fi
 
-      - name: Run dbt run (full)
-        run: dbt run --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET
-
-      - name: Run dbt debug and build (full prod)
+      - name: Run dbt
         run: |
           dbt debug --profiles-dir $DBT_PROFILES_DIR
-          dbt build --profiles-dir $DBT_PROFILES_DIR --target prod
+          if [ "${{ github.event.inputs.full_refresh }}" == "true" ]; then
+            echo "Running dbt with FULL REFRESH"
+            dbt build --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET --full-refresh
+          else
+            echo "Running dbt normally (incremental)"
+            dbt build --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET
+          fi
