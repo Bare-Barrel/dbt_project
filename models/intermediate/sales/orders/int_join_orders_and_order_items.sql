@@ -54,7 +54,9 @@ join_orders_and_order_items as (
     from orders as o
 
     left join order_items as oi
-        on o.amazon_order_id = oi.amazon_order_id
+        on
+            o.amazon_order_id = oi.amazon_order_id
+            and o.tenant_id = oi.tenant_id
 
     order by o.purchase_date desc, o.tenant_id asc, o.marketplace desc, oi.seller_sku asc
 
