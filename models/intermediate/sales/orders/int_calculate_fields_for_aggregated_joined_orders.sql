@@ -46,7 +46,7 @@ match_old_sku_to_current as (
         agg_jo.actual_amazon_fee_amount,
         agg_jo.actual_amazon_fee_currency_code,
 
-        -- new_sku to handle old Rymora skus    TODO: Check why new_sku is not being reflected
+        -- new_sku to handle old Rymora skus
         case
             when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
                 then ry_p_md.current_sku
@@ -56,6 +56,50 @@ match_old_sku_to_current as (
 
     left join rymora_product_md as ry_p_md
         on agg_jo.seller_sku = ry_p_md.previous_sku
+
+),
+
+match_old_sku_2_to_current as (     -- match the second time around
+
+    select
+        m_o_sku.purchase_date,
+        m_o_sku.marketplace,
+        m_o_sku.order_status,
+        m_o_sku.asin,
+        m_o_sku.seller_sku,
+        m_o_sku.item_price_currency_code,
+        m_o_sku.is_vine,
+        m_o_sku.is_replacement_order,
+        m_o_sku.tenant_id,
+        m_o_sku.product_code,
+        m_o_sku.quantity_ordered,
+        m_o_sku.item_price_amount,
+        m_o_sku.promotion_discount_amount,
+        m_o_sku.item_tax_amount,
+        m_o_sku.shipping_price_amount,
+        m_o_sku.shipping_discount_amount,
+        m_o_sku.buyer_info_gift_wrap_price_amount,
+        m_o_sku.output_vat,
+        m_o_sku.coupon_fee,
+        m_o_sku.actual_amazon_fee_amount,
+        m_o_sku.actual_amazon_fee_currency_code,
+
+        -- new_sku_2 to handle old_2 Rymora skus
+        case
+            when
+                REGEXP_CONTAINS(m_o_sku.seller_sku, r'^RMA-SPO.*')
+                and m_o_sku.new_sku is null
+                then ry_p_md.current_sku
+            when
+                REGEXP_CONTAINS(m_o_sku.seller_sku, r'^RMA-SPO.*')
+                and m_o_sku.new_sku is not null
+                then m_o_sku.new_sku
+        end as new_sku
+
+    from match_old_sku_to_current as m_o_sku
+
+    left join rymora_product_md as ry_p_md
+        on m_o_sku.seller_sku = ry_p_md.old_sku
 
 ),
 
@@ -193,7 +237,7 @@ calculate_fields as (
                     end
         end as referral_fee_pct
 
-    from match_old_sku_to_current
+    from match_old_sku_2_to_current
 
 ),
 
