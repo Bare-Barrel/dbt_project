@@ -1,4 +1,4 @@
--- obt_orders_per_asin_and_date.sql     # !!change to obt_aggregated_orders.sql!!
+-- obt_aggregated_orders.sql
 -- same as amazon_orders_summary_view
 
 with
