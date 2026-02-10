@@ -18,14 +18,14 @@ rename_fields as (
         productid as product_id,
         warehouseid as warehouse_id,
         clientid as client_id,
-        "SKU" as sku,
+        `SKU` as sku,
         level as stock_level,
         totalstocklevel as total_stock_level,
-        "PreOrderable" as preorderable,
-        "Bundle" as bundle,
+        `PreOrderable` as preorderable,
+        `Bundle` as bundle,
         lowstocklevel as low_stock_level,
         lastupdated as last_updated,
-        "Breakdown" as breakdown
+        `Breakdown` as breakdown
 
     from rymora_warehouse_stock_levels
 
