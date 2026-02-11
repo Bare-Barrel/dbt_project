@@ -23,6 +23,7 @@ bb_us_cogs_ww as (
         1 as tenant_id,
         "US" as marketplace,
         "USD" as currency_code,
+
         us_cogs_usd as cogs,
         us_fba_fee_usd as fba_fee,
         us_storage_fee_usd as storage_fee,
@@ -109,6 +110,7 @@ bb_uk_cogs_ww as (
         1 as tenant_id,
         "UK" as marketplace,
         "GBP" as currency_code,
+
         uk_cogs_gbp as cogs,
         uk_fba_fee_gbp as fba_fee,
         uk_storage_fee_gbp as storage_fee,
