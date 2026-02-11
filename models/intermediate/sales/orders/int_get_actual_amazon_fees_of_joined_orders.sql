@@ -1,4 +1,4 @@
--- int_get_actual_amazon_fees_of_agg_joined_orders.sql 05
+-- int_get_actual_amazon_fees_of_joined_orders.sql 05
 
 {{ config(
     materialized='incremental',
