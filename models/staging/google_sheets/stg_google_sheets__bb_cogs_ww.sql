@@ -65,8 +65,8 @@ cast_data_types as (
 
     select
         -- dates
-        start_date,
-        end_date,
+        CAST(start_date as date) as start_date,
+        CAST(end_date as date) as end_date,
 
         -- strings
         parent_product,
