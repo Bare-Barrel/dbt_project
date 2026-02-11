@@ -1,10 +1,7 @@
 -- int_add_fields_to_joined_orders.sql 04
 -- same as amazon_order_items_detailed_view
 
-{{ config(
-    materialized='incremental',
-    unique_key='order_item_id'
-) }}
+{{ config(materialized='view') }}
 
 with
 
