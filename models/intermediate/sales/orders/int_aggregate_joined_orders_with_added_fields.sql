@@ -6,7 +6,7 @@ with
 
 agg_joined_orders_with_actual_amazon_fees as (
 
-    select * from {{ ref('int_get_actual_amazon_fees_of_agg_joined_orders') }}
+    select * from {{ ref('int_get_actual_amazon_fees_of_joined_orders') }}
 
 ),
 

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: obt_orders_per_asin_and_date
+  - name: obt_aggregated_orders
     description: ""
     columns:
       - name: purchase_date
