@@ -40,6 +40,10 @@ models:
         data_type: string
         description: ""
 
+      - name: old_sku_2
+        data_type: string
+        description: ""
+
       - name: moq
         data_type: int64
         description: ""
@@ -110,4 +114,326 @@ models:
 
       - name: per_unit_oz
         data_type: numeric
+        description: ""
+
+  - name: stg_google_sheets__bb_cogs_ww
+    description: ""
+    columns:
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: parent_product
+        data_type: string
+        description: ""
+
+      - name: product_code
+        data_type: string
+        description: ""
+
+      - name: sku
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: ca_fulfillment_type
+        data_type: string
+        description: ""
+
+      - name: us_cogs_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_fba_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_storage_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_returns_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_all_costs_except_commission_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_avg_revenue_per_sale_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_return_rate
+        data_type: float64
+        description: ""
+
+      - name: ca_local_cogs_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_fba_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_storage_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_returns_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_all_costs_except_commission_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_avg_revenue_per_sale_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_return_rate
+        data_type: float64
+        description: ""
+
+      - name: ca_narf_cogs_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_fba_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_storage_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_returns_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_all_costs_except_commission_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_avg_revenue_per_sale_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_return_rate
+        data_type: float64
+        description: ""
+
+      - name: uk_cogs_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_fba_fee_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_storage_fee_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_returns_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_all_costs_except_commission_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_avg_revenue_per_sale_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_return_rate
+        data_type: float64
+        description: ""
+
+  - name: stg_google_sheets__rymora_cogs_ww
+    description: ""
+    columns:
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: parent_product
+        data_type: string
+        description: ""
+
+      - name: product_code
+        data_type: string
+        description: ""
+
+      - name: sku
+        data_type: string
+        description: ""
+
+      - name: ean
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: pack_size
+        data_type: string
+        description: ""
+
+      - name: color
+        data_type: string
+        description: ""
+
+      - name: product_size
+        data_type: string
+        description: ""
+
+      - name: ca_fulfillment_type
+        data_type: string
+        description: ""
+
+      - name: pieces_per_carton
+        data_type: int64
+        description: ""
+
+      - name: us_cogs_factory_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_cogs_ddp_freight_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_cogs_3pl_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_cogs_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_fba_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_storage_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_returns_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_referral_rate
+        data_type: float64
+        description: ""
+
+      - name: us_referral_fee_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_avg_revenue_per_sale_usd
+        data_type: numeric
+        description: ""
+
+      - name: us_return_rate
+        data_type: float64
+        description: ""
+
+      - name: ca_local_cogs_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_fba_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_storage_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_returns_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_all_costs_except_commission_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_avg_revenue_per_sale_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_local_return_rate
+        data_type: float64
+        description: ""
+
+      - name: ca_narf_cogs_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_fba_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_storage_fee_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_returns_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_all_costs_except_commission_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_avg_revenue_per_sale_cad
+        data_type: numeric
+        description: ""
+
+      - name: ca_narf_return_rate
+        data_type: float64
+        description: ""
+
+      - name: uk_cogs_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_fba_fee_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_storage_fee_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_returns_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_all_costs_except_commission_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_avg_revenue_per_sale_gbp
+        data_type: numeric
+        description: ""
+
+      - name: uk_return_rate
+        data_type: float64
         description: ""
