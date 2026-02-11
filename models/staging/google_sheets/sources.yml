@@ -59,3 +59,177 @@ sources:
             data_type: string
           - name: string_field_26
             data_type: string
+          - name: string_field_27
+            data_type: string
+
+      - name: bb_cogs_ww
+        columns:
+          - name: string_field_0
+            data_type: string
+          - name: string_field_1
+            data_type: string
+          - name: string_field_2
+            data_type: string
+          - name: string_field_3
+            data_type: string
+          - name: string_field_4
+            data_type: string
+          - name: string_field_5
+            data_type: string
+          - name: string_field_6
+            data_type: string
+          - name: string_field_7
+            data_type: string
+          - name: string_field_8
+            data_type: string
+          - name: string_field_9
+            data_type: string
+          - name: string_field_10
+            data_type: string
+          - name: string_field_11
+            data_type: string
+          - name: string_field_12
+            data_type: string
+          - name: string_field_13
+            data_type: string
+          - name: string_field_14
+            data_type: string
+          - name: string_field_15
+            data_type: string
+          - name: string_field_16
+            data_type: string
+          - name: string_field_17
+            data_type: string
+          - name: string_field_18
+            data_type: string
+          - name: string_field_19
+            data_type: string
+          - name: string_field_20
+            data_type: string
+          - name: string_field_21
+            data_type: string
+          - name: string_field_22
+            data_type: string
+          - name: string_field_23
+            data_type: string
+          - name: string_field_24
+            data_type: string
+          - name: string_field_25
+            data_type: string
+          - name: string_field_26
+            data_type: string
+          - name: string_field_27
+            data_type: string
+          - name: string_field_28
+            data_type: string
+          - name: string_field_29
+            data_type: string
+          - name: string_field_30
+            data_type: string
+          - name: string_field_31
+            data_type: string
+          - name: string_field_32
+            data_type: string
+          - name: string_field_33
+            data_type: string
+          - name: string_field_34
+            data_type: string
+          - name: string_field_35
+            data_type: string
+          - name: string_field_36
+            data_type: string
+
+      - name: rymora_cogs_ww
+        columns:
+          - name: string_field_0
+            data_type: string
+          - name: string_field_1
+            data_type: string
+          - name: string_field_2
+            data_type: string
+          - name: string_field_3
+            data_type: string
+          - name: string_field_4
+            data_type: string
+          - name: string_field_5
+            data_type: string
+          - name: string_field_6
+            data_type: string
+          - name: string_field_7
+            data_type: string
+          - name: string_field_8
+            data_type: string
+          - name: string_field_9
+            data_type: string
+          - name: string_field_10
+            data_type: string
+          - name: string_field_11
+            data_type: string
+          - name: string_field_12
+            data_type: string
+          - name: string_field_13
+            data_type: string
+          - name: string_field_14
+            data_type: string
+          - name: string_field_15
+            data_type: string
+          - name: string_field_16
+            data_type: string
+          - name: string_field_17
+            data_type: string
+          - name: string_field_18
+            data_type: string
+          - name: string_field_19
+            data_type: string
+          - name: string_field_20
+            data_type: string
+          - name: string_field_21
+            data_type: string
+          - name: string_field_22
+            data_type: string
+          - name: string_field_23
+            data_type: string
+          - name: string_field_24
+            data_type: string
+          - name: string_field_25
+            data_type: string
+          - name: string_field_26
+            data_type: string
+          - name: string_field_27
+            data_type: string
+          - name: string_field_28
+            data_type: string
+          - name: string_field_29
+            data_type: string
+          - name: string_field_30
+            data_type: string
+          - name: string_field_31
+            data_type: string
+          - name: string_field_32
+            data_type: string
+          - name: string_field_33
+            data_type: string
+          - name: string_field_34
+            data_type: string
+          - name: string_field_35
+            data_type: string
+          - name: string_field_36
+            data_type: string
+          - name: string_field_37
+            data_type: string
+          - name: string_field_38
+            data_type: string
+          - name: string_field_39
+            data_type: string
+          - name: string_field_40
+            data_type: string
+          - name: string_field_41
+            data_type: string
+          - name: string_field_42
+            data_type: string
+          - name: string_field_43
+            data_type: string
+          - name: string_field_44
+            data_type: string
+          - name: string_field_45
+            data_type: string
