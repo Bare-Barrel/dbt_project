@@ -25,7 +25,7 @@ rymora_us_cogs_ww as (
         product_size,
         pieces_per_carton,
 
-        1 as tenant_id,
+        2 as tenant_id,
         "US" as marketplace,
         "USD" as currency_code,
 
@@ -61,7 +61,7 @@ rymora_ca_cogs_ww as (
         product_size,
         pieces_per_carton,
 
-        1 as tenant_id,
+        2 as tenant_id,
         "CA" as marketplace,
         "CAD" as currency_code,
 
@@ -127,7 +127,7 @@ rymora_uk_cogs_ww as (
         product_size,
         pieces_per_carton,
 
-        1 as tenant_id,
+        2 as tenant_id,
         "UK" as marketplace,
         "GBP" as currency_code,
 
