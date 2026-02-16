@@ -1,5 +1,4 @@
 -- obt_aggregated_orders.sql
--- same as amazon_orders_summary_view
 
 with
 
@@ -18,25 +17,28 @@ reorder_fields as (
         asin,
         seller_sku,
         product_code,
-        quantity_ordered,
-        net_item_price_per_unit,
-        item_price_amount,
-        promotion_discount_amount,
-        item_tax_amount,
-        output_vat,
-        net_item_price_amount,
-        referral_fees,
-        coupon_fee,
-        item_price_currency_code,
         is_vine,
         is_replacement_order,
         tenant_id,
-        actual_amazon_fee_amount,
-        actual_amazon_fee_currency_code
+        quantity_ordered,
+        item_price_amount_usd,
+        coupon_fee_usd,
+        item_tax_amount_usd,
+        uk_output_vat_usd,
+        promotion_discount_amount_usd,
+        net_item_price_per_unit_usd,
+        net_item_price_amount_usd,
+        cogs_usd,
+        est_fba_fee_usd,
+        est_storage_fee_usd,
+        est_returns_cost_usd,
+        est_referral_fee_usd,
+        est_amazon_fees_usd,
+        actual_amazon_fees_usd
 
     from agg_orders_with_calc_fields
 
-    {# order by purchase_date desc, marketplace desc, quantity_ordered desc #}
+    order by purchase_date desc, marketplace desc, quantity_ordered desc
 
 )
 

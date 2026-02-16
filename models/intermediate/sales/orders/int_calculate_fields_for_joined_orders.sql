@@ -26,7 +26,7 @@ calculate_fields as (
             when marketplace = 'UK' and item_tax_amount = 0
                 then (item_price_amount / 1.20) * 0.20
             else 0
-        end as output_vat,
+        end as uk_output_vat,
 
         -- Coupon Fee
         case

@@ -42,7 +42,7 @@ add_fields_to_joined_orders as (
         prime.item_price_amount,
         jo.item_tax_amount,
         jo.promotion_discount_tax_currency_code,
-        fta.output_vat,
+        fta.uk_output_vat,
         jo.item_tax_currency_code,
         jo.promotion_discount_tax_amount,
         jo.promotion_discount_currency_code,

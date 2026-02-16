@@ -1,4 +1,4 @@
--- int_calculate_fields_for_aggregated_joined_orders.sql 07
+-- int_calculate_fields_for_aggregated_joined_orders.sql 09
 
 {{ config(materialized='view') }}
 
@@ -21,41 +21,54 @@ rymora_product_md as (
 
 ),
 
+derive_product_code as (
+
+    select
+        *,
+
+        REGEXP_EXTRACT(seller_sku, r'[^_]+$') as product_code
+
+    from agg_joined_orders
+
+),
+
 match_old_sku_to_current as (
 
     select
-        agg_jo.purchase_date,
-        agg_jo.marketplace,
-        agg_jo.order_status,
-        agg_jo.asin,
-        agg_jo.seller_sku,
-        agg_jo.item_price_currency_code,
-        agg_jo.is_vine,
-        agg_jo.is_replacement_order,
-        agg_jo.tenant_id,
-        agg_jo.product_code,
-        agg_jo.quantity_ordered,
-        agg_jo.item_price_amount,
-        agg_jo.promotion_discount_amount,
-        agg_jo.item_tax_amount,
-        agg_jo.shipping_price_amount,
-        agg_jo.shipping_discount_amount,
-        agg_jo.buyer_info_gift_wrap_price_amount,
-        agg_jo.output_vat,
-        agg_jo.coupon_fee,
-        agg_jo.actual_amazon_fee_amount,
-        agg_jo.actual_amazon_fee_currency_code,
+        d_p_c.purchase_date,
+        d_p_c.marketplace,
+        d_p_c.order_status,
+        d_p_c.asin,
+        d_p_c.seller_sku,
+        d_p_c.is_vine,
+        d_p_c.is_replacement_order,
+        d_p_c.tenant_id,
+        d_p_c.product_code,
+        d_p_c.quantity_ordered,
+        d_p_c.item_price_amount_usd,
+        d_p_c.coupon_fee_usd,
+        d_p_c.item_tax_amount_usd,
+        d_p_c.uk_output_vat_usd,
+        d_p_c.promotion_discount_amount_usd,
+        d_p_c.shipping_price_amount_usd,
+        d_p_c.shipping_discount_amount_usd,
+        d_p_c.buyer_info_gift_wrap_price_amount_usd,
+        d_p_c.cogs_usd,
+        d_p_c.est_fba_fee_usd,
+        d_p_c.est_storage_fee_usd,
+        d_p_c.est_returns_cost_usd,
+        d_p_c.actual_amazon_fees_usd,
 
         -- new_sku to handle old Rymora skus
         case
-            when REGEXP_CONTAINS(agg_jo.seller_sku, r'^RMA-SPO.*')
+            when REGEXP_CONTAINS(d_p_c.seller_sku, r'^RMA-SPO.*')
                 then ry_p_md.current_sku
         end as new_sku
 
-    from agg_joined_orders as agg_jo
+    from derive_product_code as d_p_c
 
     left join rymora_product_md as ry_p_md
-        on agg_jo.seller_sku = ry_p_md.previous_sku
+        on d_p_c.seller_sku = ry_p_md.previous_sku
 
 ),
 
@@ -67,24 +80,26 @@ match_old_sku_2_to_current as (     -- match the second time around
         m_o_sku.order_status,
         m_o_sku.asin,
         m_o_sku.seller_sku,
-        m_o_sku.item_price_currency_code,
         m_o_sku.is_vine,
         m_o_sku.is_replacement_order,
         m_o_sku.tenant_id,
         m_o_sku.product_code,
         m_o_sku.quantity_ordered,
-        m_o_sku.item_price_amount,
-        m_o_sku.promotion_discount_amount,
-        m_o_sku.item_tax_amount,
-        m_o_sku.shipping_price_amount,
-        m_o_sku.shipping_discount_amount,
-        m_o_sku.buyer_info_gift_wrap_price_amount,
-        m_o_sku.output_vat,
-        m_o_sku.coupon_fee,
-        m_o_sku.actual_amazon_fee_amount,
-        m_o_sku.actual_amazon_fee_currency_code,
+        m_o_sku.item_price_amount_usd,
+        m_o_sku.coupon_fee_usd,
+        m_o_sku.item_tax_amount_usd,
+        m_o_sku.uk_output_vat_usd,
+        m_o_sku.promotion_discount_amount_usd,
+        m_o_sku.shipping_price_amount_usd,
+        m_o_sku.shipping_discount_amount_usd,
+        m_o_sku.buyer_info_gift_wrap_price_amount_usd,
+        m_o_sku.cogs_usd,
+        m_o_sku.est_fba_fee_usd,
+        m_o_sku.est_storage_fee_usd,
+        m_o_sku.est_returns_cost_usd,
+        m_o_sku.actual_amazon_fees_usd,
 
-        -- new_sku_2 to handle old_2 Rymora skus
+        -- new_sku to also handle old_2 Rymora skus
         case
             when
                 REGEXP_CONTAINS(m_o_sku.seller_sku, r'^RMA-SPO.*')
@@ -112,46 +127,48 @@ calculate_fields as (
         asin,
         seller_sku,
         new_sku,
-        item_price_currency_code,
         is_vine,
         is_replacement_order,
         tenant_id,
         product_code,
         quantity_ordered,
-        item_price_amount,
-        promotion_discount_amount,
-        item_tax_amount,
-        shipping_price_amount,
-        shipping_discount_amount,
-        buyer_info_gift_wrap_price_amount,
-        output_vat,
-        coupon_fee,
-        actual_amazon_fee_amount,
-        actual_amazon_fee_currency_code,
+        item_price_amount_usd,
+        coupon_fee_usd,
+        item_tax_amount_usd,
+        uk_output_vat_usd,
+        promotion_discount_amount_usd,
+        shipping_price_amount_usd,
+        shipping_discount_amount_usd,
+        buyer_info_gift_wrap_price_amount_usd,
+        cogs_usd,
+        est_fba_fee_usd,
+        est_storage_fee_usd,
+        est_returns_cost_usd,
+        actual_amazon_fees_usd,
 
         -- Sales Price per unit, UK Sales have 20% VAT included
         case
             when marketplace = 'UK'
                 then
                     ROUND(
-                        SAFE_DIVIDE(item_price_amount - promotion_discount_amount - coupon_fee - output_vat, quantity_ordered
+                        SAFE_DIVIDE(item_price_amount_usd - promotion_discount_amount_usd - coupon_fee_usd - uk_output_vat_usd, quantity_ordered
                         ), 2
                     )
             else
                 ROUND(
-                    SAFE_DIVIDE(item_price_amount - promotion_discount_amount - coupon_fee, quantity_ordered
+                    SAFE_DIVIDE(item_price_amount_usd - promotion_discount_amount_usd - coupon_fee_usd, quantity_ordered
                     ), 2
                 )
-        end as net_item_price_per_unit,
+        end as net_item_price_per_unit_usd,
 
         -- Sales Price per order, UK Sales have 20% VAT included
         case
             when marketplace = 'UK'
                 then
-                    item_price_amount - promotion_discount_amount - coupon_fee - output_vat
+                    item_price_amount_usd - promotion_discount_amount_usd - coupon_fee_usd - uk_output_vat_usd
             else
-                item_price_amount - promotion_discount_amount - coupon_fee
-        end as net_item_price_amount,
+                item_price_amount_usd - promotion_discount_amount_usd - coupon_fee_usd
+        end as net_item_price_amount_usd,
 
         -- Estimated Referral Fee Percentage
         case
@@ -235,13 +252,13 @@ calculate_fields as (
                                             end
                                 end
                     end
-        end as referral_fee_pct
+        end as est_referral_fee_pct
 
     from match_old_sku_2_to_current
 
 ),
 
-add_referral_fees as (
+compute_est_referral_fee as (
 
     select
         purchase_date,
@@ -250,28 +267,71 @@ add_referral_fees as (
         asin,
         seller_sku,
         new_sku,
-        item_price_currency_code,
         is_vine,
         is_replacement_order,
         tenant_id,
         product_code,
         quantity_ordered,
-        item_price_amount,
-        promotion_discount_amount,
-        item_tax_amount,
-        output_vat,
-        coupon_fee,
-        net_item_price_per_unit,
-        net_item_price_amount,
-        actual_amazon_fee_currency_code,
+        item_price_amount_usd,
+        coupon_fee_usd,
+        item_tax_amount_usd,
+        uk_output_vat_usd,
+        promotion_discount_amount_usd,
+        shipping_price_amount_usd,
+        shipping_discount_amount_usd,
+        buyer_info_gift_wrap_price_amount_usd,
+        cogs_usd,
+        est_fba_fee_usd,
+        est_storage_fee_usd,
+        est_returns_cost_usd,
+        net_item_price_per_unit_usd,
+        net_item_price_amount_usd,
 
-        ABS(actual_amazon_fee_amount) as actual_amazon_fee_amount,
-        CAST(referral_fee_pct as numeric) as referral_fee_pct,
-        CAST(CAST(referral_fee_pct as numeric) * (COALESCE(net_item_price_amount, 0) + COALESCE(shipping_price_amount, 0) - COALESCE(shipping_discount_amount, 0) + COALESCE(buyer_info_gift_wrap_price_amount, 0)) as numeric)
-            as referral_fees
+        ABS(actual_amazon_fees_usd) as actual_amazon_fees_usd,
+        CAST(est_referral_fee_pct as numeric) as est_referral_fee_pct,
+        CAST(CAST(est_referral_fee_pct as numeric) * (COALESCE(net_item_price_amount_usd, 0) + COALESCE(shipping_price_amount_usd, 0) - COALESCE(shipping_discount_amount_usd, 0) + COALESCE(buyer_info_gift_wrap_price_amount_usd, 0)) as numeric)
+            as est_referral_fee_usd
 
     from calculate_fields
 
+),
+
+compute_est_amazon_fees as (
+
+    select
+        purchase_date,
+        marketplace,
+        order_status,
+        asin,
+        seller_sku,
+        new_sku,
+        is_vine,
+        is_replacement_order,
+        tenant_id,
+        product_code,
+        quantity_ordered,
+        item_price_amount_usd,
+        coupon_fee_usd,
+        item_tax_amount_usd,
+        uk_output_vat_usd,
+        promotion_discount_amount_usd,
+        shipping_price_amount_usd,
+        shipping_discount_amount_usd,
+        buyer_info_gift_wrap_price_amount_usd,
+        cogs_usd,
+        est_fba_fee_usd,
+        est_storage_fee_usd,
+        est_returns_cost_usd,
+        net_item_price_per_unit_usd,
+        net_item_price_amount_usd,
+        actual_amazon_fees_usd,
+        est_referral_fee_pct,
+        est_referral_fee_usd,
+
+        est_fba_fee_usd + est_referral_fee_usd as est_amazon_fees_usd
+
+    from compute_est_referral_fee
+
 )
 
-select * from add_referral_fees
+select * from compute_est_amazon_fees
