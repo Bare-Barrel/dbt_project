@@ -1,8 +1,9 @@
--- int_get_actual_amazon_fees_of_joined_orders.sql 07
+-- int_get_actual_amazon_fees_of_joined_orders.sql 07 TODO: compare est and actual on order item level
 
 {{ config(
     materialized='incremental',
-    unique_key='order_item_id'
+    unique_key='order_item_id',
+    on_schema_change='sync_all_columns'
 ) }}
 
 with
