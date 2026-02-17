@@ -1,4 +1,4 @@
--- int_get_actual_amazon_fees_of_joined_orders.sql 07 TODO: compare est and actual on order item level
+-- int_get_actual_amazon_fees_of_joined_orders.sql 09
 
 {{ config(
     materialized='incremental',
@@ -51,6 +51,7 @@ get_actual_amazon_fees as (
         j_o_usd.is_vine,
         j_o_usd.tenant_id,
         j_o_usd.item_price_amount_usd,
+        j_o_usd.net_item_price_amount_usd,
         j_o_usd.coupon_fee_usd,
         j_o_usd.item_tax_amount_usd,
         j_o_usd.uk_output_vat_usd,
@@ -63,6 +64,7 @@ get_actual_amazon_fees as (
         j_o_usd.est_fba_fee_usd,
         j_o_usd.est_storage_fee_usd,
         j_o_usd.est_returns_cost_usd,
+        j_o_usd.est_referral_fee_usd,
         agg_feif.item_fee__fee_amount_usd as actual_amazon_fees_usd
 
     from joined_orders_usd as j_o_usd
