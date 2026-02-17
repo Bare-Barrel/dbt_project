@@ -29,12 +29,13 @@ reorder_fields as (
         net_item_price_per_unit_usd,
         net_item_price_amount_usd,
         cogs_usd,
-        est_fba_fee_usd,
+        {# est_fba_fee_usd, #}
         est_storage_fee_usd,
         est_returns_cost_usd,
-        est_referral_fee_usd,
-        est_amazon_fees_usd,
-        actual_amazon_fees_usd
+        {# est_referral_fee_usd, #}
+        {# est_amazon_fees_usd, #}
+        {# actual_amazon_fees_usd, #}
+        amazon_fees_usd
 
     from agg_orders_with_calc_fields
 
