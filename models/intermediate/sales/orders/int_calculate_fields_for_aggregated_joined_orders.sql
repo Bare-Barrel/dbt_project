@@ -136,10 +136,12 @@ calculate_fields as (
         {# est_referral_fee_usd, #}
         {# est_amazon_fees_usd, #}
         {# actual_amazon_fees_usd, #}
-        amazon_fees_usd,
 
         -- Product Code
         REGEXP_EXTRACT(seller_sku, r'[^_]+$') as product_code,
+
+        -- Absolute value of Amazon Fees
+        ABS(amazon_fees_usd) as amazon_fees_usd,
 
         -- Sales Price per unit, UK Sales have 20% VAT included
         case
