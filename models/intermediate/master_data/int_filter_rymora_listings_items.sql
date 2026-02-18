@@ -12,7 +12,7 @@ listings_summaries as (
 
 latest_date as (
 
-    select max(date) as max_date
+    select MAX(date) as max_date
     from listings_summaries
     where tenant_id = 1
 
@@ -25,14 +25,16 @@ get_rows_with_max_dates as (
         asin,
         product_type,
         tenant_id
+
     from listings_summaries as ls
+
     where
         ls.tenant_id = 2
         and ls.date = (select ld.max_date from latest_date as ld)
 
 ),
 
-unique_rows as (
+get_unique_rows as (
 
     select distinct *
     from get_rows_with_max_dates
@@ -42,8 +44,8 @@ unique_rows as (
 get_rymora_skus as (
 
     select *
-    from unique_rows
-    where regexp_contains(sku, r"^R_.*")
+    from get_unique_rows
+    where REGEXP_CONTAINS(sku, r"^R_.*")
 
 )
 

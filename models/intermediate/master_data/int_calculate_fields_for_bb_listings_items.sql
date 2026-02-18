@@ -47,6 +47,14 @@ filter_nulls as (
     from add_concat_field
     where shaker_code is not null
 
+),
+
+remove_mainparisan as (     -- test code only acc to Savan
+
+    select *
+    from filter_nulls
+    where not REGEXP_CONTAINS(sku, r"MainParisan")
+
 )
 
-select * from filter_nulls
+select * from remove_mainparisan
