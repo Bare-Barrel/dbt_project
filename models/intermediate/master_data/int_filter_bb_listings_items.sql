@@ -18,24 +18,26 @@ latest_date as (
 
 ),
 
-filtered as (
+get_rows_with_max_dates as (
 
     select
         sku,
         asin,
         product_type,
         tenant_id
+
     from listings_summaries as ls
+
     where
         ls.tenant_id = 1
         and ls.date = (select ld.max_date from latest_date as ld)
 
 ),
 
-unique_rows as (
+get_unique_rows as (
 
     select distinct *
-    from filtered
+    from get_rows_with_max_dates
 
 ),
 
@@ -44,11 +46,11 @@ ranked as (
     select
         *,
         row_number() over (partition by asin order by sku) as rn
-    from unique_rows
+    from get_unique_rows
 
 ),
 
-remove_duplicate_asin as (
+remove_duplicate_asin as (  -- okay to remove *-US and *-UK skus because we join by ASIN
 
     select
         sku,
