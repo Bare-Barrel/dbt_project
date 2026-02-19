@@ -2,9 +2,9 @@
 
 with
 
-rymora_warehouse_stock_levels as (
+rymora_product_md_with_matched_tsp_skus as (
 
-    select * from {{ ref('stg_mintsoft_api__rymora_warehouse_stock_levels') }}
+    select * from {{ ref('int_match_tsp_old_skus_to_current') }}
 
 ),
 
@@ -27,7 +27,7 @@ reorder_fields as (
         recorded_at,
         recorded_date
 
-    from rymora_warehouse_stock_levels
+    from rymora_product_md_with_matched_tsp_skus
 
 )
 
