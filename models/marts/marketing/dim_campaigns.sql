@@ -10,14 +10,14 @@ sp_campaigns as (
         campaign_name,
         campaign_status
 
-    from {{ source('sponsored_products', 'campaign') }}
+    from {{ ref('stg_sponsored_products__campaign') }}
 
 ),
 
 sb_campaigns as (
 
     select
-        campaign_id,
+        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
         date as record_date,
         campaign_name,
         campaign_status
@@ -29,7 +29,7 @@ sb_campaigns as (
 sd_campaigns as (
 
     select
-        campaign_id,
+        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
         date as record_date,
         campaign_name,
         campaign_status
