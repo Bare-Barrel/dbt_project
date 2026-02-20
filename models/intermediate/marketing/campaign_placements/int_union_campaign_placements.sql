@@ -22,10 +22,10 @@ select_sp_placement as (
         date as record_date,
         created_at,
         updated_at,
-        campaign_id,
+        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
         campaign_name,
         campaign_status,
-        portfolio_id,
+        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
         portfolio_name,
         marketplace,
         placement_classification,
@@ -57,10 +57,10 @@ select_sb_placement as (
         date as record_date,
         created_at,
         updated_at,
-        campaign_id,
+        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
         campaign_name,
         campaign_status,
-        portfolio_id,
+        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
         portfolio_name,
         marketplace,
         placement_classification,

@@ -33,7 +33,7 @@ unique_bb_product_codes as (
 get_sp_product_codes as (
 
     select
-        sp_c_af.date,
+        sp_c_af.campaign_date,
         sp_c_af.created_at,
         sp_c_af.updated_at,
         sp_c_af.campaign_id,
@@ -86,7 +86,7 @@ get_sp_product_codes as (
 get_sp_parent_pack as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -232,7 +232,7 @@ get_sp_parent_pack as (
 fill_in_product_code_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
