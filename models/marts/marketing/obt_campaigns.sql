@@ -23,7 +23,7 @@ int_sd_campaigns as (
 select_sp_fields as ( -- API data source. (04-02-2023 to present)
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
