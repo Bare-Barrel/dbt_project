@@ -100,6 +100,17 @@ models:
         data_type: string
         description: ""
 
+  - name: dim_sb_ad_types
+    description: ""
+    columns:
+      - name: sb_ad_type_sk
+        data_type: string
+        description: ""
+
+      - name: sb_ad_type
+        data_type: string
+        description: ""
+
   - name: fct_campaign_placements
     description: ""
     columns:
@@ -308,7 +319,7 @@ models:
       - name: sales_clicks_usd
         data_type: numeric
         description: ""
-  
+
   - name: obt_campaigns
     description: ""
     columns:
@@ -460,6 +471,45 @@ models:
         description: ""
 
       - name: sponsored_position
+        data_type: numeric
+        description: ""
+
+  - name: obt_sp_campaigns
+    description: ""
+    columns:
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: total_impressions
+        data_type: int64
+        description: ""
+
+      - name: total_clicks
+        data_type: int64
+        description: ""
+
+      - name: total_cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_units_sold_clicks_7d
+        data_type: int64
+        description: ""
+
+      - name: total_sales_7d_usd
         data_type: numeric
         description: ""
 

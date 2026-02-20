@@ -59,10 +59,6 @@ models:
         data_type: string
         description: ""
 
-      - name: shaker_code
-        data_type: string
-        description: ""
-
       - name: portfolio_code
         data_type: string
         description: ""
