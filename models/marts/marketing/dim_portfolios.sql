@@ -4,7 +4,7 @@ with
 
 portfolios as (
 
-    select * from {{ source('public', 'amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
 
 ),
 
