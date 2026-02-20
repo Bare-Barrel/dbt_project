@@ -60,7 +60,7 @@ select_sb_placement as (
         CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
         campaign_name,
         campaign_status,
-        portfolio_id,
+        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
         portfolio_name,
         marketplace,
         placement_classification,
