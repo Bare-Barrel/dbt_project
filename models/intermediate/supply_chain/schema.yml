@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: int_match_tsp_old_skus_to_current
+    description: ""
+    columns:
+      - name: account_name
+        data_type: string
+        description: ""
+
+      - name: warehouse_name
+        data_type: string
+        description: ""
+
+      - name: breakdown
+        data_type: string
+        description: ""
+
+      - name: warehouse_id
+        data_type: string
+        description: ""
+
+      - name: client_id
+        data_type: string
+        description: ""
+
+      - name: product_id
+        data_type: string
+        description: ""
+
+      - name: stock_level
+        data_type: int64
+        description: ""
+
+      - name: total_stock_level
+        data_type: int64
+        description: ""
+
+      - name: low_stock_level
+        data_type: int64
+        description: ""
+
+      - name: preorderable
+        data_type: boolean
+        description: ""
+
+      - name: bundle
+        data_type: boolean
+        description: ""
+
+      - name: recorded_at
+        data_type: timestamp
+        description: ""
+
+      - name: recorded_date
+        data_type: date
+        description: ""
+
+      - name: last_updated
+        data_type: timestamp
+        description: ""
+
+      - name: sku
+        data_type: string
+        description: ""

@@ -1,0 +1,371 @@
+version: 2
+
+models:
+  - name: stg_sponsored_products__campaign_console
+    description: ""
+    columns:
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: campaign_type
+        data_type: string
+        description: ""
+
+      - name: campaign_status
+        data_type: string
+        description: ""
+
+      - name: portfolio_name
+        data_type: string
+        description: ""
+
+      - name: targeting_type
+        data_type: string
+        description: ""
+
+      - name: bidding_strategy
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: country
+        data_type: string
+        description: ""
+
+      - name: currency
+        data_type: string
+        description: ""
+
+      - name: spend
+        data_type: numeric
+        description: ""
+
+      - name: budget
+        data_type: numeric
+        description: ""
+
+      - name: impressions
+        data_type: int64
+        description: ""
+
+      - name: clicks
+        data_type: int64
+        description: ""
+
+      - name: _7_day_total_sales
+        data_type: numeric
+        description: ""
+
+      - name: _7_day_total_orders
+        data_type: int64
+        description: ""
+
+      - name: cost_per_click
+        data_type: numeric
+        description: ""
+
+      - name: click_thru_rate
+        data_type: numeric
+        description: ""
+
+      - name: last_year_spend
+        data_type: numeric
+        description: ""
+
+      - name: last_year_impressions
+        data_type: numeric
+        description: ""
+
+      - name: last_year_clicks
+        data_type: numeric
+        description: ""
+
+      - name: last_year_cost_per_click
+        data_type: numeric
+        description: ""
+
+      - name: total_advertising_cost_of_sales
+        data_type: numeric
+        description: ""
+
+      - name: total_return_on_advertising_spend
+        data_type: numeric
+        description: ""
+
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+  - name: stg_sponsored_products__campaign
+    description: ""
+    columns:
+      - name: campaign_id
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_applicable_budget_rule_id
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: campaign_status
+        data_type: string
+        description: ""
+
+      - name: campaign_budget_type
+        data_type: string
+        description: ""
+
+      - name: campaign_bidding_strategy
+        data_type: string
+        description: ""
+
+      - name: campaign_budget_currency_code
+        data_type: string
+        description: ""
+
+      - name: campaign_applicable_budget_rule_name
+        data_type: string
+        description: ""
+
+      - name: impressions
+        data_type: int64
+        description: ""
+
+      - name: cost
+        data_type: numeric
+        description: ""
+
+      - name: spend
+        data_type: numeric
+        description: ""
+
+      - name: clicks
+        data_type: int64
+        description: ""
+
+      - name: sales_1d
+        data_type: numeric
+        description: ""
+
+      - name: sales_7d
+        data_type: numeric
+        description: ""
+
+      - name: sales_14d
+        data_type: numeric
+        description: ""
+
+      - name: sales_30d
+        data_type: numeric
+        description: ""
+
+      - name: attributed_sales_same_sku_1d
+        data_type: numeric
+        description: ""
+
+      - name: attributed_sales_same_sku_7d
+        data_type: numeric
+        description: ""
+
+      - name: attributed_sales_same_sku_14d
+        data_type: numeric
+        description: ""
+
+      - name: attributed_sales_same_sku_30d
+        data_type: numeric
+        description: ""
+
+      - name: units_sold_clicks_1d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_7d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_14d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_30d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_same_sku_1d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_same_sku_7d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_same_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_same_sku_30d
+        data_type: int64
+        description: ""
+
+      - name: purchases_1d
+        data_type: int64
+        description: ""
+
+      - name: purchases_7d
+        data_type: int64
+        description: ""
+
+      - name: purchases_14d
+        data_type: int64
+        description: ""
+
+      - name: purchases_30d
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_sku_1d
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_sku_7d
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_sku_30d
+        data_type: int64
+        description: ""
+
+      - name: cost_per_click
+        data_type: numeric
+        description: ""
+
+      - name: click_through_rate
+        data_type: numeric
+        description: ""
+
+      - name: top_of_search_impression_share
+        data_type: numeric
+        description: ""
+
+      - name: campaign_budget_amount
+        data_type: numeric
+        description: ""
+
+      - name: campaign_rule_based_budget_amount
+        data_type: numeric
+        description: ""
+
+      - name: kindle_edition_normalized_pages_read_14d
+        data_type: int64
+        description: ""
+
+      - name: kindle_edition_normalized_pages_royalties_14d
+        data_type: int64
+        description: ""
+
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+  - name: stg_sponsored_products__campaigns
+    description: ""
+    columns:
+      - name: campaign_id
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: campaign_state
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: targeting_type
+        data_type: string
+        description: ""
+
+      - name: budget_type
+        data_type: string
+        description: ""
+
+      - name: budget
+        data_type: numeric
+        description: ""
+
+      - name: dynamic_bidding_strategy
+        data_type: string
+        description: ""
+
+      - name: dynamic_bidding_placement_bidding
+        data_type: string
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: portfolio_id
+        data_type: string
+        description: ""

@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: stg_public__amazon_advertising_portfolios
+    description: ""
+    columns:
+      - name: portfolio_id
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: portfolio_name
+        data_type: string
+        description: ""
+
+      - name: portfolio_state
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: serving_status
+        data_type: string
+        description: ""
+
+      - name: in_budget
+        data_type: boolean
+        description: ""
+
+      - name: creation_date
+        data_type: datetime
+        description: ""
+
+      - name: last_updated_date
+        data_type: datetime
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""

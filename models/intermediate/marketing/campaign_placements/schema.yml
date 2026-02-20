@@ -342,6 +342,10 @@ models:
         data_type: string
         description: ""
 
+      - name: sb_ad_type
+        data_type: string
+        description: ""
+
       - name: impressions
         data_type: int64
         description: ""
@@ -454,6 +458,10 @@ models:
         description: ""
 
       - name: placement_classification
+        data_type: string
+        description: ""
+
+      - name: sb_ad_type
         data_type: string
         description: ""
 
