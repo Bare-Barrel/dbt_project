@@ -12,7 +12,7 @@ select_fields as (
 
     select
         portfolio_id,
-        name as portfolio_name
+        portfolio_name
 
     from portfolios
 
