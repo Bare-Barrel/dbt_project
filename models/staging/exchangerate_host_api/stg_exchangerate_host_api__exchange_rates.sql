@@ -1,4 +1,4 @@
--- stg_exchangerate_host_api__exchange_rates.sql
+-- stg_exchangerate_host_api__exchange_rates.sql    TODO: insert test to detect nulls
 
 with
 

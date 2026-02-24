@@ -17,7 +17,7 @@ exchange_rates as (
 
 ),
 
-join_campaign_and_fx_rates as (
+convert_sp_campaign_console_amounts_to_usd as (
 
     select
         sp_cc.campaign_date,
@@ -100,4 +100,4 @@ join_campaign_and_fx_rates as (
 
 )
 
-select * from join_campaign_and_fx_rates
+select * from convert_sp_campaign_console_amounts_to_usd
