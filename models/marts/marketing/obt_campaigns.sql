@@ -57,7 +57,7 @@ select_sp_fields as ( -- API data source. (04-02-2023 to present)
 select_sb_fields as ( -- API Data source v3 (2023-09-21 - present)
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
