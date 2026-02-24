@@ -1,6 +1,6 @@
 -- int_calculate_fields_for_sb_campaigns.sql sb_c_03
 
-{{ config(materialized='ephemeral') }}
+{{ config(materialized='view') }}
 
 with
 
@@ -13,7 +13,7 @@ sb_with_portfolio as (
 calculate_fields as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -86,7 +86,7 @@ calculate_fields as (
 transform_product_code as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,

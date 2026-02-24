@@ -12,20 +12,20 @@ sb_campaign_usd as (
 
 sb_campaigns as (
 
-    select * from {{ source('sponsored_brands', 'campaigns') }}
+    select * from {{ ref('stg_sponsored_brands__campaigns') }}
 
 ),
 
 ad_portfolios as (
 
-    select * from {{ source('public', 'amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
 
 ),
 
 get_sb_portfolio as (
 
     select
-        sb_c_usd.date,
+        sb_c_usd.campaign_date,
         sb_c_usd.created_at,
         sb_c_usd.updated_at,
         sb_c_usd.campaign_id,
@@ -45,7 +45,7 @@ get_sb_portfolio as (
         sb_c_usd.new_to_brand_sales_clicks_usd,
 
         sb_cs.portfolio_id,
-        a_p.name as portfolio_name
+        a_p.portfolio_name
 
     from sb_campaign_usd as sb_c_usd
 
@@ -55,35 +55,6 @@ get_sb_portfolio as (
     left join ad_portfolios as a_p
         on sb_cs.portfolio_id = a_p.portfolio_id
 
-),
-
-fill_in_nulls as (
-
-    select
-        date,
-        created_at,
-        updated_at,
-        campaign_id,
-        campaign_name,
-        campaign_status,
-        portfolio_name,
-        marketplace,
-        tenant_id,
-        impressions,
-        clicks,
-        units_sold_clicks,
-        new_to_brand_units_sold_clicks,
-        purchases_clicks,
-        top_of_search_impression_share,
-        campaign_budget_amount_usd,
-        cost_usd,
-        sales_clicks_usd,
-        new_to_brand_sales_clicks_usd,
-
-        COALESCE(portfolio_id, 0) as portfolio_id
-
-    from get_sb_portfolio
-
 )
 
-select * from fill_in_nulls
+select * from get_sb_portfolio
