@@ -43,7 +43,7 @@ unique_bb_product_codes as (
 get_sb_product_codes as (
 
     select
-        sb_c_af.date,
+        sb_c_af.campaign_date,
         sb_c_af.created_at,
         sb_c_af.updated_at,
         sb_c_af.campaign_id,
@@ -115,7 +115,7 @@ get_sb_product_codes as (
 standardize_product_color as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -166,7 +166,7 @@ standardize_product_color as (
 get_sb_parent_codes as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -210,7 +210,7 @@ get_sb_parent_codes as (
 fill_in_product_code_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
