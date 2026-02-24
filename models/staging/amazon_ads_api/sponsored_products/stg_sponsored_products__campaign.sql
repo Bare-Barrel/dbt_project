@@ -11,7 +11,6 @@ sp_campaign as (
 rename_fields as (
 
     select
-        -- ids
         date as campaign_date,
         created_at,
         updated_at,
