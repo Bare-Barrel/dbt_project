@@ -23,11 +23,11 @@ aggregate_sp_cc as (
         SUM(impressions) as total_impressions,
         SUM(clicks) as total_clicks,
         SUM(_7_day_total_orders) as _7_day_total_orders,
-        SUM(click_thru_rate) as total_click_thru_rate, -- check before using!!
+        {# SUM(click_thru_rate) as total_click_thru_rate, -- check before using!! #}
         SUM(last_year_impressions) as total_last_year_impressions,
         SUM(last_year_clicks) as total_last_year_clicks,
-        SUM(total_advertising_cost_of_sales) as total_advertising_cost_of_sales,  -- check before using!!
-        SUM(total_return_on_advertising_spend) as total_return_on_advertising_spend,  -- check before using!!
+        {# SUM(total_advertising_cost_of_sales) as total_advertising_cost_of_sales,  -- check before using!!
+        SUM(total_return_on_advertising_spend) as total_return_on_advertising_spend,  -- check before using!! #}
         SUM(spend_usd) as total_spend_usd,
         SUM(budget_usd) as total_budget_usd,
         SUM(_7_day_total_sales_usd) as _7_day_total_sales_usd,
@@ -39,7 +39,7 @@ aggregate_sp_cc as (
 
     group by campaign_date, tenant_id, marketplace, portfolio_code
 
-    order by campaign_date desc, marketplace desc, portfolio_code asc
+    order by campaign_date desc, tenant_id asc, marketplace desc, portfolio_code asc
 
 )
 
