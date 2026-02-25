@@ -25,7 +25,7 @@ rymora_product_codes as (
 get_sd_product_codes as (
 
     select
-        sd_c_af.date,
+        sd_c_af.campaign_date,
         sd_c_af.created_at,
         sd_c_af.updated_at,
         sd_c_af.campaign_id,
@@ -87,7 +87,7 @@ get_sd_product_codes as (
 standardize_product_color_and_pack as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -160,7 +160,7 @@ standardize_product_color_and_pack as (
 fill_in_product_code_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
