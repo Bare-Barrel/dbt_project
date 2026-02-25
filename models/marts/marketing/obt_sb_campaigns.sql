@@ -1,7 +1,5 @@
 -- obt_sb_campaigns.sql
 
-{{ config(materialized='view') }}
-
 with
 
 agg_sb_campaigns as (
