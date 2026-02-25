@@ -30,8 +30,8 @@ aggregate_sp_campaigns as (
         SUM(purchases_7d) as total_purchases_7d,
         SUM(purchases_14d) as total_purchases_14d,
         SUM(purchases_30d) as total_purchases_30d,
-        SUM(click_through_rate) as total_click_through_rate,  -- check before using!!
-        SUM(top_of_search_impression_share) as total_top_of_search_impression_share,  -- check before using!!
+        {# SUM(click_through_rate) as total_click_through_rate,  -- check before using!!
+        SUM(top_of_search_impression_share) as total_top_of_search_impression_share,  -- check before using!! #}
         SUM(campaign_budget_amount_usd) as total_campaign_budget_amount_usd,
         SUM(cost_usd) as total_cost_usd,
         SUM(sales_1d_usd) as total_sales_1d_usd,
@@ -44,7 +44,7 @@ aggregate_sp_campaigns as (
 
     group by campaign_date, tenant_id, marketplace, portfolio_code
 
-    order by campaign_date desc, marketplace desc, portfolio_code asc
+    order by campaign_date desc, tenant_id asc, marketplace desc, portfolio_code asc
 
 )
 

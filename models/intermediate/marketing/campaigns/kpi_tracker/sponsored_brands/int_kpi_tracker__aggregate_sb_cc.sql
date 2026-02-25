@@ -30,7 +30,7 @@ aggregate_sb_campaign_console as (
 
     group by campaign_date, tenant_id, marketplace, portfolio_code
 
-    order by campaign_date desc, marketplace desc, portfolio_code asc
+    order by campaign_date desc, tenant_id asc, marketplace desc, portfolio_code asc
 
 )
 
