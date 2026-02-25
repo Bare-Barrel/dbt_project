@@ -1,4 +1,5 @@
 -- int_get_sd_portfolio.sql sd_c_02
+-- API v3 (2025-01-11 - present)
 
 {{ config(materialized='ephemeral') }}
 
@@ -12,20 +13,20 @@ sd_campaign_usd as (
 
 sd_campaigns as (
 
-    select * from {{ source('sponsored_display', 'campaigns') }}
+    select * from {{ ref('stg_sponsored_display__campaigns') }}
 
 ),
 
 ad_portfolios as (
 
-    select * from {{ source('public', 'amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
 
 ),
 
 get_sd_portfolio as (
 
     select
-        sd_c_usd.date,
+        sd_c_usd.campaign_date,
         sd_c_usd.created_at,
         sd_c_usd.updated_at,
         sd_c_usd.campaign_id,
@@ -44,7 +45,7 @@ get_sd_portfolio as (
         sd_c_usd.new_to_brand_sales_clicks_usd,
 
         sd_cs.portfolio_id,
-        a_p.name as portfolio_name
+        a_p.portfolio_name
 
     from sd_campaign_usd as sd_c_usd
 
@@ -54,34 +55,6 @@ get_sd_portfolio as (
     left join ad_portfolios as a_p
         on sd_cs.portfolio_id = a_p.portfolio_id
 
-),
-
-fill_in_nulls as (
-
-    select
-        date,
-        created_at,
-        updated_at,
-        campaign_id,
-        campaign_name,
-        campaign_status,
-        portfolio_name,
-        marketplace,
-        impressions,
-        clicks,
-        units_sold_clicks,
-        new_to_brand_units_sold_clicks,
-        purchases_clicks,
-        tenant_id,
-        campaign_budget_amount_usd,
-        cost_usd,
-        sales_clicks_usd,
-        new_to_brand_sales_clicks_usd,
-
-        COALESCE(portfolio_id, 0) as portfolio_id
-
-    from get_sd_portfolio
-
 )
 
-select * from fill_in_nulls
+select * from get_sd_portfolio

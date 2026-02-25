@@ -62,10 +62,10 @@ select_sb_fields as ( -- API Data source v3 (2023-09-21 - present)
         campaign_date as record_date,
         created_at,
         updated_at,
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         campaign_name,
         campaign_status,
-        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
+        portfolio_id,
         portfolio_name,
         marketplace,
         impressions,
@@ -93,13 +93,13 @@ select_sb_fields as ( -- API Data source v3 (2023-09-21 - present)
 select_sd_fields as ( -- API v3 (2025-01-11 - present)
 
     select
-        date as record_date,
+        campaign_date as record_date,
         created_at,
         updated_at,
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         campaign_name,
         campaign_status,
-        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
+        portfolio_id,
         portfolio_name,
         marketplace,
         impressions,

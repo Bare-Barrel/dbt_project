@@ -17,7 +17,7 @@ sp_campaigns as (
 sb_campaigns as (
 
     select
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         date as record_date,
         campaign_name,
         campaign_status
@@ -29,7 +29,7 @@ sb_campaigns as (
 sd_campaigns as (
 
     select
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         date as record_date,
         campaign_name,
         campaign_status
