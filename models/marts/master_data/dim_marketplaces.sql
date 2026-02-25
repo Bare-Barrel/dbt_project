@@ -5,7 +5,7 @@ with
 marketplaces as (
 
     select *
-    from {{ source('public', 'amazon_marketplaces') }}
+    from {{ ref('stg_public__amazon_marketplaces') }}
     where active = true
 
 ),
@@ -17,7 +17,7 @@ add_surrogate_key as (
         marketplace_id,
         marketplace_name,
         region,
-        endpoint
+        marketplace_endpoint_url
 
     from marketplaces
 
