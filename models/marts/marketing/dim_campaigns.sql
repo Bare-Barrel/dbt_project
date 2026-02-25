@@ -22,7 +22,7 @@ sb_campaigns as (
         campaign_name,
         campaign_status
 
-    from {{ source('sponsored_brands', 'campaign') }}
+    from {{ ref('stg_sponsored_brands__campaign') }}
 
 ),
 
@@ -34,7 +34,7 @@ sd_campaigns as (
         campaign_name,
         campaign_status
 
-    from {{ source('sponsored_display', 'campaign') }}
+    from {{ ref('stg_sponsored_display__campaign') }}
 
 ),
 
