@@ -18,7 +18,7 @@ sb_campaigns as (
 
     select
         campaign_id,
-        date as record_date,
+        campaign_date as record_date,
         campaign_name,
         campaign_status
 
@@ -30,7 +30,7 @@ sd_campaigns as (
 
     select
         campaign_id,
-        date as record_date,
+        campaign_date as record_date,
         campaign_name,
         campaign_status
 
