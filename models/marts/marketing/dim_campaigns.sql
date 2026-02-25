@@ -1,4 +1,4 @@
--- dim_campaigns.sql SCD type 2
+-- dim_campaigns.sql -- SCD type 2
 
 with
 
@@ -17,24 +17,24 @@ sp_campaigns as (
 sb_campaigns as (
 
     select
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
-        date as record_date,
+        campaign_id,
+        campaign_date as record_date,
         campaign_name,
         campaign_status
 
-    from {{ source('sponsored_brands', 'campaign') }}
+    from {{ ref('stg_sponsored_brands__campaign') }}
 
 ),
 
 sd_campaigns as (
 
     select
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
-        date as record_date,
+        campaign_id,
+        campaign_date as record_date,
         campaign_name,
         campaign_status
 
-    from {{ source('sponsored_display', 'campaign') }}
+    from {{ ref('stg_sponsored_display__campaign') }}
 
 ),
 

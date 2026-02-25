@@ -17,6 +17,7 @@ agg_sp_campaign_console as (
 
 union_all_sp_campaigns as (
 
+    -- API data source. (04-02-2023 to present)
     select
         campaign_date,
         tenant_id,
@@ -31,6 +32,7 @@ union_all_sp_campaigns as (
 
     union all
 
+    -- Advertising reports data source for (06-27-2022 to 2024-04-01)
     select
         campaign_date,
         tenant_id,
