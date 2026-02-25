@@ -1,4 +1,4 @@
--- dim_campaigns.sql SCD type 2
+-- dim_campaigns.sql -- SCD type 2
 
 with
 
