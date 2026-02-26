@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_public__amazon_marketplaces
+    description: ""
+    columns:
+      - name: active
+        data_type: boolean
+        description: ""
+
+      - name: region
+        data_type: string
+        description: ""
+
+      - name: marketplace_endpoint_url
+        data_type: string
+        description: ""
+
+      - name: marketplace_id
+        data_type: string
+        description: ""
+
+      - name: marketplace_name
+        data_type: string
+        description: ""
+
+  - name: stg_public__tenants
+    description: ""
+    columns:
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: company
+        data_type: string
+        description: ""
