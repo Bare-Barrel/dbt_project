@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: obt_order_locations
+    description: ""
+    columns:
+      - name: amazon_order_id
+        data_type: string
+        description: ""
+
+      - name: purchase_date
+        data_type: date
+        description: ""
+
+      - name: order_status
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: shipping_address_city
+        data_type: string
+        description: ""
+
+      - name: shipping_address_state_or_region
+        data_type: string
+        description: ""
+
+      - name: shipping_address_country_code
+        data_type: string
+        description: ""
+
+      - name: shipping_address_postal_code
+        data_type: string
+        description: ""
+
+      - name: shipment_service_level_category
+        data_type: string
+        description: ""
