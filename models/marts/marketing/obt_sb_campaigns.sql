@@ -1,4 +1,5 @@
 -- obt_sb_campaigns.sql
+-- same as SB Historical Campaign Cost
 
 with
 
