@@ -1,4 +1,4 @@
--- dim_parent_portfolio_code.sql
+-- dim_parent_portfolio_codes.sql
 
 with
 
