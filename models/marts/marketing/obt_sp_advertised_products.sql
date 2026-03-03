@@ -1,4 +1,4 @@
--- obt_sp_advertised_products.sql   TODO: remove fields that are not needed
+-- obt_sp_advertised_products.sql
 
 with
 
@@ -12,8 +12,8 @@ convert_ids_to_int as ( -- Optimize import compression in Power BI
 
     select
         campaign_date,
-        created_at,
-        updated_at,
+        {# created_at,
+        updated_at, #}
         CAST(ad_id as integer) as ad_id,
         CAST(ad_group_id as integer) as ad_group_id,
         CAST(campaign_id as integer) as campaign_id,
