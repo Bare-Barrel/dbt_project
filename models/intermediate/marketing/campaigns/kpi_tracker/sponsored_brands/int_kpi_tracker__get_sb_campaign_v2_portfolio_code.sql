@@ -27,6 +27,7 @@ get_portfolio_code as (
         campaign_budget_type,
         impressions,
         clicks,
+        attributed_units_ordered_new_to_brand_14d,
         attributed_conversions_14d,
         cost_usd,
         attributed_sales_14d_usd,
