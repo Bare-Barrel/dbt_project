@@ -171,10 +171,17 @@ remove_product_code_ltm2f as (  -- not present in SKU Mastersheet (1 row)
 
 ),
 
-remove_old_sku as ( -- old SKU of R_COMP-SOCKS-PL_BLK_V4_SL_SXm4
+remove_product_code_fn as (     -- not present in SKU Mastersheet (1 row)
 
     select *
     from remove_product_code_ltm2f
+    where not REGEXP_CONTAINS(sku, r"_FN$")
+),
+
+remove_old_sku as ( -- old SKU of R_COMP-SOCKS-PL_BLK_V4_SL_SXm4
+
+    select *
+    from remove_product_code_fn
     where not REGEXP_CONTAINS(sku, r"R_COMP-SOCKS-PL_BLK_V4_SL_SXm4-")
 
 )
