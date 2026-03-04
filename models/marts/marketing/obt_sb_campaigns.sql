@@ -32,6 +32,7 @@ union_all_sb_campaigns as (
         total_impressions,
         total_clicks,
         total_cost_usd,
+        total_units_sold_clicks,
         total_purchases_clicks,
         total_sales_clicks_usd
     from agg_sb_campaigns
@@ -47,6 +48,7 @@ union_all_sb_campaigns as (
         total_impressions,
         total_clicks,
         total_cost_usd,
+        total_attributed_units_ordered_new_to_brand_14d as total_units_sold_clicks,
         total_attributed_conversions_14d as total_purchases_clicks,
         total_attributed_sales_14d_usd as total_sales_clicks_usd
     from agg_sb_campaign_v2
@@ -62,6 +64,7 @@ union_all_sb_campaigns as (
         total_impressions,
         total_clicks,
         total_spend_usd as total_cost_usd,
+        total_14_day_total_units as total_units_sold_clicks,
         total_14_day_total_orders as total_purchases_clicks,
         total_14_day_total_sales_usd as total_sales_clicks_usd
     from agg_sb_cc

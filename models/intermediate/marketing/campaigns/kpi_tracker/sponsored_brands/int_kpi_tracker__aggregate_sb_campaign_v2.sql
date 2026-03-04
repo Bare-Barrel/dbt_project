@@ -20,6 +20,7 @@ aggregate_sb_campaign_v2 as (
 
         SUM(impressions) as total_impressions,
         SUM(clicks) as total_clicks,
+        SUM(attributed_units_ordered_new_to_brand_14d) as total_attributed_units_ordered_new_to_brand_14d,
         SUM(attributed_conversions_14d) as total_attributed_conversions_14d,
         SUM(cost_usd) as total_cost_usd,
         SUM(attributed_sales_14d_usd) as total_attributed_sales_14d_usd

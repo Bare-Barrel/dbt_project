@@ -31,6 +31,7 @@ convert_sb_campaign_v2_amounts_to_usd as (
         sp_c_v2.campaign_budget_type,
         sp_c_v2.impressions,
         sp_c_v2.clicks,
+        sp_c_v2.attributed_units_ordered_new_to_brand_14d,
         sp_c_v2.attributed_conversions_14d, -- Number of attributed conversion events occurring within 14 days of an ad click.
 
         -- Amounts

@@ -37,6 +37,7 @@ get_sb_v2_portfolio as (
         sb_c_v2_usd.campaign_budget_type,
         sb_c_v2_usd.impressions,
         sb_c_v2_usd.clicks,
+        sb_c_v2_usd.attributed_units_ordered_new_to_brand_14d,
         sb_c_v2_usd.attributed_conversions_14d,
         sb_c_v2_usd.cost_usd,
         sb_c_v2_usd.attributed_sales_14d_usd,
