@@ -36,12 +36,16 @@ models:
         data_type: int64
         description: ""
 
+      - name: on_order
+        data_type: int64
+        description: ""
+
       - name: preorderable
-        data_type: string
+        data_type: boolean
         description: ""
 
       - name: bundle
-        data_type: string
+        data_type: boolean
         description: ""
 
       - name: low_stock_level

@@ -1,6 +1,97 @@
 version: 2
 
 models:
+  - name: stg_mintsoft_api__rymora_allegro_product_inventory
+    description: ""
+    columns:
+      - name: product_id
+        data_type: string
+        description: ""
+
+      - name: warehouse_id
+        data_type: string
+        description: ""
+
+      - name: location_id
+        data_type: string
+        description: ""
+
+      - name: id
+        data_type: string
+        description: ""
+
+      - name: account_name
+        data_type: string
+        description: ""
+
+      - name: sku
+        data_type: string
+        description: ""
+
+      - name: breakdown
+        data_type: string
+        description: ""
+
+      - name: last_updated_by_user
+        data_type: string
+        description: ""
+
+      - name: stock_level
+        data_type: int64
+        description: ""
+
+      - name: allocated
+        data_type: int64
+        description: ""
+
+      - name: on_hand
+        data_type: int64
+        description: ""
+
+      - name: off_hand
+        data_type: int64
+        description: ""
+
+      - name: awaiting_replen
+        data_type: int64
+        description: ""
+
+      - name: on_order
+        data_type: int64
+        description: ""
+
+      - name: required_by_back_order
+        data_type: int64
+        description: ""
+
+      - name: in_quarantine
+        data_type: int64
+        description: ""
+
+      - name: in_transit
+        data_type: int64
+        description: ""
+
+      - name: in_transition
+        data_type: int64
+        description: ""
+
+      - name: scrapped
+        data_type: int64
+        description: ""
+
+      - name: recorded_at
+        data_type: timestamp
+        description: ""
+
+      - name: last_updated
+        data_type: datetime
+        description: ""
+
+      - name: recorded_date
+        data_type: date
+        description: ""
+
   - name: stg_mintsoft_api__rymora_warehouse_stock_levels
     description: ""
     columns:
@@ -45,11 +136,11 @@ models:
         description: ""
 
       - name: preorderable
-        data_type: string
+        data_type: boolean
         description: ""
 
       - name: bundle
-        data_type: string
+        data_type: boolean
         description: ""
 
       - name: recorded_at

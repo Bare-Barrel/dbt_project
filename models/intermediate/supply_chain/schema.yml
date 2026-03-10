@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_match_tsp_old_skus_to_current
+  - name: int_get_allegro_inbound_units
     description: ""
     columns:
       - name: account_name
@@ -62,4 +62,8 @@ models:
 
       - name: sku
         data_type: string
+        description: ""
+
+      - name: on_order
+        data_type: int64
         description: ""
