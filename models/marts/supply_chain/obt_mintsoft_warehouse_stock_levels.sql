@@ -2,9 +2,9 @@
 
 with
 
-rymora_product_md_with_matched_tsp_skus as (
+rymora_mintsoft_inventory as (
 
-    select * from {{ ref('int_match_tsp_old_skus_to_current') }}
+    select * from {{ ref('int_get_allegro_inbound_units') }}
 
 ),
 
@@ -19,6 +19,7 @@ reorder_fields as (
         sku,
         stock_level,
         total_stock_level,
+        on_order,
         preorderable,
         bundle,
         low_stock_level,
@@ -27,7 +28,7 @@ reorder_fields as (
         recorded_at,
         recorded_date
 
-    from rymora_product_md_with_matched_tsp_skus
+    from rymora_mintsoft_inventory
 
 )
 

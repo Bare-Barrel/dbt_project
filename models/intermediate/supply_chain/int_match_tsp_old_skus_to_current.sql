@@ -1,6 +1,6 @@
 -- int_match_tsp_old_skus_to_current.sql
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

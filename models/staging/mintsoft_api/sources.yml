@@ -3,6 +3,51 @@ version: 2
 sources:
   - name: mintsoft_api
     tables:
+      - name: allegro_product_inventory
+        columns:
+          - name: productid
+            data_type: int64
+          - name: stocklevel
+            data_type: int64
+          - name: allocated
+            data_type: int64
+          - name: onhand
+            data_type: int64
+          - name: offhand
+            data_type: int64
+          - name: awaitingreplen
+            data_type: int64
+          - name: onorder
+            data_type: int64
+          - name: requiredbybackorder
+            data_type: int64
+          - name: inquarantine
+            data_type: int64
+          - name: intransit
+            data_type: int64
+          - name: intransition
+            data_type: int64
+          - name: scrapped
+            data_type: int64
+          - name: sku
+            data_type: string
+          - name: warehouseid
+            data_type: int64
+          - name: locationid
+            data_type: int64
+          - name: breakdown
+            data_type: string
+          - name: id
+            data_type: int64
+          - name: lastupdated
+            data_type: string
+          - name: lastupdatedbyuser
+            data_type: string
+          - name: account_name
+            data_type: string
+          - name: recorded_at
+            data_type: timestamp
+
       - name: warehouse_stock_levels
         columns:
           - name: productid
