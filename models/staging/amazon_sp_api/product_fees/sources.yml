@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: product_fees
+    tables:
+      - name: product_fees_estimates
+        columns:
+          - name: tenant_id
+            data_type: int64
+          - name: marketplace
+            data_type: string
+          - name: sku
+            data_type: string
+          - name: price_to_estimate_fees_amount
+            data_type: float64
+          - name: price_to_estimate_fees_currency_code
+            data_type: string
+          - name: fees_estimated_at
+            data_type: string
+          - name: est_total_fees
+            data_type: float64
+          - name: est_referral_fee
+            data_type: float64
+          - name: est_variable_closing_fee
+            data_type: float64
+          - name: est_per_item_fee
+            data_type: float64
+          - name: est_fba_fee
+            data_type: float64
+          - name: recorded_at
+            data_type: timestamp
