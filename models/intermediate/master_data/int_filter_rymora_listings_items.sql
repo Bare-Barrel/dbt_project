@@ -1,4 +1,4 @@
--- int_filter_rymora_listings_items.sql
+-- int_filter_rymora_listings_items.sql md_ry_1
 
 {{ config(materialized='ephemeral') }}
 
