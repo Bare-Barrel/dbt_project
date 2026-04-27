@@ -1,4 +1,4 @@
--- int_filter_bb_listings_items.sql
+-- int_filter_bb_listings_items.sql md_bb_1
 
 {{ config(materialized='ephemeral') }}
 

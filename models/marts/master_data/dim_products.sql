@@ -9,7 +9,7 @@ bb_product_codes as (
         CAST(null as string) as product_color_code,
         CAST(null as string) as product_color,
         CAST(null as string) as product_pack_size
-    from {{ ref('int_calculate_fields_for_bb_listings_items') }}
+    from {{ ref('int_remove_rows_from_bb_listings_items') }}
 
 ),
 
@@ -18,7 +18,7 @@ rymora_product_codes as (
     select
         *,
         CAST(null as string) as shaker_code
-    from {{ ref('int_calculate_fields_for_rymora_listings_items') }}
+    from {{ ref('int_remove_rows_from_rymora_listings_items') }}
 
 ),
 

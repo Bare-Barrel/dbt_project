@@ -1,6 +1,6 @@
--- int_calculate_fields_for_bb_listings_items.sql   TODO: get product colors from google sheets MD
+-- int_calculate_fields_for_bb_listings_items.sql md_bb_2  TODO: get product colors from google sheets MD
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 
@@ -39,22 +39,6 @@ add_concat_field as (
 
     from extract_fields
 
-),
-
-filter_nulls as (
-
-    select *
-    from add_concat_field
-    where shaker_code is not null
-
-),
-
-remove_mainparisan as (     -- test code only acc to Savan
-
-    select *
-    from filter_nulls
-    where not REGEXP_CONTAINS(sku, r"MainParisan")
-
 )
 
-select * from remove_mainparisan
+select * from add_concat_field
