@@ -33,7 +33,7 @@ unique_bb_product_codes as (
 add_sp_portfolio_code as (
 
     select
-        sp_p_af.date,
+        sp_p_af.campaign_date,
         sp_p_af.created_at,
         sp_p_af.updated_at,
         sp_p_af.campaign_id,
@@ -86,7 +86,7 @@ add_sp_portfolio_code as (
 add_sp_parent_pack_codes as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -229,7 +229,7 @@ add_sp_parent_pack_codes as (
 fill_in_product_code_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,

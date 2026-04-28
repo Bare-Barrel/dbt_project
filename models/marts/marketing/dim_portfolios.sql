@@ -2,9 +2,9 @@
 
 with
 
-portfolios as (
+portfolios_v3 as (
 
-    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
@@ -14,7 +14,7 @@ select_fields as (
         portfolio_id,
         portfolio_name
 
-    from portfolios
+    from portfolios_v3
 
 ),
 

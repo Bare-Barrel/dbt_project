@@ -20,7 +20,7 @@ models:
         description: ""
 
       - name: campaign_id
-        data_type: int64
+        data_type: string
         description: ""
 
       - name: campaign_name
@@ -43,6 +43,13 @@ models:
         data_type: boolean
         description: ""
 
+  - name: dim_customer_search_terms
+    description: ""
+    columns:
+      - name: search_term
+        data_type: string
+        description: ""
+
   - name: dim_placements
     description: ""
     columns:
@@ -62,14 +69,10 @@ models:
         description: ""
 
       - name: portfolio_id
-        data_type: int64
-        description: ""
-
-      - name: portfolio_name
         data_type: string
         description: ""
 
-      - name: tenant_sk
+      - name: portfolio_name
         data_type: string
         description: ""
 
@@ -163,6 +166,10 @@ models:
         description: ""
 
       - name: purchases_clicks
+        data_type: int64
+        description: ""
+
+      - name: tenant_id
         data_type: int64
         description: ""
 
@@ -323,7 +330,7 @@ models:
   - name: obt_campaigns
     description: ""
     columns:
-      - name: date
+      - name: campaign_date
         data_type: date
         description: ""
 
@@ -336,7 +343,7 @@ models:
         description: ""
 
       - name: campaign_id
-        data_type: int64
+        data_type: string
         description: ""
 
       - name: campaign_name
@@ -348,7 +355,7 @@ models:
         description: ""
 
       - name: portfolio_id
-        data_type: numeric
+        data_type: string
         description: ""
 
       - name: portfolio_name
@@ -427,6 +434,395 @@ models:
         data_type: string
         description: ""
 
+  - name: obt_detail_page_sales_and_traffic_child
+    description: ""
+    columns:
+      - name: record_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: parent_asin
+        data_type: string
+        description: ""
+
+      - name: child_asin
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_currency_code
+        data_type: string
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_b2b_currency_code
+        data_type: string
+        description: ""
+
+      - name: traffic_by_asin_sessions
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_sessions_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_sessions
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_sessions_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_buy_box_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_buy_box_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_sessions
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_sessions_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_unit_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_unit_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_units_ordered
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_units_ordered_b2b
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_total_order_items
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_total_order_items_b2b
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_amount
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_b2b_amount
+        data_type: numeric
+        description: ""
+
+  - name: obt_detail_page_sales_and_traffic_parent
+    description: ""
+    columns:
+      - name: record_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: parent_asin
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_currency_code
+        data_type: string
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_b2b_currency_code
+        data_type: string
+        description: ""
+
+      - name: traffic_by_asin_sessions
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_sessions_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_page_views_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_sessions
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_browser_sessions_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_browser_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_browser_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_buy_box_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_buy_box_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_sessions
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_sessions_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_b2b
+        data_type: int64
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_mobile_app_page_views_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_unit_session_percentage
+        data_type: numeric
+        description: ""
+
+      - name: traffic_by_asin_unit_session_percentage_b2b
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_units_ordered
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_units_ordered_b2b
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_total_order_items
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_total_order_items_b2b
+        data_type: int64
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_amount
+        data_type: numeric
+        description: ""
+
+      - name: sales_by_asin_ordered_product_sales_b2b_amount
+        data_type: numeric
+        description: ""
+
+  - name: obt_h10_keyword_tracker
+    description: ""
+    columns:
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: title
+        data_type: string
+        description: ""
+
+      - name: keyword
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: search_volume
+        data_type: numeric
+        description: ""
+
+      - name: sponsored_position
+        data_type: numeric
+        description: ""
+
+      - name: date_added
+        data_type: timestamp
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: organic_rank
+        data_type: int64
+        description: ""
+
   - name: obt_helium_10_keyword_rankings
     description: ""
     columns:
@@ -474,6 +870,867 @@ models:
         data_type: numeric
         description: ""
 
+  - name: obt_sb_campaigns
+    description: ""
+    columns:
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: total_impressions
+        data_type: int64
+        description: ""
+
+      - name: total_clicks
+        data_type: int64
+        description: ""
+
+      - name: total_cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_units_sold_clicks
+        data_type: int64
+        description: ""
+
+      - name: total_purchases_clicks
+        data_type: int64
+        description: ""
+
+      - name: total_sales_clicks_usd
+        data_type: numeric
+        description: ""
+
+  - name: obt_sd_advertised_products
+    description: ""
+    columns:
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: ad_id
+        data_type: int64
+        description: ""
+
+      - name: ad_group_id
+        data_type: int64
+        description: ""
+
+      - name: ad_group_name
+        data_type: string
+        description: ""
+
+      - name: campaign_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: promoted_asin
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: impressions
+        data_type: int64
+        description: ""
+
+      - name: impressions_views
+        data_type: int64
+        description: ""
+
+      - name: impressions_frequency_average
+        data_type: numeric
+        description: ""
+
+      - name: clicks
+        data_type: int64
+        description: ""
+
+      - name: units_sold
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks
+        data_type: int64
+        description: ""
+
+      - name: purchases
+        data_type: int64
+        description: ""
+
+      - name: purchases_clicks
+        data_type: int64
+        description: ""
+
+      - name: purchases_promoted_clicks
+        data_type: int64
+        description: ""
+
+      - name: detail_page_views
+        data_type: int64
+        description: ""
+
+      - name: detail_page_views_clicks
+        data_type: int64
+        description: ""
+
+      - name: cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: sales_usd
+        data_type: numeric
+        description: ""
+
+      - name: sales_clicks_usd
+        data_type: numeric
+        description: ""
+
+      - name: sales_promoted_clicks_usd
+        data_type: numeric
+        description: ""
+
+  - name: obt_sd_campaigns
+    description: ""
+    columns:
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: total_impressions
+        data_type: numeric
+        description: ""
+
+      - name: total_clicks
+        data_type: numeric
+        description: ""
+
+      - name: total_cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: total_units_sold_clicks
+        data_type: numeric
+        description: ""
+
+      - name: total_purchases_clicks
+        data_type: numeric
+        description: ""
+
+      - name: total_sales_clicks_usd
+        data_type: numeric
+        description: ""
+
+  - name: obt_search_query_performance_asin_view
+    description: ""
+    columns:
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: reporting_range
+        data_type: string
+        description: ""
+
+      - name: search_query
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: week_num
+        data_type: int64
+        description: ""
+
+      - name: clicks_price
+        data_type: numeric
+        description: ""
+
+      - name: clicks_asin_count
+        data_type: int64
+        description: ""
+
+      - name: clicks_asin_price
+        data_type: numeric
+        description: ""
+
+      - name: clicks_asin_share
+        data_type: numeric
+        description: ""
+
+      - name: clicks_click_rate
+        data_type: numeric
+        description: ""
+
+      - name: clicks_total_count
+        data_type: int64
+        description: ""
+
+      - name: clicks_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: clicks_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_price
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_asin_count
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_asin_price
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_asin_share
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_total_count
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_cart_add_rate
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: clicks_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_price
+        data_type: numeric
+        description: ""
+
+      - name: purchases_asin_count
+        data_type: int64
+        description: ""
+
+      - name: purchases_asin_price
+        data_type: numeric
+        description: ""
+
+      - name: purchases_asin_share
+        data_type: numeric
+        description: ""
+
+      - name: purchases_total_count
+        data_type: int64
+        description: ""
+
+      - name: purchases_purchase_rate
+        data_type: numeric
+        description: ""
+
+      - name: purchases_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: search_query_score
+        data_type: int64
+        description: ""
+
+      - name: search_query_volume
+        data_type: int64
+        description: ""
+
+      - name: impressions_asin_count
+        data_type: int64
+        description: ""
+
+      - name: impressions_asin_share
+        data_type: numeric
+        description: ""
+
+      - name: impressions_total_count
+        data_type: int64
+        description: ""
+
+      - name: reporting_date
+        data_type: date
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+  - name: obt_search_query_performance_brand_view
+    description: ""
+    columns:
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: reporting_range
+        data_type: string
+        description: ""
+
+      - name: search_query
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: week_num
+        data_type: int64
+        description: ""
+
+      - name: clicks_price
+        data_type: numeric
+        description: ""
+
+      - name: clicks_click_rate
+        data_type: numeric
+        description: ""
+
+      - name: clicks_brand_count
+        data_type: int64
+        description: ""
+
+      - name: clicks_brand_price
+        data_type: numeric
+        description: ""
+
+      - name: clicks_brand_share
+        data_type: numeric
+        description: ""
+
+      - name: clicks_total_count
+        data_type: int64
+        description: ""
+
+      - name: clicks_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: clicks_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: clicks_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_price
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_brand_count
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_brand_price
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_brand_share
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_total_count
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_cart_add_rate
+        data_type: numeric
+        description: ""
+
+      - name: cart_adds_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: cart_adds_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_price
+        data_type: numeric
+        description: ""
+
+      - name: purchases_brand_count
+        data_type: int64
+        description: ""
+
+      - name: purchases_brand_price
+        data_type: numeric
+        description: ""
+
+      - name: purchases_brand_share
+        data_type: numeric
+        description: ""
+
+      - name: purchases_total_count
+        data_type: int64
+        description: ""
+
+      - name: purchases_purchase_rate
+        data_type: numeric
+        description: ""
+
+      - name: purchases_1d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_2d_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+      - name: search_query_score
+        data_type: int64
+        description: ""
+
+      - name: search_query_volume
+        data_type: int64
+        description: ""
+
+      - name: impressions_brand_count
+        data_type: int64
+        description: ""
+
+      - name: impressions_brand_share
+        data_type: numeric
+        description: ""
+
+      - name: impressions_total_count
+        data_type: int64
+        description: ""
+
+      - name: reporting_date
+        data_type: date
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+  - name: obt_search_query_performance_weekly_asin
+    description: ""
+    columns:
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: end_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: search_query
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: asin_median_click_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: total_median_click_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: asin_median_cart_add_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: asin_median_purchase_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: total_median_cart_add_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: total_median_purchase_price_currency_code
+        data_type: string
+        description: ""
+
+      - name: asin_click_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_click_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_cart_add_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_purchase_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_impression_count
+        data_type: numeric
+        description: ""
+
+      - name: asin_impression_share
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_click_price
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_click_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_cart_add_price
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_cart_add_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_purchase_price
+        data_type: numeric
+        description: ""
+
+      - name: asin_median_purchase_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: total_click_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_cart_add_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_purchase_rate
+        data_type: numeric
+        description: ""
+
+      - name: total_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_median_cart_add_price
+        data_type: numeric
+        description: ""
+
+      - name: total_median_cart_add_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: total_median_purchase_price
+        data_type: numeric
+        description: ""
+
+      - name: total_median_purchase_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: total_median_click_price_amount
+        data_type: numeric
+        description: ""
+
+      - name: total_query_impression_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_one_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_two_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_click_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_cart_add_count
+        data_type: numeric
+        description: ""
+
+      - name: total_same_day_shipping_purchase_count
+        data_type: numeric
+        description: ""
+
+      - name: search_query_score
+        data_type: numeric
+        description: ""
+
+      - name: search_query_volume
+        data_type: numeric
+        description: ""
+
+  - name: obt_sp_advertised_products
+    description: ""
+    columns:
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
+        description: ""
+
+      - name: ad_id
+        data_type: int64
+        description: ""
+
+      - name: ad_group_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_id
+        data_type: int64
+        description: ""
+
+      - name: portfolio_id
+        data_type: int64
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: ad_group_name
+        data_type: string
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: campaign_status
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: advertised_asin
+        data_type: string
+        description: ""
+
+      - name: impressions
+        data_type: int64
+        description: ""
+
+      - name: cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: spend_usd
+        data_type: numeric
+        description: ""
+
+      - name: clicks
+        data_type: int64
+        description: ""
+
+      - name: sales_14d_usd
+        data_type: numeric
+        description: ""
+
+      - name: purchases_14d
+        data_type: int64
+        description: ""
+
+      - name: purchases_same_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: acos_clicks_14d
+        data_type: numeric
+        description: ""
+
+      - name: cost_per_click_usd
+        data_type: numeric
+        description: ""
+
+      - name: roas_clicks_14d
+        data_type: numeric
+        description: ""
+
+      - name: click_through_rate
+        data_type: numeric
+        description: ""
+
+      - name: units_sold_clicks_14d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_same_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: campaign_budget_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: attributed_sales_same_sku_14d_usd
+        data_type: numeric
+        description: ""
+
+      - name: kindle_edition_normalized_pages_read_14d
+        data_type: int64
+        description: ""
+
+      - name: kindle_edition_normalized_pages_royalties_14d
+        data_type: int64
+        description: ""
+
   - name: obt_sp_campaigns
     description: ""
     columns:
@@ -511,6 +1768,185 @@ models:
 
       - name: total_sales_7d_usd
         data_type: numeric
+        description: ""
+
+  - name: obt_sp_purchased_products
+    description: ""
+    columns:
+      - name: ad_group_id
+        data_type: string
+        description: ""
+
+      - name: campaign_id
+        data_type: string
+        description: ""
+
+      - name: portfolio_id
+        data_type: string
+        description: ""
+
+      - name: keyword_id
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: ad_group_name
+        data_type: string
+        description: ""
+
+      - name: campaign_name
+        data_type: string
+        description: ""
+
+      - name: advertised_sku
+        data_type: string
+        description: ""
+
+      - name: advertised_asin
+        data_type: string
+        description: ""
+
+      - name: purchased_asin
+        data_type: string
+        description: ""
+
+      - name: keyword
+        data_type: string
+        description: ""
+
+      - name: keyword_type
+        data_type: string
+        description: ""
+
+      - name: match_type
+        data_type: string
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: campaign_budget_currency_code
+        data_type: string
+        description: ""
+
+      - name: sales_1d
+        data_type: numeric
+        description: ""
+
+      - name: sales_7d
+        data_type: numeric
+        description: ""
+
+      - name: sales_14d
+        data_type: numeric
+        description: ""
+
+      - name: sales_30d
+        data_type: numeric
+        description: ""
+
+      - name: sales_other_sku_1d
+        data_type: numeric
+        description: ""
+
+      - name: sales_other_sku_7d
+        data_type: numeric
+        description: ""
+
+      - name: sales_other_sku_14d
+        data_type: numeric
+        description: ""
+
+      - name: sales_other_sku_30d
+        data_type: numeric
+        description: ""
+
+      - name: purchases_1d
+        data_type: int64
+        description: ""
+
+      - name: purchases_7d
+        data_type: int64
+        description: ""
+
+      - name: purchases_14d
+        data_type: int64
+        description: ""
+
+      - name: purchases_30d
+        data_type: int64
+        description: ""
+
+      - name: purchases_other_sku_1d
+        data_type: int64
+        description: ""
+
+      - name: purchases_other_sku_7d
+        data_type: int64
+        description: ""
+
+      - name: purchases_other_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: purchases_other_sku_30d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_1d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_7d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_14d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks_30d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_other_sku_1d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_other_sku_7d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_other_sku_14d
+        data_type: int64
+        description: ""
+
+      - name: units_sold_other_sku_30d
+        data_type: int64
+        description: ""
+
+      - name: kindle_edition_normalized_pages_read_14d
+        data_type: int64
+        description: ""
+
+      - name: kindle_edition_normalized_pages_royalties_14d
+        data_type: int64
+        description: ""
+
+      - name: campaign_date
+        data_type: date
+        description: ""
+
+      - name: created_at
+        data_type: datetime
+        description: ""
+
+      - name: updated_at
+        data_type: datetime
         description: ""
 
   - name: obt_sqp_brand
@@ -681,6 +2117,29 @@ models:
         description: ""
 
       - name: purchases_same_day_shipping_speed
+        data_type: int64
+        description: ""
+
+  - name: obt_sqp_rankings
+    description: ""
+    columns:
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: top_search_query
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: total_purchases_brand_count
+        data_type: int64
+        description: ""
+
+      - name: rank
         data_type: int64
         description: ""
 

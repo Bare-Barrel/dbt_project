@@ -1,6 +1,5 @@
 -- obt_search_query_performance_weekly_asin.sql
 
-
 with
 
 search_query_performance_weekly_asin as (

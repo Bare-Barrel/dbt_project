@@ -17,9 +17,9 @@ sd_campaigns as (
 
 ),
 
-ad_portfolios as (
+ad_portfolios_v3 as (
 
-    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
@@ -43,15 +43,15 @@ get_sd_v2_portfolio as (
         sd_c_v2_usd.attributed_sales_14d_usd,
 
         sd_cs.portfolio_id,
-        a_p.portfolio_name
+        a_p_v3.portfolio_name
 
     from sd_campaign_v2_usd as sd_c_v2_usd
 
     left join sd_campaigns as sd_cs
         on sd_c_v2_usd.campaign_id = sd_cs.campaign_id
 
-    left join ad_portfolios as a_p
-        on sd_cs.portfolio_id = a_p.portfolio_id
+    left join ad_portfolios_v3 as a_p_v3
+        on sd_cs.portfolio_id = a_p_v3.portfolio_id
 )
 
 select * from get_sd_v2_portfolio

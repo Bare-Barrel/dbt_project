@@ -17,7 +17,7 @@ sb_placement_asin as (
 select_sp_placement as (
 
     select
-        date as record_date,
+        campaign_date as record_date,
         created_at,
         updated_at,
         campaign_id,
@@ -54,7 +54,7 @@ select_sp_placement as (
 select_sb_placement as (
 
     select
-        date as record_date,
+        campaign_date as record_date,
         created_at,
         updated_at,
         campaign_id,
