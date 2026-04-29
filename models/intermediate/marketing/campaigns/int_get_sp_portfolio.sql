@@ -16,9 +16,9 @@ sp_campaigns as (
 
 ),
 
-ad_portfolios as (
+ad_portfolios_v3 as (
 
-    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
@@ -54,15 +54,15 @@ get_sp_portfolio as (
         sp_c_usd.cost_per_click_usd,
 
         sp_cs.portfolio_id,
-        a_p.portfolio_name
+        a_p_v3.portfolio_name
 
     from sp_campaign_usd as sp_c_usd
 
     left join sp_campaigns as sp_cs
         on sp_c_usd.campaign_id = sp_cs.campaign_id
 
-    left join ad_portfolios as a_p
-        on sp_cs.portfolio_id = a_p.portfolio_id
+    left join ad_portfolios_v3 as a_p_v3
+        on sp_cs.portfolio_id = a_p_v3.portfolio_id
 
 )
 

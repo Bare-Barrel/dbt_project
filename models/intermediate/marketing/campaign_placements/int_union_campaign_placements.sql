@@ -19,13 +19,13 @@ sb_placement_product_codes as (
 select_sp_placement as (
 
     select
-        date as record_date,
+        campaign_date as record_date,
         created_at,
         updated_at,
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         campaign_name,
         campaign_status,
-        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
+        portfolio_id,
         portfolio_name,
         marketplace,
         placement_classification,
@@ -54,13 +54,13 @@ select_sp_placement as (
 select_sb_placement as (
 
     select
-        date as record_date,
+        campaign_date as record_date,
         created_at,
         updated_at,
-        CAST(campaign_id as string) as campaign_id, -- TODO: Transfer to staging layer
+        campaign_id,
         campaign_name,
         campaign_status,
-        CAST(portfolio_id as string) as portfolio_id, -- TODO: Transfer to staging layer
+        portfolio_id,
         portfolio_name,
         marketplace,
         placement_classification,

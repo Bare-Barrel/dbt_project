@@ -6,7 +6,7 @@ with
 
 sp_campaign_placement as (
 
-    select * from {{ source('sponsored_products', 'campaign_placement') }}
+    select * from {{ ref('stg_sponsored_products__campaign_placement') }}
 
 ),
 
@@ -19,7 +19,7 @@ exchange_rates as (
 join_campaign_placement_and_fx_rates as (
 
     select
-        sp_cp.date,
+        sp_cp.campaign_date,
         sp_cp.created_at,
         sp_cp.updated_at,
         sp_cp.campaign_id,
@@ -59,14 +59,14 @@ join_campaign_placement_and_fx_rates as (
     left join exchange_rates as fx
         on
             sp_cp.campaign_budget_currency_code = fx.target
-            and DATE(sp_cp.date) = fx.recorded_at
+            and DATE(sp_cp.campaign_date) = fx.recorded_at
 
 ),
 
 convert_amounts_to_usd as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,

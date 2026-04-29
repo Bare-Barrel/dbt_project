@@ -12,20 +12,20 @@ sb_campaign_placement_usd as (
 
 sb_campaigns as (
 
-    select * from {{ source('sponsored_brands', 'campaigns') }}
+    select * from {{ ref('stg_sponsored_brands__campaigns') }}
 
 ),
 
-ad_portfolios as (
+ad_portfolios_v3 as (
 
-    select * from {{ source('public', 'amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
 get_sb_placement_portfolio as (
 
     select
-        sb_cp_usd.date,
+        sb_cp_usd.campaign_date,
         sb_cp_usd.created_at,
         sb_cp_usd.updated_at,
         sb_cp_usd.campaign_id,
@@ -45,22 +45,22 @@ get_sb_placement_portfolio as (
         sb_cp_usd.new_to_brand_sales_clicks_usd,
 
         sb_cs.portfolio_id,
-        a_p.name as portfolio_name
+        a_p_v3.portfolio_name
 
     from sb_campaign_placement_usd as sb_cp_usd
 
     left join sb_campaigns as sb_cs
         on sb_cp_usd.campaign_id = sb_cs.campaign_id
 
-    left join ad_portfolios as a_p
-        on sb_cs.portfolio_id = a_p.portfolio_id
+    left join ad_portfolios_v3 as a_p_v3
+        on sb_cs.portfolio_id = a_p_v3.portfolio_id
 
 ),
 
 fill_in_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -80,7 +80,7 @@ fill_in_nulls as (
         sales_clicks_usd,
         new_to_brand_sales_clicks_usd,
 
-        COALESCE(portfolio_id, 0) as portfolio_id
+        COALESCE(portfolio_id, "0") as portfolio_id
 
     from get_sb_placement_portfolio
 

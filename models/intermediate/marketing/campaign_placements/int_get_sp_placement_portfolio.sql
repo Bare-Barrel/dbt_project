@@ -12,20 +12,20 @@ sp_campaign_placement_usd as (
 
 sp_campaigns as (
 
-    select * from {{ source('sponsored_products', 'campaigns') }}
+    select * from {{ ref('stg_sponsored_products__campaigns') }}
 
 ),
 
-ad_portfolios as (
+ad_portfolios_v3 as (
 
-    select * from {{ source('public', 'amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
 get_sp_placement_portfolio as (
 
     select
-        sp_cp_usd.date,
+        sp_cp_usd.campaign_date,
         sp_cp_usd.created_at,
         sp_cp_usd.updated_at,
         sp_cp_usd.campaign_id,
@@ -54,22 +54,22 @@ get_sp_placement_portfolio as (
         sp_cp_usd.click_through_rate,
 
         sp_cs.portfolio_id,
-        a_p.name as portfolio_name
+        a_p_v3.portfolio_name
 
     from sp_campaign_placement_usd as sp_cp_usd
 
     left join sp_campaigns as sp_cs
         on sp_cp_usd.campaign_id = sp_cs.campaign_id
 
-    left join ad_portfolios as a_p
-        on sp_cs.portfolio_id = a_p.portfolio_id
+    left join ad_portfolios_v3 as a_p_v3
+        on sp_cs.portfolio_id = a_p_v3.portfolio_id
 
 ),
 
 fill_in_nulls as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -98,7 +98,7 @@ fill_in_nulls as (
         cost_per_click_usd,
         click_through_rate,
 
-        COALESCE(portfolio_id, 0) as portfolio_id
+        COALESCE(portfolio_id, "0") as portfolio_id
 
     from get_sp_placement_portfolio
 

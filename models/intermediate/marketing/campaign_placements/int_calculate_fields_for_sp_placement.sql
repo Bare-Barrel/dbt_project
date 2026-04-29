@@ -13,7 +13,7 @@ sp_placements_with_portfolio as (
 calculate_fields as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -95,7 +95,7 @@ calculate_fields as (
 get_product_color as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,

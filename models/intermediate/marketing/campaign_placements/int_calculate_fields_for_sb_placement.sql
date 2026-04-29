@@ -13,7 +13,7 @@ sb_placements_with_portfolio as (
 calculate_fields as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -80,7 +80,7 @@ calculate_fields as (
 transform_product_code as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,
@@ -123,7 +123,7 @@ transform_product_code as (
 classify_campaigns_as_sb_or_sbv as (
 
     select
-        date,
+        campaign_date,
         created_at,
         updated_at,
         campaign_id,

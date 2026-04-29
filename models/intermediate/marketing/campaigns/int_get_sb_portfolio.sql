@@ -16,9 +16,9 @@ sb_campaigns as (
 
 ),
 
-ad_portfolios as (
+ad_portfolios_v3 as (
 
-    select * from {{ ref('stg_public__amazon_advertising_portfolios') }}
+    select * from {{ ref('stg_amazon_ads_api__amazon_advertising_portfolios_v3') }}
 
 ),
 
@@ -45,15 +45,15 @@ get_sb_portfolio as (
         sb_c_usd.new_to_brand_sales_clicks_usd,
 
         sb_cs.portfolio_id,
-        a_p.portfolio_name
+        a_p_v3.portfolio_name
 
     from sb_campaign_usd as sb_c_usd
 
     left join sb_campaigns as sb_cs
         on sb_c_usd.campaign_id = sb_cs.campaign_id
 
-    left join ad_portfolios as a_p
-        on sb_cs.portfolio_id = a_p.portfolio_id
+    left join ad_portfolios_v3 as a_p_v3
+        on sb_cs.portfolio_id = a_p_v3.portfolio_id
 
 )
 
