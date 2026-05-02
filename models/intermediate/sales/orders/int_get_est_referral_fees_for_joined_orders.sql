@@ -10,7 +10,7 @@ orders_with_rymora_sku_matches as (
 
 ),
 
-get_est_referral_fees as (
+{# get_est_referral_fee_pct as (
 
     select
         amazon_order_id,
@@ -51,6 +51,7 @@ get_est_referral_fees as (
         buyer_info_gift_wrap_price_amount,
         buyer_info_gift_wrap_price_currency_code,
         est_fees_currency_code,
+        est_referral_rate,
         cogs,
         est_fba_fee,
         est_storage_fee,
@@ -144,7 +145,7 @@ get_est_referral_fees as (
 
     from orders_with_rymora_sku_matches
 
-),
+), #}
 
 compute_net_item_price_amount as (
 
@@ -160,7 +161,7 @@ compute_net_item_price_amount as (
                 item_price_amount - promotion_discount_amount - coupon_fee
         end as net_item_price_amount
 
-    from get_est_referral_fees
+    from orders_with_rymora_sku_matches
 
 ),
 
@@ -205,15 +206,18 @@ compute_est_referral_fee as (
         buyer_info_gift_wrap_price_amount,
         buyer_info_gift_wrap_price_currency_code,
         est_fees_currency_code,
+        est_referral_rate,
         cogs,
         est_fba_fee,
         est_storage_fee,
         est_returns_cost,
         net_item_price_amount,
 
-        CAST(est_referral_fee_pct as numeric) as est_referral_fee_pct,
-        CAST(CAST(est_referral_fee_pct as numeric) * (COALESCE(net_item_price_amount, 0) + COALESCE(shipping_price_amount, 0) - COALESCE(shipping_discount_amount, 0) + COALESCE(buyer_info_gift_wrap_price_amount, 0)) as numeric)
-            as est_referral_fee
+        CAST(est_referral_rate as numeric) * (
+            COALESCE(net_item_price_amount, 0)
+            + COALESCE(shipping_price_amount, 0)
+            + COALESCE(buyer_info_gift_wrap_price_amount, 0)
+        ) as est_referral_fee
 
     from compute_net_item_price_amount
 

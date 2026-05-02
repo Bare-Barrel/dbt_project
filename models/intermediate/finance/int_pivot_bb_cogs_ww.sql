@@ -28,7 +28,8 @@ bb_us_cogs_ww as (
         us_fba_fee_usd as fba_fee,
         us_storage_fee_usd as storage_fee,
         us_returns_usd as returns_cost,
-        us_all_costs_except_commission_usd as all_costs_except_commission,
+        0.15 as referral_rate,
+        {# us_all_costs_except_commission_usd as all_costs_except_commission, #}
         us_avg_revenue_per_sale_usd as avg_revenue_per_sale,
         us_return_rate as return_rate
 
@@ -74,12 +75,13 @@ bb_ca_cogs_ww as (
             when ca_fulfillment_type = "NARF"
                 then ca_narf_returns_cad
         end as returns_cost,
-        case
+        0.15 as referral_rate,
+        {# case
             when ca_fulfillment_type = "LOCAL"
                 then ca_local_all_costs_except_commission_cad
             when ca_fulfillment_type = "NARF"
                 then ca_narf_all_costs_except_commission_cad
-        end as all_costs_except_commission,
+        end as all_costs_except_commission, #}
         case
             when ca_fulfillment_type = "LOCAL"
                 then ca_local_avg_revenue_per_sale_cad
@@ -115,7 +117,8 @@ bb_uk_cogs_ww as (
         uk_fba_fee_gbp as fba_fee,
         uk_storage_fee_gbp as storage_fee,
         uk_returns_gbp as returns_cost,
-        uk_all_costs_except_commission_gbp as all_costs_except_commission,
+        0.15 as referral_rate,
+        {# uk_all_costs_except_commission_gbp as all_costs_except_commission, #}
         uk_avg_revenue_per_sale_gbp as avg_revenue_per_sale,
         uk_return_rate as return_rate
 

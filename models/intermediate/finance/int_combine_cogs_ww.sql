@@ -19,6 +19,7 @@ pivoted_bb_cogs_ww as (
         fba_fee,
         storage_fee,
         returns_cost,
+        referral_rate,
         tenant_id
 
     from {{ ref('int_pivot_bb_cogs_ww') }}
@@ -40,6 +41,7 @@ pivoted_rymora_cogs_ww as (
         fba_fee,
         storage_fee,
         returns_cost,
+        referral_rate,
         tenant_id
 
     from {{ ref('int_pivot_rymora_cogs_ww') }}
