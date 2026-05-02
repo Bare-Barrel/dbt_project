@@ -59,7 +59,8 @@ get_cogs_fba_returns_fees as (
         c_cogs.cogs as cogs_per_order_item,
         c_cogs.fba_fee as est_fba_fee_per_order_item,
         c_cogs.storage_fee as est_storage_fee_per_order_item,
-        c_cogs.returns_cost as est_returns_cost_per_order_item
+        c_cogs.returns_cost as est_returns_cost_per_order_item,
+        c_cogs.referral_rate as est_referral_rate
 
     from joined_orders_with_added_fields as jo_w_af
 
@@ -117,6 +118,7 @@ compute_total_est_fees as (
         buyer_info_gift_wrap_price_amount,
         buyer_info_gift_wrap_price_currency_code,
         est_fees_currency_code,
+        est_referral_rate,
 
         cogs_per_order_item * quantity_ordered as cogs,
         est_fba_fee_per_order_item * quantity_ordered as est_fba_fee,

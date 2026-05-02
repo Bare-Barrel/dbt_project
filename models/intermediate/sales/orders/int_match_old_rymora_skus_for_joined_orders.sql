@@ -79,6 +79,7 @@ match_old_sku_2_to_current as (     -- match the second time around
         m_o_sku.buyer_info_gift_wrap_price_amount,
         m_o_sku.buyer_info_gift_wrap_price_currency_code,
         m_o_sku.est_fees_currency_code,
+        m_o_sku.est_referral_rate,
         m_o_sku.cogs,
         m_o_sku.est_fba_fee,
         m_o_sku.est_storage_fee,

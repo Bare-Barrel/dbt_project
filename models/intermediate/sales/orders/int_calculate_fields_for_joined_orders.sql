@@ -14,10 +14,8 @@ calculate_fields as (
 
     select
         order_item_id,
-
-        -- purchase_date
-        purchase_date as purchase_datetime,
-        DATE(purchase_date) as purchase_date,
+        purchase_datetime,
+        purchase_date,
 
         -- UK VAT of 20%
         case

@@ -6,7 +6,7 @@ with
 
 orders as (
 
-    select * from {{ source('orders', 'amazon_orders') }}
+    select * from {{ ref('stg_orders__amazon_orders') }}
 
 ),
 
@@ -43,6 +43,7 @@ join_orders_and_order_items as (
         o.replaced_order_id,
         oi.is_gift,
         o.tenant_id,
+        o.purchase_datetime,
         o.purchase_date,
         oi.shipping_price_amount,
         oi.shipping_price_currency_code,
@@ -58,7 +59,7 @@ join_orders_and_order_items as (
             o.amazon_order_id = oi.amazon_order_id
             and o.tenant_id = oi.tenant_id
 
-    order by o.purchase_date desc, o.tenant_id asc, o.marketplace desc, oi.seller_sku asc
+    order by o.purchase_datetime desc, o.tenant_id asc, o.marketplace desc, oi.seller_sku asc
 
 )
 

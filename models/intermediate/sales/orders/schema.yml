@@ -847,6 +847,10 @@ models:
         data_type: string
         description: ""
 
+      - name: est_referral_rate
+        data_type: float64
+        description: ""
+
       - name: cogs
         data_type: numeric
         description: ""
@@ -864,10 +868,6 @@ models:
         description: ""
 
       - name: net_item_price_amount
-        data_type: numeric
-        description: ""
-
-      - name: est_referral_fee_pct
         data_type: numeric
         description: ""
 
@@ -1024,6 +1024,10 @@ models:
 
       - name: est_fees_currency_code
         data_type: string
+        description: ""
+
+      - name: est_referral_rate
+        data_type: float64
         description: ""
 
       - name: cogs

@@ -2,8 +2,14 @@
 
 {{ config(
     materialized='incremental',
-    unique_key='order_item_id',
-    on_schema_change='sync_all_columns'
+    unique_key=['order_item_id', 'tenant_id', 'marketplace'],
+    on_schema_change='sync_all_columns',
+    partition_by={
+        "field": "purchase_date",
+        "data_type": "date",
+        "granularity": "day"
+    },
+    cluster_by=["tenant_id", "marketplace"]
 ) }}
 
 with
@@ -15,9 +21,26 @@ joined_orders_usd as (
     {% if is_incremental() %}
         where purchase_date >= date_sub(
             (select max(t.purchase_date) from {{ this }} as t),
-            interval 2 day
+            interval 7 day
         )
     {% endif %}
+
+    -- TODO: Add reconciliation of missing fees
+    {# {% if is_incremental() %}
+        where
+            -- normal incremental window
+            purchase_date >= date_sub(
+                (select max(t.purchase_date) from {{ this }} as t),
+                interval 2 day
+            )
+            -- reconciliation sweep: older orders still missing fees
+            or order_item_id in (
+                select order_item_id
+                from {{ this }}
+                where actual_amazon_fees_usd is null
+                and purchase_date >= date_sub(current_date(), interval 30 day)
+            )
+    {% endif %} #}
 
 ),
 
