@@ -1,10 +1,10 @@
--- dim_parent_portfolio_codes.sql
+-- dim_portfolio_code.sql
 
 with
 
-dim_products as (
+dim_product as (
 
-    select * from {{ ref('dim_products') }}
+    select * from {{ ref('dim_product') }}
 
 ),
 
@@ -16,7 +16,7 @@ select_fields as (
         product_type,
         tenant_id
 
-    from dim_products
+    from dim_product
 
 ),
 

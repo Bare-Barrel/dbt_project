@@ -1,4 +1,4 @@
--- int_get_sb_placement_product_codes.sql sb_cp_04
+-- int_get_sb_placement_product_codes.sql sb_cp_04  TODO: Combine with int_get_sb_placement_asin?
 
 {{ config(materialized='view') }}
 
@@ -17,7 +17,7 @@ rymora_product_codes as (
         parent_code,
         shaker_code,
         product_code
-    from {{ ref('dim_products') }}
+    from {{ ref('dim_product') }}
     where tenant_id = 2
 
 ),
@@ -28,7 +28,7 @@ bb_product_codes as (
         parent_code,
         portfolio_code,
         product_code
-    from {{ ref('dim_products') }}
+    from {{ ref('dim_product') }}
     where tenant_id = 1
 
 ),

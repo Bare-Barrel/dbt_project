@@ -1,4 +1,4 @@
--- int_get_sp_placement_product_codes.sql sp_cp_04
+-- int_get_sp_placement_product_codes.sql sp_cp_04  TODO: Combine with int_get_sp_placement_asin?
 
 {{ config(materialized='view') }}
 
@@ -17,7 +17,7 @@ bb_product_codes as (
         portfolio_code,
         product_code
 
-    from {{ ref('dim_products') }}
+    from {{ ref('dim_product') }}
 
     where tenant_id = 1
 

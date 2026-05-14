@@ -14,15 +14,15 @@ dim_campaigns as (
 
 ),
 
-dim_marketplaces as (
+dim_marketplace as (
 
-    select * from {{ ref('dim_marketplaces') }}
+    select * from {{ ref('dim_marketplace') }}
 
 ),
 
-dim_tenants as (
+dim_tenant as (
 
-    select * from {{ ref('dim_tenants') }}
+    select * from {{ ref('dim_tenant') }}
 
 ),
 
@@ -75,10 +75,10 @@ build_c_fact_table as (
             and c.record_date >= dcam.start_date
             and c.record_date <= dcam.end_date
 
-    left join dim_marketplaces as dmp
+    left join dim_marketplace as dmp
         on c.marketplace = dmp.marketplace_name
 
-    left join dim_tenants as dtn
+    left join dim_tenant as dtn
         on c.tenant_id = dtn.tenant_id
 
     left join dim_portfolios as dpo

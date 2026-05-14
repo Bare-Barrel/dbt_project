@@ -20,9 +20,9 @@ dim_portfolios as (
 
 ),
 
-dim_marketplaces as (
+dim_marketplace as (
 
-    select * from {{ ref('dim_marketplaces') }}
+    select * from {{ ref('dim_marketplace') }}
 
 ),
 
@@ -32,9 +32,9 @@ dim_placements as (
 
 ),
 
-dim_tenants as (
+dim_tenant as (
 
-    select * from {{ ref('dim_tenants') }}
+    select * from {{ ref('dim_tenant') }}
 
 ),
 
@@ -86,13 +86,13 @@ build_cp_fact_table as (
     left join dim_portfolios as dpo
         on cp.portfolio_id = dpo.portfolio_id
 
-    left join dim_marketplaces as dmp
+    left join dim_marketplace as dmp
         on cp.marketplace = dmp.marketplace_name
 
     left join dim_placements as dpl
         on cp.placement_classification = dpl.placement_classification
 
-    left join dim_tenants as dtn
+    left join dim_tenant as dtn
         on cp.tenant_id = dtn.tenant_id
 
     left join dim_ad_types as dadt
