@@ -8,6 +8,12 @@ dim_product as (
 
 ),
 
+dim_tenant as (
+
+    select * from {{ ref('dim_tenant') }}
+
+),
+
 select_fields as (
 
     select
@@ -59,6 +65,22 @@ add_surrogate_key as (
 
     from remove_duplicates
 
+),
+
+add_tenant_sk as (
+
+    select
+        dtn.tenant_sk,
+        ask.portfolio_code_sk,
+        ask.portfolio_code,
+        ask.parent_code,
+        ask.product_type
+
+    from add_surrogate_key as ask
+
+    left join dim_tenant as dtn
+        on ask.tenant_id = dtn.tenant_id
+
 )
 
-select * from add_surrogate_key
+select * from add_tenant_sk
