@@ -1,0 +1,52 @@
+-- int_kpi_tracker__union_all_sp_campaigns.sql
+-- Almost the same as SP portfolio_performance_summary_view / SP Historical Campaign Cost
+
+{{ config(materialized='view') }}
+
+with
+
+agg_sp_campaigns as (
+
+    select * from {{ ref('int_kpi_tracker__aggregate_sp_campaigns') }}
+
+),
+
+agg_sp_campaign_console as (
+
+    select * from {{ ref('int_kpi_tracker__aggregate_sp_cc') }}
+
+),
+
+union_all_sp_campaigns as (
+
+    -- API data source. (04-02-2023 to present)
+    select
+        campaign_date,
+        tenant_id,
+        marketplace,
+        portfolio_code,
+        total_impressions,
+        total_clicks,
+        total_cost_usd,
+        total_units_sold_clicks_7d,
+        total_sales_7d_usd
+    from agg_sp_campaigns
+
+    union all
+
+    -- Advertising reports data source for (06-27-2022 to 2024-04-01)
+    select
+        campaign_date,
+        tenant_id,
+        marketplace,
+        portfolio_code,
+        total_impressions,
+        total_clicks,
+        total_spend_usd as total_cost_usd,
+        _7_day_total_orders as total_units_sold_clicks_7d,
+        _7_day_total_sales_usd as total_sales_7d_usd
+    from agg_sp_campaign_console
+
+)
+
+select * from union_all_sp_campaigns

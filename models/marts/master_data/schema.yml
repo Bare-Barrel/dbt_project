@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_marketplaces
+  - name: dim_marketplace
     description: ""
     columns:
       - name: marketplace_sk
@@ -20,11 +20,34 @@ models:
         data_type: string
         description: ""
 
-      - name: endpoint
+      - name: marketplace_endpoint_url
         data_type: string
         description: ""
 
-  - name: dim_products
+  - name: dim_portfolio_code
+    description: ""
+    columns:
+      - name: portfolio_code_sk
+        data_type: string
+        description: ""
+
+      - name: portfolio_code
+        data_type: string
+        description: ""
+
+      - name: parent_code
+        data_type: string
+        description: ""
+
+      - name: product_type
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+  - name: dim_product
     description: ""
     columns:
       - name: product_sk
@@ -75,7 +98,7 @@ models:
         data_type: string
         description: ""
 
-  - name: dim_tenants
+  - name: dim_tenant
     description: ""
     columns:
       - name: tenant_sk
@@ -86,6 +109,6 @@ models:
         data_type: int64
         description: ""
 
-      - name: company
+      - name: company_name
         data_type: string
         description: ""

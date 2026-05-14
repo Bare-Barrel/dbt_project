@@ -12,7 +12,7 @@ sb_placements_with_product_codes as (
 
 dim_products as (
 
-    select * from {{ ref('dim_products') }}
+    select * from {{ ref('dim_product') }}
 
 ),
 
