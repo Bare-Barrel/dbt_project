@@ -2,9 +2,9 @@
 
 with
 
-dim_product as (
+all_products as (
 
-    select * from {{ ref('dim_product') }}
+    select * from {{ ref('int_union_all_products') }}
 
 ),
 
@@ -22,7 +22,7 @@ select_fields as (
         product_type,
         tenant_id
 
-    from dim_product
+    from all_products
 
 ),
 

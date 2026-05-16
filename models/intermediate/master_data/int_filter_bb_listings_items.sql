@@ -1,4 +1,4 @@
--- int_filter_bb_listings_items.sql md_bb_1
+-- int_filter_bb_listings_items.sql md_bb_1 TODO: Modify so that all available unique ASINs are included
 
 {{ config(materialized='ephemeral') }}
 
