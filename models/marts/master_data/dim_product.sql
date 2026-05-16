@@ -2,52 +2,15 @@
 
 with
 
-bb_product_codes as (
+all_products as (
 
-    select
-        *,
-        CAST(null as string) as product_color_code,
-        CAST(null as string) as product_color,
-        CAST(null as string) as product_pack_size
-    from {{ ref('int_remove_rows_from_bb_listings_items') }}
+    select * from {{ ref('int_union_all_products') }}
 
 ),
 
-rymora_product_codes as (
+dim_portfolio_code as (
 
-    select
-        *,
-        CAST(null as string) as shaker_code
-    from {{ ref('int_remove_rows_from_rymora_listings_items') }}
-
-),
-
-reorder_rymora_fields as (
-
-    select
-        sku,
-        asin,
-        product_type,
-        tenant_id,
-        parent_code,
-        shaker_code,
-        portfolio_code,
-        product_code,
-        product_color_code,
-        product_color,
-        product_pack_size
-
-    from rymora_product_codes
-
-),
-
-union_all as (
-
-    select * from bb_product_codes
-
-    union all
-
-    select * from reorder_rymora_fields
+    select * from {{ ref('dim_portfolio_code') }}
 
 ),
 
@@ -57,8 +20,34 @@ add_surrogate_key as (
         {{ dbt_utils.generate_surrogate_key(['asin']) }} as product_sk,
         *
 
-    from union_all
+    from all_products
+
+),
+
+add_portfolio_code_sk as (
+
+    select
+        ask.product_sk,
+
+        dpc.portfolio_code_sk,
+
+        ask.sku,
+        ask.asin,
+        ask.product_type,
+        ask.tenant_id,
+        ask.parent_code,
+        ask.shaker_code,
+        ask.portfolio_code,
+        ask.product_code,
+        ask.product_color_code,
+        ask.product_color,
+        ask.product_pack_size
+
+    from add_surrogate_key as ask
+
+    left join dim_portfolio_code as dpc
+        on ask.portfolio_code = dpc.portfolio_code
 
 )
 
-select * from add_surrogate_key
+select * from add_portfolio_code_sk
