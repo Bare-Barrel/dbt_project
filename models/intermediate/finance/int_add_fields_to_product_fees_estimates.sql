@@ -24,6 +24,8 @@ add_fields as (
         est_variable_closing_fee,
         est_per_item_fee,
         est_fba_fee,
+        error_code,
+        error_message,
         recorded_at,
 
         SAFE_DIVIDE(est_referral_fee, price_to_estimate_fees_amount) as est_referral_fee_pct,

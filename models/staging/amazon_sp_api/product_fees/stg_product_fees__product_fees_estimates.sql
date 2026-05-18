@@ -18,6 +18,8 @@ cast_data_types as (
         marketplace,
         sku,
         price_to_estimate_fees_currency_code,
+        error_code,
+        error_message,
 
         -- numerics
         price_to_estimate_fees_amount,
