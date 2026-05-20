@@ -1,6 +1,69 @@
 version: 2
 
 models:
+  - name: int_aggregate_unioned_campaign_placements
+    description: ""
+    columns:
+      - name: record_date
+        data_type: date
+        description: ""
+
+      - name: marketplace
+        data_type: string
+        description: ""
+
+      - name: asin
+        data_type: string
+        description: ""
+
+      - name: tenant_id
+        data_type: int64
+        description: ""
+
+      - name: campaign_status
+        data_type: string
+        description: ""
+
+      - name: placement_classification
+        data_type: string
+        description: ""
+
+      - name: ad_type
+        data_type: string
+        description: ""
+
+      - name: sb_ad_type
+        data_type: string
+        description: ""
+
+      - name: impressions
+        data_type: int64
+        description: ""
+
+      - name: clicks
+        data_type: int64
+        description: ""
+
+      - name: units_sold_clicks
+        data_type: int64
+        description: ""
+
+      - name: purchases_clicks
+        data_type: int64
+        description: ""
+
+      - name: campaign_budget_amount_usd
+        data_type: numeric
+        description: ""
+
+      - name: cost_usd
+        data_type: numeric
+        description: ""
+
+      - name: sales_clicks_usd
+        data_type: numeric
+        description: ""
+
   - name: int_get_sb_placement_asin
     description: ""
     columns:

@@ -1,4 +1,4 @@
--- int_kpi_tracker__union_all_sp_campaigns.sql
+-- int_kpi_tracker__union_all_sp_campaigns.sql kpi_sp_06
 -- Almost the same as SP portfolio_performance_summary_view / SP Historical Campaign Cost
 
 {{ config(materialized='view') }}

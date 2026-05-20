@@ -1,6 +1,6 @@
 -- int_calculate_fields_for_sb_campaigns.sql sb_c_03
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

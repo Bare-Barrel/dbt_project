@@ -1,6 +1,6 @@
 -- int_match_old_rymora_skus_for_joined_orders.sql 06
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

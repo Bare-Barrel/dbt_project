@@ -1,4 +1,4 @@
--- int_kpi_tracker__union_all_sb_campaigns.sql
+-- int_kpi_tracker__union_all_sb_campaigns.sql kpi_sb_06
 
 {{ config(materialized='view') }}
 
