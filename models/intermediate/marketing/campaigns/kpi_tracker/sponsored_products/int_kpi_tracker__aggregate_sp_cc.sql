@@ -1,7 +1,7 @@
 -- int_kpi_tracker__aggregate_sp_cc.sql kpi_sp_cc_04
 -- Advertising reports data source. (06-27-2022 to 2024-04-01)
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

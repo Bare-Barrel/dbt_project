@@ -1,7 +1,7 @@
 -- int_kpi_tracker__aggregate_sd_campaign_v2.sql kpi_sd_c_v2_05
 -- API v2 (2023-06-11 - 2025-01-10)
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

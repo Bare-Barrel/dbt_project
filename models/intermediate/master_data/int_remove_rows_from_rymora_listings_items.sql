@@ -1,6 +1,6 @@
 -- int_remove_rows_from_rymora_listings_items.sql md_ry_3
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

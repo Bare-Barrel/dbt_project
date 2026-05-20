@@ -1,6 +1,6 @@
 -- int_get_est_referral_fees_for_joined_orders.sql 07
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

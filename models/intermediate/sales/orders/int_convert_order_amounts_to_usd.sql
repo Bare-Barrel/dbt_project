@@ -1,6 +1,6 @@
 -- int_convert_order_amounts_to_usd.sql 08
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

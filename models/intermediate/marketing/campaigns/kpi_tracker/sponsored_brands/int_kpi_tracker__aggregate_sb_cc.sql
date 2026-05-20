@@ -1,7 +1,7 @@
 -- int_kpi_tracker__aggregate_sb_cc.sql kpi_sb_cc_03
 -- Advertising reports from advertising console (2022-07-10 - 2023-06-10)
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 

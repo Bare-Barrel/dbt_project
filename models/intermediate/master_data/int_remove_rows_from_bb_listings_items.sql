@@ -1,6 +1,6 @@
 -- int_remove_rows_from_bb_listings_items.sql md_bb_3
 
-{{ config(materialized='view') }}
+{{ config(materialized='ephemeral') }}
 
 with
 
