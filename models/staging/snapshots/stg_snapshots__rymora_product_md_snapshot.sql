@@ -1,44 +1,44 @@
--- stg_google_sheets__rymora_product_md.sql
+-- stg_snapshots__rymora_product_md_snapshot.sql
 
 with
 
 rymora_product_md as (
 
-    select * from {{ source('google_sheets','rymora_product_master_data') }}
+    select * from {{ source('snapshots','rymora_product_master_data_snapshot') }}
 
 ),
 
 rename_fields as (
 
     select
-        string_field_0 as product_code,
-        string_field_1 as product_group,
-        string_field_2 as ean,
-        string_field_3 as asin,
-        string_field_4 as color,
-        string_field_5 as product_size,
-        string_field_6 as current_sku,
-        string_field_7 as previous_sku,
-        string_field_8 as old_sku,
-        string_field_9 as old_sku_2,
-        string_field_10 as moq,
-        string_field_11 as lead_time_days,
-        string_field_12 as pcs_per_carton,
-        string_field_13 as _2020_rates_usd,
-        string_field_14 as length_cm,
-        string_field_15 as width_cm,
-        string_field_16 as height_cm,
-        string_field_17 as cbm,
-        string_field_18 as n_weight_kg,
-        string_field_19 as g_weight_kg,
-        string_field_20 as length_inch,
-        string_field_21 as width_inch,
-        string_field_22 as height_inch,
-        string_field_23 as cft,
-        string_field_24 as n_weight_lb,
-        string_field_25 as g_weight_lb,
-        string_field_26 as per_unit_g,
-        string_field_27 as per_unit_oz
+        col_0 as product_code,
+        col_1 as product_group,
+        col_2 as ean,
+        col_3 as asin,
+        col_4 as color,
+        col_5 as product_size,
+        col_6 as current_sku,
+        col_7 as previous_sku,
+        col_8 as old_sku,
+        col_9 as old_sku_2,
+        col_10 as moq,
+        col_11 as lead_time_days,
+        col_12 as pcs_per_carton,
+        col_13 as _2020_rates_usd,
+        col_14 as length_cm,
+        col_15 as width_cm,
+        col_16 as height_cm,
+        col_17 as cbm,
+        col_18 as n_weight_kg,
+        col_19 as g_weight_kg,
+        col_20 as length_inch,
+        col_21 as width_inch,
+        col_22 as height_inch,
+        col_23 as cft,
+        col_24 as n_weight_lb,
+        col_25 as g_weight_lb,
+        col_26 as per_unit_g,
+        col_27 as per_unit_oz
 
     from rymora_product_md
 

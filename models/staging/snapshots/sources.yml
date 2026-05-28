@@ -1,0 +1,63 @@
+version: 2
+
+sources:
+  - name: snapshots
+    tables:
+      - name: rymora_product_master_data_snapshot
+        columns:
+          - name: col_0
+            data_type: string
+          - name: col_1
+            data_type: string
+          - name: col_2
+            data_type: string
+          - name: col_3
+            data_type: string
+          - name: col_4
+            data_type: string
+          - name: col_5
+            data_type: string
+          - name: col_6
+            data_type: string
+          - name: col_7
+            data_type: string
+          - name: col_8
+            data_type: string
+          - name: col_9
+            data_type: string
+          - name: col_10
+            data_type: string
+          - name: col_11
+            data_type: string
+          - name: col_12
+            data_type: string
+          - name: col_13
+            data_type: string
+          - name: col_14
+            data_type: string
+          - name: col_15
+            data_type: string
+          - name: col_16
+            data_type: string
+          - name: col_17
+            data_type: string
+          - name: col_18
+            data_type: string
+          - name: col_19
+            data_type: string
+          - name: col_20
+            data_type: string
+          - name: col_21
+            data_type: string
+          - name: col_22
+            data_type: string
+          - name: col_23
+            data_type: string
+          - name: col_24
+            data_type: string
+          - name: col_25
+            data_type: string
+          - name: col_26
+            data_type: string
+          - name: col_27
+            data_type: string
