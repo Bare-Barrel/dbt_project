@@ -17,7 +17,7 @@ rymora_product_md as (
         previous_sku,
         old_sku
 
-    from {{ ref('stg_google_sheets__rymora_product_md') }}
+    from {{ ref('stg_snapshots__rymora_product_md_snapshot') }}
 
 ),
 
