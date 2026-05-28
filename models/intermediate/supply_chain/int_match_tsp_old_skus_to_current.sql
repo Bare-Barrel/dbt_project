@@ -12,7 +12,7 @@ mintsoft_wh_stock_levels as (
 
 rymora_product_md as (
 
-    select * from {{ ref('stg_google_sheets__rymora_product_md') }}
+    select * from {{ ref('stg_snapshots__rymora_product_md_snapshot') }}
 
 ),
 
