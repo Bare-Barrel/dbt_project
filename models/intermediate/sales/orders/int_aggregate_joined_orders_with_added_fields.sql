@@ -1,4 +1,4 @@
--- int_aggregate_joined_orders_with_added_fields.sql 11
+-- int_aggregate_joined_orders_with_added_fields.sql 12
 
 {{ config(materialized='ephemeral') }}
 
@@ -10,10 +10,10 @@ joined_orders_with_final_amazon_fees as (
 
 ),
 
-aggregate_joined_orders_with_added_fields as (
+aggregate_joined_orders_with_added_fields as ( -- sheds unneeded datetime/date fields; retains purchase_date_local acc to marketplace
 
     select
-        purchase_date,
+        purchase_date_local as purchase_date,
         marketplace,
         order_status,
         asin,

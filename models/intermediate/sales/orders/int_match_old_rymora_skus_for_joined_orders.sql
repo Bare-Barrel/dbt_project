@@ -1,4 +1,4 @@
--- int_match_old_rymora_skus_for_joined_orders.sql 06
+-- int_match_old_rymora_skus_for_joined_orders.sql 07
 
 {{ config(materialized='ephemeral') }}
 
@@ -44,8 +44,10 @@ match_old_sku_2_to_current as (     -- match the second time around
     select
         m_o_sku.amazon_order_id,
         m_o_sku.order_item_id,
-        m_o_sku.purchase_datetime,
-        m_o_sku.purchase_date,
+        m_o_sku.purchase_datetime_utc,
+        m_o_sku.purchase_date_utc,
+        m_o_sku.purchase_datetime_local,
+        m_o_sku.purchase_date_local,
         m_o_sku.marketplace,
         m_o_sku.sales_channel,
         m_o_sku.asin,

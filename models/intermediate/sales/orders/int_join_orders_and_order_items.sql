@@ -17,6 +17,7 @@ order_items as (
 ),
 
 join_orders_and_order_items as (
+
     select
         o.amazon_order_id,
         oi.order_item_id,

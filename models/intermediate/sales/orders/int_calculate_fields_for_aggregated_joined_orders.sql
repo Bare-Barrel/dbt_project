@@ -1,4 +1,4 @@
--- int_calculate_fields_for_aggregated_joined_orders.sql 12
+-- int_calculate_fields_for_aggregated_joined_orders.sql 13
 
 {{ config(materialized='view') }}
 

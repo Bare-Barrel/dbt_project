@@ -1,4 +1,4 @@
--- int_get_est_referral_fees_for_joined_orders.sql 07
+-- int_get_est_referral_fees_for_joined_orders.sql 08
 
 {{ config(materialized='ephemeral') }}
 
@@ -15,8 +15,10 @@ orders_with_rymora_sku_matches as (
     select
         amazon_order_id,
         order_item_id,
-        purchase_datetime,
-        purchase_date,
+        purchase_datetime_utc,
+        purchase_date_utc,
+        purchase_datetime_local,
+        purchase_date_local,
         marketplace,
         sales_channel,
         asin,
@@ -170,8 +172,10 @@ compute_est_referral_fee as (
     select
         amazon_order_id,
         order_item_id,
-        purchase_datetime,
-        purchase_date,
+        purchase_datetime_utc,
+        purchase_date_utc,
+        purchase_datetime_local,
+        purchase_date_local,
         marketplace,
         sales_channel,
         asin,
