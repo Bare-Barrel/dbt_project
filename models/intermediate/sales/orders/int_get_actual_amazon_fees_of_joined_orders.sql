@@ -27,8 +27,8 @@ joined_orders_usd as (
 
     {% if is_incremental() %}
         where purchase_date_local >= (
-            select date_sub(max(this.purchase_date_local), interval 7 day)
-            from {{ this }} as this
+            select date_sub(max(existing.purchase_date_local), interval 7 day)
+            from {{ this }} as existing
         )
     {% else %}
         where purchase_date_local >= date '{{ var("initial_load_start", "1970-01-01") }}'
