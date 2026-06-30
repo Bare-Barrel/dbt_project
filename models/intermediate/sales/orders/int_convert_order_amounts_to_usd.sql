@@ -1,4 +1,4 @@
--- int_convert_order_amounts_to_usd.sql 08
+-- int_convert_order_amounts_to_usd.sql 09
 
 {{ config(materialized='ephemeral') }}
 
@@ -21,8 +21,10 @@ convert_amounts_to_usd as (
     select
         o_w_ef.amazon_order_id,
         o_w_ef.order_item_id,
-        o_w_ef.purchase_datetime,
-        o_w_ef.purchase_date,
+        o_w_ef.purchase_datetime_utc,
+        o_w_ef.purchase_date_utc,
+        o_w_ef.purchase_datetime_local,
+        o_w_ef.purchase_date_local,
         o_w_ef.marketplace,
         o_w_ef.sales_channel,
         o_w_ef.asin,
@@ -161,42 +163,42 @@ convert_amounts_to_usd as (
     -- join once per DISTINCT currency column
     left join fx as fx_item
         on
-            o_w_ef.purchase_date = fx_item.recorded_at
+            o_w_ef.purchase_date_local = fx_item.recorded_at
             and o_w_ef.item_price_currency_code = fx_item.target
 
     left join fx as fx_item_tax
         on
-            o_w_ef.purchase_date = fx_item_tax.recorded_at
+            o_w_ef.purchase_date_local = fx_item_tax.recorded_at
             and o_w_ef.item_tax_currency_code = fx_item_tax.target
 
     left join fx as fx_promo_discount
         on
-            o_w_ef.purchase_date = fx_promo_discount.recorded_at
+            o_w_ef.purchase_date_local = fx_promo_discount.recorded_at
             and o_w_ef.promotion_discount_currency_code = fx_promo_discount.target
 
     left join fx as fx_promo_discount_tax
         on
-            o_w_ef.purchase_date = fx_promo_discount_tax.recorded_at
+            o_w_ef.purchase_date_local = fx_promo_discount_tax.recorded_at
             and o_w_ef.promotion_discount_tax_currency_code = fx_promo_discount_tax.target
 
     left join fx as fx_shipping
         on
-            o_w_ef.purchase_date = fx_shipping.recorded_at
+            o_w_ef.purchase_date_local = fx_shipping.recorded_at
             and o_w_ef.shipping_price_currency_code = fx_shipping.target
 
     left join fx as fx_shipping_discount
         on
-            o_w_ef.purchase_date = fx_shipping_discount.recorded_at
+            o_w_ef.purchase_date_local = fx_shipping_discount.recorded_at
             and o_w_ef.shipping_discount_currency_code = fx_shipping_discount.target
 
     left join fx as fx_gift
         on
-            o_w_ef.purchase_date = fx_gift.recorded_at
+            o_w_ef.purchase_date_local = fx_gift.recorded_at
             and o_w_ef.buyer_info_gift_wrap_price_currency_code = fx_gift.target
 
     left join fx as fx_est_fees
         on
-            o_w_ef.purchase_date = fx_est_fees.recorded_at
+            o_w_ef.purchase_date_local = fx_est_fees.recorded_at
             and o_w_ef.est_fees_currency_code = fx_est_fees.target
 
 )

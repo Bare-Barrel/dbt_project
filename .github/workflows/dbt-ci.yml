@@ -13,6 +13,14 @@ on:
         description: "Run dbt with --full-refresh"
         required: false
         default: "false"
+      initial_load_start:
+        description: "Initial load start date (YYYY-MM-DD), only used with full-refresh"
+        required: false
+        default: ""
+      initial_load_end:
+        description: "Initial load end date (YYYY-MM-DD), only used with full-refresh"
+        required: false
+        default: ""
   push:
     branches: [ main ]
   pull_request:
@@ -68,7 +76,14 @@ jobs:
           dbt debug --profiles-dir $DBT_PROFILES_DIR
           if [ "${{ github.event.inputs.full_refresh }}" == "true" ]; then
             echo "Running dbt with FULL REFRESH"
-            dbt build --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET --full-refresh
+
+            VARS="{}"
+            if [ -n "${{ github.event.inputs.initial_load_start }}" ] && [ -n "${{ github.event.inputs.initial_load_end }}" ]; then
+              VARS='{"initial_load_start": "${{ github.event.inputs.initial_load_start }}", "initial_load_end": "${{ github.event.inputs.initial_load_end }}"}'
+              echo "Using initial load window: ${{ github.event.inputs.initial_load_start }} to ${{ github.event.inputs.initial_load_end }}"
+            fi
+
+            dbt build --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET --full-refresh --vars "$VARS"
           else
             echo "Running dbt normally (incremental)"
             dbt build --profiles-dir $DBT_PROFILES_DIR --target $DBT_TARGET

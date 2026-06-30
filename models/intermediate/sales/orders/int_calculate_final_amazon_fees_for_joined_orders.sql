@@ -1,4 +1,4 @@
--- int_calculate_final_amazon_fees_for_joined_orders.sql 10 -- Compare est and actual amazon fees on order item level
+-- int_calculate_final_amazon_fees_for_joined_orders.sql 11 -- Compare est and actual amazon fees on order item level
 
 {{ config(materialized='view') }}
 
@@ -26,8 +26,10 @@ get_final_amazon_fees as (
     select
         amazon_order_id,
         order_item_id,
-        purchase_datetime,
-        purchase_date,
+        purchase_datetime_utc,
+        purchase_date_utc,
+        purchase_datetime_local,
+        purchase_date_local,
         marketplace,
         sales_channel,
         asin,

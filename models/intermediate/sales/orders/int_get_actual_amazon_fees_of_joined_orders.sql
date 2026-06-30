@@ -1,11 +1,11 @@
--- int_get_actual_amazon_fees_of_joined_orders.sql 09
+-- int_get_actual_amazon_fees_of_joined_orders.sql 10
 
 {{ config(
     materialized='incremental',
     unique_key=['order_item_id', 'tenant_id', 'marketplace'],
     on_schema_change='sync_all_columns',
     partition_by={
-        "field": "purchase_date",
+        "field": "purchase_date_local",
         "data_type": "date",
         "granularity": "day"
     },
@@ -18,11 +18,21 @@ joined_orders_usd as (
 
     select * from {{ ref('int_convert_order_amounts_to_usd') }}
 
-    {% if is_incremental() %}
-        where purchase_date >= date_sub(
-            (select max(t.purchase_date) from {{ this }} as t),
+    {# {% if is_incremental() %}
+        where purchase_date_local >= date_sub(
+            (select max(t.purchase_date_local) from {{ this }} as t),
             interval 7 day
         )
+    {% endif %} #}
+
+    {% if is_incremental() %}
+        where purchase_date_local >= (
+            select date_sub(max(purchase_date_local), interval 7 day)
+            from {{ this }}
+        )
+    {% else %}
+        where purchase_date_local >= date '{{ var("initial_load_start", "1970-01-01") }}'
+        and purchase_date_local < date '{{ var("initial_load_end", "1970-01-02") }}'
     {% endif %}
 
     -- TODO: Add reconciliation of missing fees
@@ -55,8 +65,10 @@ get_actual_amazon_fees as (
     select
         j_o_usd.amazon_order_id,
         j_o_usd.order_item_id,
-        j_o_usd.purchase_datetime,
-        j_o_usd.purchase_date,
+        j_o_usd.purchase_datetime_utc,
+        j_o_usd.purchase_date_utc,
+        j_o_usd.purchase_datetime_local,
+        j_o_usd.purchase_date_local,
         j_o_usd.marketplace,
         j_o_usd.sales_channel,
         j_o_usd.asin,
