@@ -3,6 +3,198 @@ version: 2
 sources:
   - name: snapshots
     tables:
+      - name: bb_cogs_ww_snapshot
+        columns:
+          - name: col_0
+            data_type: string
+          - name: col_1
+            data_type: string
+          - name: col_2
+            data_type: string
+          - name: col_3
+            data_type: string
+          - name: col_4
+            data_type: string
+          - name: col_5
+            data_type: string
+          - name: col_6
+            data_type: string
+          - name: col_7
+            data_type: string
+          - name: col_8
+            data_type: string
+          - name: col_9
+            data_type: string
+          - name: col_10
+            data_type: string
+          - name: col_11
+            data_type: string
+          - name: col_12
+            data_type: string
+          - name: col_13
+            data_type: string
+          - name: col_14
+            data_type: string
+          - name: col_15
+            data_type: string
+          - name: col_16
+            data_type: string
+          - name: col_17
+            data_type: string
+          - name: col_18
+            data_type: string
+          - name: col_19
+            data_type: string
+          - name: col_20
+            data_type: string
+          - name: col_21
+            data_type: string
+          - name: col_22
+            data_type: string
+          - name: col_23
+            data_type: string
+          - name: col_24
+            data_type: string
+          - name: col_25
+            data_type: string
+          - name: col_26
+            data_type: string
+          - name: col_27
+            data_type: string
+          - name: col_28
+            data_type: string
+          - name: col_29
+            data_type: string
+          - name: col_30
+            data_type: string
+          - name: col_31
+            data_type: string
+          - name: col_32
+            data_type: string
+          - name: col_33
+            data_type: string
+          - name: col_34
+            data_type: string
+          - name: col_35
+            data_type: string
+          - name: col_36
+            data_type: string
+
+      - name: rymora_cogs_ww_snapshot
+        columns:
+          - name: col_0
+            data_type: string
+          - name: col_1
+            data_type: string
+          - name: col_2
+            data_type: string
+          - name: col_3
+            data_type: string
+          - name: col_4
+            data_type: string
+          - name: col_5
+            data_type: string
+          - name: col_6
+            data_type: string
+          - name: col_7
+            data_type: string
+          - name: col_8
+            data_type: string
+          - name: col_9
+            data_type: string
+          - name: col_10
+            data_type: string
+          - name: col_11
+            data_type: string
+          - name: col_12
+            data_type: string
+          - name: col_13
+            data_type: string
+          - name: col_14
+            data_type: string
+          - name: col_15
+            data_type: string
+          - name: col_16
+            data_type: string
+          - name: col_17
+            data_type: string
+          - name: col_18
+            data_type: string
+          - name: col_19
+            data_type: string
+          - name: col_20
+            data_type: string
+          - name: col_21
+            data_type: string
+          - name: col_22
+            data_type: string
+          - name: col_23
+            data_type: string
+          - name: col_24
+            data_type: string
+          - name: col_25
+            data_type: string
+          - name: col_26
+            data_type: string
+          - name: col_27
+            data_type: string
+          - name: col_28
+            data_type: string
+          - name: col_29
+            data_type: string
+          - name: col_30
+            data_type: string
+          - name: col_31
+            data_type: string
+          - name: col_32
+            data_type: string
+          - name: col_33
+            data_type: string
+          - name: col_34
+            data_type: string
+          - name: col_35
+            data_type: string
+          - name: col_36
+            data_type: string
+          - name: col_37
+            data_type: string
+          - name: col_38
+            data_type: string
+          - name: col_39
+            data_type: string
+          - name: col_40
+            data_type: string
+          - name: col_41
+            data_type: string
+          - name: col_42
+            data_type: string
+          - name: col_43
+            data_type: string
+          - name: col_44
+            data_type: string
+          - name: col_45
+            data_type: string
+          - name: col_46
+            data_type: string
+          - name: col_47
+            data_type: string
+          - name: col_48
+            data_type: string
+          - name: col_49
+            data_type: string
+          - name: col_50
+            data_type: string
+          - name: col_51
+            data_type: string
+          - name: col_52
+            data_type: string
+          - name: col_53
+            data_type: string
+          - name: col_54
+            data_type: string
+          - name: col_55
+            data_type: string
+
       - name: rymora_product_master_data_snapshot
         columns:
           - name: col_0

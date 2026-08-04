@@ -1,4 +1,4 @@
--- int_pivot_rymora_cogs_ww.sql 01
+-- int_pivot_rymora_cogs_ww.sql cogs_01
 
 {{ config(materialized='ephemeral') }}
 
@@ -6,7 +6,7 @@ with
 
 rymora_cogs_ww as (
 
-    select * from {{ ref('stg_google_sheets__rymora_cogs_ww') }}
+    select * from {{ ref('stg_snapshots__rymora_cogs_ww_snapshot') }}
 
 ),
 
