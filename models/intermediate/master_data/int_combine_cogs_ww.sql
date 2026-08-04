@@ -1,4 +1,4 @@
--- int_combine_cogs_ww.sql 02
+-- int_combine_cogs_ww.sql cogs_02
 
 {{ config(materialized='view') }}
 
