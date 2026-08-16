@@ -51,6 +51,16 @@ rename_and_filter_fields as (
 
 ),
 
+remove_rows_with_blank_dates as (
+
+    select *
+
+    from rename_and_filter_fields
+
+    where TRIM(start_date) != "" and TRIM(end_date) != ""
+
+),
+
 cast_data_types as (
 
     select
@@ -98,7 +108,7 @@ cast_data_types as (
         SAFE_CAST(REGEXP_REPLACE(uk_avg_revenue_per_sale_gbp, r"[^0-9.-]", "") as numeric) as uk_avg_revenue_per_sale_gbp,
         SAFE_CAST(REPLACE(uk_return_rate, "%", "") as float64) / 100 as uk_return_rate
 
-    from rename_and_filter_fields
+    from remove_rows_with_blank_dates
 
 )
 
