@@ -19,7 +19,7 @@ deduplicate as (
         seller_sku,
         marketplace,
         tenant_id,
-        created_at,
+        loaded_at,
         quantity_shipped,
         item_fee__fee_type,
         item_fee__currency_code,
@@ -38,7 +38,7 @@ deduplicate as (
                 tenant_id,
                 item_fee__fee_type,
                 item_fee__currency_code
-            order by created_at desc
+            order by loaded_at desc
         ) = 1
 
 )

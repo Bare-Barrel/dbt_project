@@ -13,7 +13,7 @@ explode_item_fee_list as (
     select
         fe.marketplace,
         fe.tenant_id,
-        fe.created_at,
+        fe.loaded_at,
 
         fe.amazonorderid as amazon_order_id,
         fe.sellerorderid as seller_order_id,
