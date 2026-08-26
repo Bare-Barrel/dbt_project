@@ -40,6 +40,15 @@ remove_old_sku as ( -- old SKU of R_COMP-SOCKS-PL_BLK_V4_SL_SXm4
     from remove_product_code_fn
     where not REGEXP_CONTAINS(sku, r"R_COMP-SOCKS-PL_BLK_V4_SL_SXm4-")
 
+),
+
+remove_duplicate_asin_b07z836mv2 as ( -- duplicate asin B07Z836MV2, seems to be 
+
+    select *
+    from remove_old_sku
+    where
+        not asin = "B07Z836MV2"
+        and not product_type = "PRODUCT"
 )
 
-select * from remove_old_sku
+select * from remove_duplicate_asin_b07z836mv2
